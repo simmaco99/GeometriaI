@@ -1,0 +1,215 @@
+%%\input{0_Preambolo.tex}
+%\begin{document}
+
+\section{Determinante}
+
+\begin{defn}[Determinante]
+Sia $n \in \mathbb{N}$\\
+Il determinante \`e una funzione:
+$$ D: \,M(n, \mathbb{K})\cong \underbrace{ \mathbb{K } \times \dots \mathbb{K}^n}_\text{ n volte}
+\to \mathbb{K}$$
+che soddisfa queste 3 propriet\'a:
+\begin{enumerate}
+    \item[(i)] n-lineare rispetto alle colonne
+    \item[(ii)] $ D ( \dots,X , X , \cdots )=0$ 
+    \item[(iii)] $D(I_n)=1$
+\end{enumerate}
+\end{defn}
+\begin{prop}[Propiet\'a aggiuntive]
+Sia $D$ un determinante allora 
+\begin{enumerate}
+\item $ D (\dots, X,Y, \cdots )=- D (\dots, Y,X, \cdots )$
+\item $D (\dots, X , \dots, X \dots )=0 $
+\item $D (\dots, X , \dots, Y \cdots )= - D (\dots, Y , \dots, X \dots )$
+\end{enumerate}
+
+\proof   \bbianco
+\begin{enumerate}
+\item  Dalla propiet\'a (ii) segue che 
+$$ D ( \dots, X+Y, X+Y, \dots )=0 $$
+ora usando la linearit\'a rispetto alle colonne otteniamo 
+$$ D(\dots,X,X, \dots )+ D(\dots,X,Y, \dots ) + D(\dots,Y,X, \dots )+ D(\dots,Y,Y, \dots )=0 $$
+ovvero usando la propiet\'a (ii)
+$$ D (\dots , X,Y,\dots ) = - D ( \dots, Y,X, \dots ) $$
+\item Applicando la propiet\'a sopra dimostrata otteniamo che 
+$$D (\dots, X , \dots, X \dots )= (-1)^i D ( \dots,X,X,\dots)=0$$
+\item Ripercorriamo la prima dimostrazione ed otteniamo la tesi
+\end{enumerate}
+\endproof
+\end{prop}
+\newpage
+\begin{prop}[Unicit\'a di $D$]\bianco 
+Supponiamo che esista una funzione $D$ con le propiet\'a sopra descritte allora tale funzione \`e unica
+\proof
+$$A= \begin{pmatrix}
+a_{11} & \cdots & a_{1n}
+\\
+\vdots && \vdots\\
+a_{n1}& \cdots & a_{nn}
+\end{pmatrix}= (a_{11}E^1+ a_{21}E^2+ \dots + a_{n1}E^n, \dots ,
+a_{1n}E^1+ a_{2n}E^2+ \dots + a_{nn}E^n) $$
+Calcoliamo $D(A)$ e sviluppiamo con la multilinearit\'a:
+$$ D(A)=\sum_{\sigma \in S_n} a_{\sigma(1),1}\dots a_{\sigma(n),n} D \left( E^{\sigma(1)} , \dots , E ^{\sigma(n)} \right)$$
+Se $D$ esiste allora \`e definita nel seguente modo:
+$$ D(A)= \sum_{\sigma \in S_n} (-1)^{P(\sigma)} a_{\sigma(1),1}\dots a_{\sigma(n),n}
+$$ 
+Dove $P(\sigma)$ indica la parit\'a della permutazione.
+\end{prop}
+\spazio 
+\begin{prop}[Esistenza]\bianco
+Esiste una funzione che soddisfa le 3 propiet\'a 
+\proof Andrebbe dimostrato che la funzione sopra definita soddisfa veramente le propiet\'a
+
+\end{prop}
+\spazio 
+\begin{lem}
+$$ \Lambda^2 =\{ \phi:\, M(n, \K) \to \K \, \vert \, \phi \text{ soddisfa (i) e (ii)} \}$$
+\`e un sottospazio vettoriale e il determinante \`e una base 
+\proof La dimostrazione che $\Lambda^2$ \`e un sottospazio \`e lasciata come esercizio .\\
+Sia $\phi \in \Lambda^2 $ tale che $\phi (I_n )= \lambda $.\\
+Ripercorrendo la dimostrazione dell'unicit\'a otteniamo
+$$ \phi(A)=\sum_{\sigma \in S_n} a_{\sigma(1),1}\dots a_{\sigma(n),n} \phi \left( E^{\sigma(1)} , \dots , E ^{\sigma(n)} \right)= \sum_{\sigma \in S_n} (-1)^{P(\sigma)} a_{\sigma(1),1}\dots a_{\sigma(n),n} \phi \left( I_n \right) = \lambda D(A)$$
+e poich\`e vale $\forall A \in M(n,\K)$ allora
+$$  \forall \phi \in \Lambda^2 \quad \phi = \lambda \cdot D $$
+\endproof
+\end{lem}
+\begin{prop}[Formula di Binet]
+$$ D(AB)=D(A)\cdot D(B)$$
+\proof Sia $B\in M(n,\K)$.\\
+Consideriamo la funzione 
+$$ \phi(A) = D (BA) = D(BA^1, \dots, BA^n)$$
+Osserviamo che $ \phi \in \Lambda^2 $ infatti
+\begin{itemize}
+\item Il prodotto di matrici \`e lineare e la composizioni di lineari \`e lineare
+\item $\phi(\dots, X ,X, \dots) = D ( \dots, BX, BX, \dots) = 0$
+\end{itemize}
+Ora per il lemma precedente
+$$ \phi (A)= \phi (I_n) \det (A) = D \left( B I_n \right) \cdot D(A) = D(B)\cdot D(A)$$
+\endproof
+\begin{oss}Essendo $\K$ un campo $ D(B) \cdot D(A)= D(A)\cdot D(B)$ da cui 
+$$ D(AB)=D(BA)$$
+\end{oss}
+\end{prop}
+\spazio
+\begin{cor}
+$$ A \text{ invertibile } \ses D(A) \neq 0 $$
+\proof $\implica$ \\
+Se $A$ \`e invertibile allora esiste $A^{-1}$
+$$1=D(I_n)= D  \left( A A^{-1}\right) = D(A) D\left( A^{-1} \right)$$
+dunque $D(A)$ \`e invertibile ovvero \`e diverso da $0$\\ 
+$\Leftarrow$ in modo contro nominale.\\
+Supponiamo che $A$ non sia invertibile allora esiste un indice $j$ tale che
+$$ A^j = \sum_{ i=1  \atop{i\neq j }}^n a_i A^i $$
+quindi 
+$$D(A)= D \left( A^1 , \dots, A^j , \dots, A^n \right) =a_i D(A^1,\dots, A^1 , \dots, A^n ) + \dots + a_n D(A^1, \dots, A^n , \dots, A^n ) =0$$
+\endproof
+\end{cor}
+\spazio
+\begin{prop}\label{Det_trasposta}
+$$ D (A) = D(A^t )$$
+\proof
+$$ D(A)= \sum_{\sigma \in S_n } (-1)^{P(\sigma)} a_{\sigma(1),1}\dots a_{\sigma(n), n } $$
+Ora considerando l'involuzione di $S_n$ che manda $\sigma $ in $\sigma^{-1}$ e facendola agire sulla formula otteniamo
+$$ D(A)= \sum_{\sigma \in S_n } (-1)^{P(\sigma^{-1})} a_{\sigma^{-1}(1),1}\dots a_{\sigma^{-1}(n), n }=D(A^t)$$
+\endproof
+\end{prop}
+\newpage
+\begin{prop}[Calcolo del determinante con Gauss]\bianco
+Sia $A \in M (n ,\K) $, applico C-Gauss e ottengo $\hat{A}_C$
+\begin{itemize}
+\item Se $rk\left( \hat{A}_C \right) =rk(A) < n $ allora $D A =0 $
+\item Se $rk\left( \hat{A}_C \right) =rk(A) =n	 $ allora $\hat{A}_C=I_n$  da cui
+$$ A E_1 \cdots E_k=I_n $$ 
+con $E_1, \cdots , E_k$ matrici C-elementari tali che $ E_1, \cdots , E_k=A^{-1} $ da cui
+$$D\left( A^{-1}\right) = \prod_{i=1}^k D( E_i) $$
+ma le matrici elementari corrispondono ad azioni di C-Gauss dei tre tipi
+\begin{enumerate}
+\item Scambio di colonne $D(E)=-1$
+\item Moltiplico una colonna per costante $D( E)=c$
+\item Somma di una colonna per un multiplo di un altra
+$ D(E)= 1$
+\end{enumerate}
+Da cui $$D\left( A^{-1} \right)= (-1)^\alpha \cdot c_1 \cdot c_s$$
+Dove $\alpha$ \`e il numero di operazioni del primo tipo e $c_i$ sono le c-esime costanti per cui moltiplico 
+\end{itemize}
+\end{prop}
+
+\spazio 
+Forniamo una nuova dimostrazione della proposizione~\ref{Det_trasposta}
+\begin{cor} $\det A = \det {}^t A $
+\proof \bbianco
+\begin{itemize}
+\item se $A$ non \`e invertibile, ${}^tA$ non lo \`e da cui 
+\item Se $A$ \`e invertibile 
+$$A=E_1\cdots E_k \quad D ( A)=\prod_j E_j  \implica D(A^t)= \prod_j D(E_j^t) $$
+dove l'ultima implicazione \`e lasciata per esercizio e si pu\'o verificare nei 3 casi
+\end{itemize}
+\endproof
+\end{cor}
+\newpage
+
+\subsection{Formula di Cramer per sistemi lineari}
+Sia $A \in M(n,\K) $.\\
+Studiamo il sistema $AX=B$.\\
+Sia $X=\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$ una soluzione allora
+$$ B= x_1 A^1 + \cdots + x_n A ^n $$ 
+Consideriamo la matrice $$M_j = \left( A^1, \cdots , B , \cdots , A^n \right) $$
+dove la j-esima colonna di A e sostituita da B.\\
+Il determinante di $M_j$ si pu\'o calcolare usando la multilinearit\'a dunque 
+$$ \det M_j =x_1 \cdot \det A $$
+Se $\det A \neq 0 $, la soluzione $X$ esiste ed \`e unica 
+$$ x_j = \frac{\det M_j }{\det A }$$
+\subsection{Calcolo dell'inversa}
+Sia $A \in GL(n,\K) $.\\
+Troviamo $A^{-1} $ come soluzione $X$ del sistema $AX=I_n$, tale sistema si pu\'o scomporre
+$$ \begin{cases}
+AX^1=e_1 \\ \vdots \\ AX^n=e_n
+\end{cases}$$ risolvibile con Cramer\\
+L'inverso di una matrice \`e una speciale funzione razionale delle entrate della matrice di partenza.
+\newpage
+\subsection{Definizione ricorsiva}
+\begin{defn}[Sviluppo di Laplace rispetto ad una riga]\bianco
+Diamo una definizione ricorsiva per la formula del determinante $n$-esimo
+$$D_1 \left(\begin{pmatrix}
+a
+\end{pmatrix}\right) =a $$
+Fissata una riga $i$ 
+$$ D_{n+1}(A)= \sum_{j=1} ^{n+1}  (-1) \alla {i+j} \cdot [A]_{ij}\cdot D_{n} ( A_{ij} ) $$
+Dove con la notazione $ A_{ij} \in M(n-1,n-1) $ si indica la matrice ottenuta cancellando la $i$-esima riga e la $j$-esima colonna.
+\end{defn}
+Per visualizzare i segni possiamo usare alla matrice del segni
+$$\begin{pmatrix}
+1& -1 & 1 & -1 &\cdots \\
+-1& 1 & -1 & 1 &\cdots \\
+\vdots &   &   & &  \vdots
+\end{pmatrix}$$
+\spazio
+\begin{prop} Comunque scelgo l'indice di riga, la funzione sopra definita  verifica le tre propiet\'a caratterizzanti del determinante
+\proof Procediamo per induzione il passo base \`e dato da $n=2$
+\begin{enumerate} 
+\item Proviamo la linearit\'a rispetto alla $k$-esima colonna , ovvero dobbiamo provare che $\forall j $ il termine 
+$$ (-1)^{i+j} a_{ij}D_{n-1}(A_{ij})$$
+non dipende da $k$\\
+Se $j=k$\\
+Il termine $a_{ij}$ \`e fissato dunque non dipende da $k$
+Il termine $D_{n-1}(A_{ij}) $ non dipende da $A^k$ quindi \`e costante.\\
+Se $j \neq k $\\
+La funzione \`e una composizione di applicazioni lineari infatti si utilizza la proiezione $$ A^k \to A^k_{ij} $$
+che \`e lineare
+\item $ D( \cdots , X, X , \cdots) =0$ dove le colonne uguali sono $k$ e $k+1$.\\
+Sia $j\neq k, k+1 $
+Anche in $A_{ij}$ ci sono due colonne adiacente uguali da cui $D_{n-1} (A_{ij})=0$\\
+Verifichiamo ora l'altro caso 
+$$ a_{ik}D_{n-1}(A_{ik})=a_{i,k+1} D_{n-1}(A_{i,k+1} ) $$ 
+ora entrambe le colonne sono uguali quindi \`e vara l'uguaglianza
+\item \`e lasciata come esercizio
+\end{enumerate}
+\endproof
+\end{prop}
+
+
+
+
+%\begin{defn} Una matrice si dice diagonalizzabile se \`e simile ad una matrice diagonale \end{defn}
+
+% \end{document}

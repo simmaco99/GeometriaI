@@ -1,0 +1,1214 @@
+%\input{0_Preambolo.tex}
+%\begin{document}
+ 
+\section{Prodotti scalari}
+\begin{defn}[Prodotto scalare]\bianco
+Sa $V$ uno spazio vettoriale su $\K$ allora il prodotto scalare \'e una funzione
+$$ \phi:\, V \times V \to \K $$
+con queste propiet\'a 
+\begin{itemize}
+\item[(i)]  bilineare 
+\item[(ii)] simmetrico $ \forall (v,w) \in V \times V  \quad \phi(v,w) = \phi (w,v) $
+\end{itemize}
+\end{defn}
+
+\spazio
+\subsection{Matrici e prodotti scalari}
+\begin{defn}[Matrice associata ad un prodotto scalare]\bianco
+Sia $\phi \in PS(V) $ e sia $\B= \{ \nvett \} $ una base di V.\\
+La matrice associata a $\phi$ rispetto alla base $\B $ \'e la matrice $M_\phi$
+$$ \left[ M_\phi \right]_{ij} = \phi(v_i,v_j) $$
+\end{defn}
+\begin{oss}In modo evidente si osserva che la matrice che rappresenta un prodotto scalare \'e simmetrica.
+\end{oss}
+\spazio
+\begin{prop}[Calcolo del prodotto scalare]\bianco
+Sia $\phi$ un prodotto scalare e sia $\B$ una base di V, allora 
+$$ \phi(v,w) = [v]^t_\B \, M_\phi \, [w]_\B $$
+\proof  Sia $\B= \{ \nvett \} $ allora 
+$$ v = \sum_{i=1}^n a_i v_i \qquad w = \sum_{i=1}^n b_i v_i $$
+
+$$ \phi(v,w) = \phi \left( \sum_{i=1}^n a_i v_i , \sum_{i=1}^n b_i v_i \right) = \sum_{i=1}^n \sum_{j=1}^n  x_i \cdot \phi(v_i, v_j) \cdot y_i = [v]_\B ^t \, M_\phi [w]_\B $$
+\endproof
+\end{prop}
+\begin{oss}Dalla proposizione precedente segue che ogni matrice simmetrica pu\'o essere interpretata come matrice che rappresenta un prodotto scalare
+\end{oss}
+\newpage
+\begin{prop}[Cambio di base]\bianco
+Siano $\B$ e $\D$ due basi di $(V,\phi) $ allora
+$$ \exists P \in GL(V) \qquad M_\D (\phi) = P^t \cdot M_\B(\phi) \cdot P $$
+\proof
+Per  comodit\'a chiamiamo $M_\B(\phi) = A $ e $M_\D(\phi) = B $.\\
+Essendo $\B$ e $\D $ due basi allora esiste $P\in GL(V) $ tale che 
+$$ [v]_\B = P [v]_\D \quad \forall v \in V $$
+
+
+$$ \phi(v,w) =  [v]_\B^t \cdot A \cdot [w]_\B =  \left(P \cdot [v]_{\D}  \right)^t \cdot A \cdot P \cdot [w]_{\D} = 
+ [v]_{\D}^t \cdot (  P^t \cdot A \cdot P ) \cdot [w]_{\D} $$
+Ma ora
+$$ \phi(v,w) = [v]_\D^t B [w]_\D$$
+Quindi 
+$$ [v]_{\D}^t \cdot (  P^t \cdot A \cdot P ) \cdot [w]_{\D}  = [v]_\D^t B [w]_\D \quad \forall v,w \in V $$
+Dunque poich\'e vale per tutti i vettori vale anche per $[v]_\D=e_i $ , $[w]_\D=e_j $  quindi 
+$$ B = P^t \cdot A \cdot P $$ \endproof
+\end{prop}
+
+
+\newpage
+\subsection{Esempi di prodotti scalari}
+Siano $X = \begin{pmatrix}
+x_1 \\ x_2 \end{pmatrix}\, \text{ e } \, Y=\begin{pmatrix} y_1 \\ y_2 \end{pmatrix}
+$ \\
+Usiamo la notazione $(x,y)$ per indicare questo prodotto scalare che prende il nome di prodotto scalare euclideo standard su $\R^2$
+$$ (x,y) = x_1y_1 + x_2 y_2 = {}^t X Y = {}^t X I_2 Y $$
+Notiamo che questa funzione permette di trovare molti enti della geometria euclidea\\
+$$ \vert \vert x \vert \vert = d(x,0) = \sqrt{x_1^2 + x_2^2 } $$
+$$ d(x,y)  = \sqrt{(x-y,x-y)}$$
+Inoltre \'e possibile anche definire gli angoli infatti 
+$$ (x,y) = \vert \vert x \vert \vert \cdot \vert \vert y \vert \vert \cos \theta $$
+Da ci\'o segue che $(x,y) = 0$ se e solo se $ x \perp y $
+\\ 
+Mostriamo che questa funzione che abbiamo definito \'e veramente un prodotto scalare
+\begin{itemize}
+\item[(i)] \'e bilineare in modo ovvio
+\item[(ii)] $^{} t X Y \in \K $ quindi 
+$$  X^t Y =  \left( X^t Y \right)^t = Y^t X $$
+\end{itemize}
+\spazio
+ Possiamo estendere la definizione a qualsiasi $\R^n$ ottenendo il prodotto scalare standard su $\R^n$
+\spazio
+Un altro esempio di prodotto scalare (utile per la relativit\'a) su $\R^{3+1} $ \'e cos\'i definito
+$$ < \begin{pmatrix}
+x_1 \\ x_2 \\ x_3 \\ t  
+\end{pmatrix} , \begin{pmatrix}
+y_1 \\ y_2 \\ y_3 \\ s 
+\end{pmatrix} > x_1 y_1 + x_2y_2 + x_3 y_3 -ts $$
+In questo caso $<x,x>$ non pu\'o essere una norma euclidea infatti assume anche valori negativi.\\
+Possiamo distinguere 3 tipi di vettori in base a $<x,x> $
+\begin{itemize}
+\item $0$ vettori di tipo luce o vettori isotropi
+\item $>0$ vettori di tipo spazio
+\item $<0$ vettori di tipo tempo
+\end{itemize}
+Questo spazio viene chiamato spazio di Minkowski 
+\newpage
+
+\subsection{Radicale e prodotti non degeneri}
+
+\begin{defn}[Radicale di $\phi$]
+$$Rad(\phi) = \{ v \in V \, \vert \, \phi(v,w) =0 \quad \forall w \in V \} $$
+\end{defn}
+\begin{defn}[Vettore isotropo]\bianco
+$v \in (V, \phi) $ si dice isotropo se vale
+$$ \phi (v,v)=0$$
+\end{defn}
+
+\begin{oss} I vettori del radicale (non nulli) sono isotropi ma i vettori isotropi, in generale, non appartengono al radicale 
+\end{oss}
+
+\begin{defn}[Prodotto scalare non degenere]\bianco
+$\phi$ non \'e degenere se $Rad(\phi) =\{ 0 \} $
+\end{defn}
+\spazio
+\begin{lem}
+ $ \exists \B \text{ base di } V $   
+ $$ A_\B ( \phi) \text{   \'e invertibile } \quad \implica \quad \phi \text{ non  degenere }$$
+\proof
+Se $w \in Rad (\phi) $ allora
+$$ \forall v \in V \quad \phi(v,w)=0 $$
+Ma sfruttando la bilinearit\'a si ottiene che basta che annulli i vettori di una base di $V$ quindi
+$$ \forall i =1, \cdots , n \quad {}^t [v_i]_\B A_\B(\phi) [w]_\B = {}^t E_1 A_\B (\phi) [w]_\B=0$$ 
+Da cui il radicale \'e soluzione del sistema lineare
+$$ A_\B(\phi) X =0 $$ 
+quindi se $A_\B(\phi) $ \'e invertibile, ha rango massimo ed il nucleo \'e ridotto al solo 0
+\endproof
+\begin{oss}La dimostrazione ci dice molto di pi\'u infatti sappiamo che 
+$$\dim Rad(\phi) = n - rg\left( A_\B (\phi) \right) $$ 
+\end{oss}
+\end{lem}
+\spazio
+\subsubsection{Complementare del radicale}
+\begin{prop}
+Sia $\phi$ un prodotto scalare su $V$.\\
+$$ V = Rad ( \phi) \oplus U \quad \implica \quad \phi_{\vert U } \text{ non degenere } $$
+\proof
+Sia $\dim V = n $ e sia $\dim Rad(\phi)= r $ \\
+Sia $\B _1=\{ v_1 , \cdots , v_r \} $ una base del radicale estendiamola con $\B_2 =\{ w_1, \cdots , w_n-r\} $ base di U .\\
+Dunque data la somma diretta $\B=B_1\cup \B_2$ \'e base di $V $
+$$ B= M_\B(\phi) = \left( \begin{array}{c|c} 0 & 0 \\ \hline 0&A 
+\end{array} \right) $$
+Ora $rk (B) = n - r  = rk(A) $ ora $A$ ha rango massimo dunque \'e invertibile ne consegue che $Rad( \phi_{\vert U }) =\{ 0 \} $ ovvero la restrizione del prodotto scalare a $U $ \'e non degenere.\\
+\endproof
+\end{prop}
+\spazio
+\begin{prop}Due complementari del radicale di $\phi$ sono canonicamente isomorfi.
+\proof
+$$ V = U_1 \oplus Rad (\phi ) = U_2 \oplus Rad(\phi)$$
+Dunque $$\forall u \in U_1  \quad \exists ! z \in Rad (\phi) \, u_2 \in U_2 \quad u = u+u_2 $$ 
+Definisco ora $$g:\, U_1 \to U_2 \qquad u = z+u_2 \to u_2 $$
+Dimostriamo che $g$ \'e un isometria
+\begin{itemize}
+\item Mostriamo che $g$ \'e un isomorfismo.\\
+Essendo $\dim U_1 = \dim U_2 $ mostriamo che $g$ \'e iniettiva.\\
+$ u \in \ker g \quad \ses \quad u \in  U \cap Rad(\phi) $ ma come abbiamo visto nella proposizione precedente $Rad ( \phi_{\vert U })=\{ 0 \} $
+\item Mostriamo che $g$ preserva il prodotto scalare.\\
+Siano $u, w \in U_1 $ allora 
+$$ u = z_1 + u_2 \qquad w=z_2 + w_2 \qquad \text{ con } z_1, z_2 \in Rad(\phi ) \text{ e } u_2, w_2 \in U_2$$
+$$ \phi(u,w)= \phi(z_1+u_2, z_2+w_2)= \phi(z_1, z_2)+ \phi(u_2, z_2)+ \phi(z_1, w_2) + \phi(u_2, w_2)= \phi(u_2,w_2)= \phi(g(u), g(w))$$
+\end{itemize} 
+\end{prop}
+\newpage
+\subsection{Sottospazio ortogonale}
+\begin{defn}[Sottospazio ortogonale]\bianco
+Sia $W$ un sottospazio di $(V,\phi)$ , definiamo l'ortogonale di $W$ come 
+$$W^\perp =\{ v \in V \, \vert \, \phi(v,w) = 0 \quad \forall w\in W\} $$
+\end{defn}
+\begin{oss}Il radicale \'e l'ortogonale di tutto lo spazio vettoriale ovvero $Rad (\phi) = V^\perp $
+\end{oss}
+\begin{prop}[Propiet\'a dell'ortogonale]\bianco
+Siano $S,T\subseteq (V,\phi) $ sottospazi.
+\begin{enumerate}
+\item $ S\subseteq T \quad \implica T^\perp \subseteq S^\perp$
+\item $S^\perp = \left( Span(S) \right)^\perp$
+\item $\left( S^\perp \right) \subseteq S $ se non degenere $=$
+\item $ ( U+W)^\perp = U^\perp \cap W^\perp $
+\item $U^\perp + W ^\perp \subseteq ( U \cap W) ^\perp $
+\item $ W \cap W^\perp = Rad (\phi_{\vert W})$ se non degenere $=$
+\end{enumerate}
+\proof Le dimostrazioni delle propiet\'a seguono in modo ovvio dalla definizione del sottospazio ortogonale.
+\end{prop}
+\subsubsection{Dimensione dell'ortogonale}
+\begin{prop}Sia $W \subseteq V $ sottospazio.
+$$ W \cap Rad(\phi)=\{ 0 \} \quad \implica \quad \dim (W^\perp ) = \dim V - \dim W$$
+\proof
+Siano  $n=\dim V$ , $ m=\dim W $ e $k=\dim Rad (\phi)$.\\
+Allora sia $\{ z_1, \cdots , z_k$ base del radicale e $\{w_1, \cdots , w_m \} $ base di $W$ possiamo ottenere
+$$ \B = \{ w_1, \cdots , w_m, v_1, \cdots v_{n-m-k} , z_1, \cdots , z_k \} \text{ base di } V$$
+$$ A = M_\B (\phi) =\left(\begin{array}{c|c|c}
+A_1 & A_2 & 0 \\ \hline
+A_2^t &A_3 & 0 \\ \hline
+0 & 0 & 0 
+\end{array} \right)  \text{ con }$$
+$$v \in W^\perp \quad \ses \quad \phi(v,w)=0 \quad \forall w\in W \quad \ses \quad \phi(v,w_i)=0 \quad \forall i=1,\cdots, m$$
+Dunque
+$$ \phi(w_1,v)=  \begin{pmatrix}
+1 & \cdots & 0 &0& \cdots & 0 
+\end{pmatrix} A \cdot  [v]_\B =0$$
+$$ \vdots $$
+$$ \phi(w_m,v) = \begin{pmatrix}
+0 & \cdots & 1 & 0 & \cdots & 0 
+\end{pmatrix} A  \cdot [v]_\B =0$$
+Dunque $$W^\perp = \ker \left( \begin{pmatrix}
+I_m & \vert & 0 
+\end{pmatrix}A \right)= \ker \left(  \begin{array}{c|c} A_1 & 0 \\ \hline
+0 & 0 
+\end{array} \right) $$
+Ora la matrice 
+$$B=  \left( \begin{array}{c|c}
+A_1 & A_2 \\ \hline
+A_2^t & A_3 
+\end{array}\right)$$
+\'e invertibile infatti la restrizione di $\phi$ \'e non degenere (\'e un complementare del radicale) dunque $rk(B)=n-k$ da cui ne segue che $rk(A_1)=m $ da cui 
+$$ \dim W^\perp = \dim \ker \left( \begin{array}{c|c}A_1& 0 \\ \hline
+0 &0 
+\end{array}\right) = n-m= \dim V - \dim W $$
+\end{prop}
+
+\begin{cor}[Dimensione ortogonale]\
+$$ \dim W^\perp = \dim V - \dim W + \dim ( W\cap Rad (\phi) )$$
+\proof
+Sia $ W = ( W \cap  Rad (\phi) ) \oplus U $
+Allora 
+\begin{itemize}
+\item Mostriamo che $W^\perp = U^\perp $ \\
+Poich\'e $U\subseteq W$ dalla propiet\'a 1. dell'ortogonale segue che $ W^\perp \subseteq U^\perp $ \\
+Andiamo a dimostrare l'altra inclusione ovvero $U^\perp \subseteq W^\perp$
+$$ \forall v \in U^\perp \text{ devo dimostrare che } \phi(v,w)=0 \quad \forall w\in W $$
+Ora visto che $W= U \oplus ( W \cap Rad (\phi)) $ e 
+$$ \phi (v,w)= 0\quad  \forall w \in U \text{ infatti }  v\in U^\perp$$
+e
+$$ \phi (v,w)=0 
+\quad \forall w \in W \cap Rad(\phi)$$
+ne segue che 
+$ \phi(v,w)= 0 \quad \forall w \in W $
+
+\item $U\cap Rad(\phi)=\{0\}$ infatti 
+$$U \cap( W \cap Rad(\phi))=(U \cap W) \cap Rad(\phi)  $$ ma $ U\subseteq W $ da cui $U \cap W= U$ quindi
+$$U \cap (W \cap Rad(\phi)) = U \cap Rad (\phi)$$ infatti sono in somma diretta 
+\end{itemize}
+Dunque usando il caso precedente otteniamo $$\dim W^\perp = \dim U^\perp = \dim V - \dim U =\dim V - \dim W + \dim (W \cap Rad(\phi) $$
+\endproof
+\end{cor}
+\begin{cor} \label{cor15.11}$$ \phi_{\vert W } \text{ non degenere } \quad \ses \quad V = W \oplus W^\perp$$
+\proof $ \implica$ 
+$$ W \cap W^\perp = Rad ( \phi_{\vert W } ) =\{0\} $$ 
+Ora $ W\oplus W^\perp \subseteq V$ quindi $\dim (W + W^\perp) \leq \dim V $\\
+Ma $\dim (V+ V^\perp) = \dim V + \dim V^\perp = \dim V + \dim ( W\cap Rad(\phi) \geq \dim V $.\\
+Valgono entrambe le disuguaglianze quindi $\dim(W+W^\perp)= \dim V $ \\ 
+$\Leftarrow$ Se $W\oplus W^\perp $ allora
+$$ Rad(\phi_{\vert W} )= W\cap W^\perp = \{ 0 \} $$
+\endproof
+\end{cor}
+\begin{oss} Se $\phi$ \'e non degenere
+$$ \dim W^\perp = n - \dim W$$  ma in generale 
+$$ V\not = W \oplus W^\perp$$
+\end{oss}
+\newpage
+
+
+\newpage
+\subsection{Lemma di polarizzazione}
+\begin{defn}[Forma quadratica]\bianco
+Sia $\phi$ un prodotto scalare, definiamo la funzione forma quadratica associata a $\phi$
+$$ \varphi: \, V \to \K  \qquad \varphi(v) =\phi(v,v) $$
+\end{defn}
+\begin{lem}[di polarizzazione]\bianco
+Se la caratteristica del campo $\K>2 $ ( $1+1=2$ \'e invertibile).\\
+Allora il prodotto scalare \'e determinato dalla sua forma quadratica e vale la seguente formula
+$$  \phi(v,w) = \frac{ \varphi(v+w) - \varphi(v) - \varphi(w) }{2}$$
+\proof
+$\forall v,w \in V $
+$$ \varphi(v+w) =  \phi(v+w,v+w) = \phi(v,v)+ \phi(v,w) + \phi(w,v) + \phi(w,w) = \varphi(v) + \varphi(w) + 2\phi(v,w) $$ 
+Da cui
+$$ 2 \phi(v,w) = \varphi(v+w) - \varphi(v) - \varphi(w) $$ 
+Poich\'e $2=1+1$ \'e invertibile
+$$ \phi(v,w) = 2^{-1} (  \varphi(v+w) - \varphi(v) - \varphi(w) )$$
+\endproof
+\end{lem}
+\begin{cor}\label{cor15.17} Se in $\K$  $1+1$ \'e invertibile.\\
+$$ \phi \text{ \'e totalmente isotropo } \quad \ses \quad \phi \equiv 0 $$
+dove con $\equiv$ si intende il prodotto scalare identicamente nullo 
+\proof
+$\Leftarrow$ \'e ovvia se il prodotto scalare \'e totalmente isotropo allora ogni vettore \'e isotropo.\\
+$\implica$ Se ogni vettore \'e isotropo , $\varphi(v)=0 $ $\forall v \in V $ quindi per la formula ricavata nel lemma di polarizzazione si ha che $\phi \equiv 0 $\endproof
+\end{cor}
+\newpage
+\subsection{Basi ortogonali e algoritmo di ortogonalizzazione}
+\begin{defn}[Base ortogonale]\bianco
+Una base $\B=\{ \nvett \} $  di $V$ si dice ortogonale per $\phi$ 
+se 
+$  \phi(v_i,v_j) =0  \quad \forall i \neq j $ .\\
+In modo equivalente 
+$$ A_\B (\phi) \text{ \'e diagonale} $$
+ \end{defn}
+\spazio
+
+\begin{thm}[Esistenza di basi ortogonali]\bianco
+Se in $\K$ $1+1 $ \'e invertibile.\\
+$\forall (V, \phi) $ esiste una base $\B $ ortogonale per $\phi$
+\proof Usiamo l'induzione su $n = \dim V \geq 1$ \\
+Il passo  base \'e ovvio, ogni matrice di taglia $1 \times 1 $  \'e ortogonale \\
+Mostriamo ora che $n-1 \implica n $.\\
+Distinguiamo 2 casi 
+\begin{itemize}
+\item $\phi$ \'e totalmente isotropo quindi per il corollario~\ref{cor15.17} $\phi \equiv 0 $ da cui  $\forall \B$ vale $M_\B (\phi)=0$
+\item $\phi$ non \'e totalmente isotropo, quindi $\exists v \in V \quad \phi(v,v) \neq 0 $.\\
+Essendo $v$ non isotropo per il  corollario~\ref{cor15.11}
+$$ V  = Span (v) \oplus Span(v) ^ \perp $$
+Ora $\dim Span(v) ^ \perp =\dim W = n-1$ quindi posso utilizzare l'ipotesi  induttiva su $(W, \phi_{\vert W})$, quindi
+$$ \exists \B'=\{ w_1, \cdots , w_{n-1} \} \text{ base ortogonale } $$ 
+La base ortogonale di $V$ cercata risulta dunque essere
+$$ \B=\{v , w_1, \cdots , w_n \} $$
+che \'e ortogonale infatti $ w_1 \perp w_j $ perch\'e sono una base ortogonale e $v \perp w_i $ per costruzione ($w_1 \in Span(v)^\perp $) 
+\endproof
+\end{itemize}
+\end{thm}
+\spazio
+Il teorema precedente ci dice che dato $\phi$ prodotto scalare su $V$ spazio vettoriale su un campo di caratteristica diversa da $2$ esiste una base ortogonale di $\phi$ ma non ci dice nulla su come ottenerla, l'algoritmo che andremo ad esporre ci fornisce un modo per calcolare tale base.
+\spazio 
+\begin{defn}[Coefficienti di Fourier]\bianco
+Sia $v$ un vettore non isotropo e sia $w$ un generico vettore.\\
+Definiamo coefficienti di Fourier di $w$ rispetto a $v$ lo scalare
+$$ c= \frac{\phi(v,w)}{\phi(v,v)}$$
+\begin{oss}$c$ \'e ben definito perch\'e essendo $v$ non isotropo $\phi(v,v) \neq 0$ inoltre \'e di facile verifica che
+
+$$w-cv \in Span(v)^\perp $$ se $c$ \'e il coefficiente di Fourier di $w$ rispetto a $v$ 
+\end{oss}
+\end{defn}
+\spazio 
+\begin{al}[Algoritmo di Lagrange]\bianco
+Sia $\B$ una base di $V,\phi$.\\
+L'algoritmo permette di trovare una base $\hat{\B}$ ortogonale.\\
+Partiamo da $\B=\{ \nvett \}$ e consideriamo 
+$$ M= M_\B(\phi ) = ( a_{ij} = \phi (v_i,v_j )_{i=1,\cdots, n \atop{ j=1, \cdots , n }} $$
+\begin{itemize}
+\item
+Se $ M_B \equiv 0 \quad \implica \phi \equiv 0 $, poniamo $\hat{\B}= \B $ e l'algoritmo termina
+\item La matrice non \'e identicamente nulla, in questo caso vogliamo ottenere un vettore non isotropo, distinguiamo 2 casi
+\begin{itemize}
+\item[(i)] $\exists i $ tale che $a_{ii} \neq 0 $ ovvero tale che $\phi(v_i, v_i) \neq 0 $ dunque $v_i$ non isotropo.\\
+Posso supporre dunque, a meno di riordinamenti della base che il primo vettore di $\B$ sia non isotropo.
+\item[(ii)]Tutti i vettori di $\B$ sono isotropi (sulla diagonale di $M$ ci sono solo $0$).\\
+In questo caso prendo la prima entrata della matrice non nulla ovvero 
+$$ \exists i,j \tc a_{ij} \neq 0 \quad \implica \phi(v_i, v_j) \neq 0 $$ 
+In questo caso il vettore $ v= v_i + v_j$ non \'e isotropo infatti 
+$$ \phi( v , v) = \phi(v_i, v_i) +\phi(v_j, v_j) +  2 \phi(v_i,  v_j) = 2 \phi(v_i, v_j ) \neq 0 $$
+Pongo dunque $\B' = \{ v, v_i, \cdots, \cancel{ v_i} , \cdot v_j , \cdots , v_n \} $
+\end{itemize}
+Dunque a meno di modificare la base iniziale nel modo detto nei 2 casi possiamo supporre che 
+$$ \B = \{ \nvett \} \quad \text{ con } v_1 \text{ non isotropo } $$
+Ora il teorema si concludeva dicendo che
+$$ V = Span (v_1) \oplus Span(v_1)^\perp $$
+Quindi devo costruire una base $\B' $ di $W=Span(v_1) ^\perp $, lo faccio sfruttando quando detto sui coefficienti di Fourier ponendo
+$$ v_2^{(i)} = v_2 - \frac{\phi(v_2,v_1) }{\phi(v_1, v_i ) } \cdot v_1 $$
+$$ \vdots $$
+$$ v_n^{(i)} = v_n - \frac{\phi(v_n,v_1) }{\phi(v_1, v_i ) } \cdot v_1 $$
+$\B^{(i)}= \{ v_2^{(i)} , \cdots , v_n^{(i)} \} $ sono una base di $W$ infatti sono $\dim W = n-1 $ resta da provare l'indipendenza lineare.\\
+Supponiamo che 
+$$ a_2 v_2^{(i)} + \cdots  a_n v_n^{(i)} = 0 \quad \implica  \sum_{i=2 }^n a_i v_i + a_i \lambda_i v_i = \sum_{i=2}^n ( a_i \lambda_i ) v_i + a_2 v_2 + \cdots + a_n v_n =0 $$ 
+L'ultima scrittura \'e una combinazione lineare nulla di vettori della base $\B$ dunque tutti i coefficienti devono essere nulli in particolare $a_2 =\cdots = a_n $ .\\
+  Abbiamo ottenuto una base $\hat{\B }= \{ v_1 \} \cup \B^{(i)} $ ortogonale 
+
+Dopo aver ortogonalizzato i vettori rispetto al primo, itero il procedimento sui vettori della base $\B^{(i)}$ e cos\'i via
+\end{itemize}
+\end{al}
+
+\begin{oss}Se $\phi$ \'e anisotropo, ovvero $\forall v \in V , \, v \neq 0 \, \implica \phi(v,v) \neq 0 $ l' algoritmo di semplifica infatti il primo vettore di $\B$ \'e sempre non isotropo.\\
+Questa semplificazione dell'algoritmo prende il nome di \textbf{Gran-Schmdt}.
+\spazio
+\end{oss}
+\begin{oss} L'ipotesi $1+1 \neq 2 $ \'e necessaria.\\
+Prendiamo come $\K=\mathbb{F}_2 $ e $V=\K^2 $ e il prodotto scalare cos\'i definito
+$$ \phi(X,Y) =  X^t \begin{pmatrix}
+0 & 1 \\ 1 & 0
+\end{pmatrix} Y $$
+Ogni vettore \'e isotropo infatti
+$\forall X=\begin{pmatrix}
+x_1 \\x_2 
+\end{pmatrix} \in V  $ 
+$$ \phi (X,X) = \begin{pmatrix}
+x_1 & x_2 
+\end{pmatrix} \begin{pmatrix}
+0 & 1 \\ 1 &0 
+\end{pmatrix} \begin{pmatrix}
+x_1 \\x_2 
+\end{pmatrix} = \begin{pmatrix}
+x_1 & x_2 
+\end{pmatrix} \begin{pmatrix}
+x_2 \\x_1 
+\end{pmatrix} = x_1x_2 + x_1x_2 =0 $$
+Dunque se esistessero basi ortogonali allora
+$$ A_\B (\phi) = \begin{pmatrix}
+c_1 & 0 \\
+0 & c_2 
+\end{pmatrix} =\begin{pmatrix}
+0 & 0 \\ 0 & 0 
+\end{pmatrix} \quad \text{ essendo ogni vettore isotropo } $$
+Ma ci\'o \'e assurdo perch\'e $\begin{pmatrix}
+0 & 1 \\ 1 & 0
+\end{pmatrix} $ e $\begin{pmatrix}
+0 & 0 \\ 0 & 0 
+\end{pmatrix} $ devono essere congruenti ma hanno rango diverso (la congruenza \'e una particolare SD-equivalenza quindi il rango \'e invariante)\\
+Dunque abbiamo trovato un prodotto scalare con tutti i vettori isotropi ma non identicamente nullo e che non ammette basi ortogonali.
+\end{oss}
+\newpage
+\subsection{Isometrie e congruenze}
+\begin{defn}Siano $(V,\phi) $ e $(W,\psi) $ $\K$-spazi vettoriali.\\
+ $f:\, V \to W $ lineare \'e un isometria se 
+ \begin{itemize}
+ \item[(i)]$f$ \'e un isomorfismo di spazi vettoriale
+ \item[(ii)]$f$ rispetta il prodotto scalare ovvero
+ $$ \forall x, y \in V \quad \phi(x,y)= \psi(f(x), f(y)) $$
+ \end{itemize}
+\end{defn}
+\spazio
+\begin{defn} Se una tale $f$ esiste allora $(V,\phi) $ e $(W,\psi) $ si dicono isometrici.
+\end{defn}
+\begin{oss}
+L'essere isometrici \'e una relazione di equivalenza.\\
+Se $(V, \phi)$ e $(W, \psi)$ sono isometrici, allora deve esistere
+$$ g:\, V \to W \text{ isomorfismo } $$
+Tramite $g$ posso trasportare il prodotto scalare $\psi$ su $V$ infatti
+$$ \psi_V (v,w) = \psi(g(v), g(w))$$
+Per studiare la relazione di isometria possiamo restringerci al caso di $V$ fissato e variare il prodotto scalare
+\end{oss}
+\spazio
+
+\subsubsection{Congruenza}
+\begin{defn}[Congruenza]\bianco
+Siano $A,B \in M(n,\K)$, $A$ e $B$ si dicono congruenti se 
+$$ \exists M \in GL(n,\K) \tc A = M^t B M$$
+\end{defn}
+\begin{oss}La relazione sopra descritta \'e una relazione di congruenza, ed \'e una particolare similitudine quindi il rango \'e un invariante.
+\end{oss}
+\begin{prop}Il segno del determinate \'e un invariante per congruenza
+\proof Sia $A$ congruente a $B$ allora
+$$ B = M^t \cdot A \cdot M \quad \implica \quad \det M = \det A \cdot \left( \det M \right)^2 $$
+\end{prop}
+\spazio
+\begin{prop}\label{congruenza}Siano $(V,\phi) $ e $(V, \psi)$ due spazi vettoriali.\\
+I seguenti fatti sono equivalenti
+ \begin{itemize} 
+ \item[(i)] $(V,\phi) $ e $ (V, \psi) $ sono isometrici
+ \item[(ii)] $\forall \B $ base di $V$ tale che $ M_\B (\phi) $ e $M_\B(\psi) $ sono congruenti
+ \item[(iii)] $\exists \B, \B' $ basi di $V $ tali che $M_\B ( \phi) = M_{\B'}(\psi)$
+ \end{itemize}
+ La dimostrazione \'e analoga a quella fatta per gli endomorfismi 
+ \end{prop}
+\newpage
+
+
+\subsubsection{Teorema di Sylvester}
+\paragraph{Caso complesso}
+Sia $(V,\phi) $ un $\C$-spazio vettoriale di dimensione $n$.\\
+Sia $\dim Rad (\phi)= n-r $ allora esiste una base $\B=\{ \nvett \}$ ortogonale tale che 
+$$ M_\B(\phi) = \left( \begin{array}{c|c}
+\begin{array}{ccc}
+a_1 & & \\
+ & \ddots &  \\
+& & a_r 
+\end{array}  &0 \\ \hline 0&0
+\end{array}\right)  \text{ dove } a_i \neq 0$$
+Dunque possiamo costruire una nuova base
+$$ \B'=\left\{ \frac{v_1}{\sqrt{a_1}} , \cdots , \frac{v_r}{\sqrt{a_r}}, \cdots , v_n \right\} $$ 
+ora con questa base   otteniamo
+$$ M_{\B'}(\phi) = \left( \begin{array}{c|c}I_r & 0 \\ \hline 0&0
+\end{array} \right)$$
+\begin{defn}La base $\B'$ sopra costruita viene chiamata base ortogonale normalizzata per $\phi$
+\end{defn}
+\spazio
+\begin{thm}[Teorema di Sylvester complesso]\bianco
+Il rango \'e un sistema di invarianti completi per l'isometria nel caso in cui $\K=\C$
+$$ (V, \phi) \text{ e } (V, \psi) \text{ sono isometrici } \quad \ses \quad rk(\phi) = rk(\psi)$$
+\proof Come abbiamo visto in \ref{congruenza} allora 
+$$ (V,\psi) \text{ e } (V, \phi) \text { sono isometrici } \quad \ses \quad \text{ esistono } \B \text{ e } \D \text{ basi di } \text{ tali che }  M_\B (\phi) = M_\D(\psi)$$
+Infatti detto $r=rk(\psi ) = rk(\phi ) $ basta prendere   
+$$ \B \text{ base ortonogonale normalizzata per } \phi $$ 
+$$ \D \text{ base ortogonale normalizzata per } \psi $$ 
+infatti
+$$ M_\B ( \phi) = M_\D(\psi) =  \left( \begin{array}{c|c}I_r & 0 \\ \hline 0&0 
+\end{array} \right)$$ 
+\endproof
+\end{thm}
+\begin{cor}Il rango \'e un invariante completo per la congruenza  su $\C$
+\end{cor}
+\newpage
+\paragraph{Caso reale e segnatura}
+Se $\K=\R$ non possiamo reiterare il procedimento per costruire una base ortonormale, infatti in $\R$ non sempre esiste la radice quadrata di un numero, possiamo per\'o modificare la costruzione.\\
+Sia $(V,\phi) $ un $\R$-spazio vettoriale di dimensione $n$.\\
+Sia $\dim Rad (\phi)= n-r$ allora esiste una base $\B=\{ \nvett \}$ ortogonale tale che 
+$$ M_\B(\phi) = \left( \begin{array}{c|c}
+\begin{array}{ccc}
+a_1 & & \\
+ & \ddots &  \\
+& & a_r 
+\end{array}  &0 \\ \hline 0&0
+\end{array}\right)  \text{ dove } a_i \neq 0$$
+Possiamo supporre senza perdere di generalit\'a che 
+$$ a_i >0 \quad \forall i = 1, \cdots, s $$ 
+$$ a_i <0 \quad \forall i=s+1, \cdots , r $$
+Dunque costruiamo 
+$$ \B'= \left \{ \frac{v_1}{\sqrt{\phi(v_1, v_1)}}, \cdots , \frac{v_s}{\sqrt{\phi(v_s, v_s)}}, \frac{v_{s+1}}{\sqrt{- \phi(v_{s+1} , v_{s+1})}} , \cdots ,  \frac{v_{r}}{\sqrt{- \phi(v_{r} , v_{r})}}, v_{r+1}, \cdots, v_n \right\}$$
+ora con questa nuova base otteniamo 
+$$ M_{\B'}(\phi) = \left( \begin{array}{c|c|c}
+I_s & & \\ \hline 
+& - I_{r-s}  & \\ \hline
+& & 0 
+\end{array} \right)$$
+\begin{defn}La base costruita prende il nome di base ortogonale normalizzata reale
+\end{defn}
+\spazio
+\begin{defn} Sia $(V,\phi)$ un $\R$-spazio vettoriale.\\
+$\phi$ si dice
+\begin{itemize}
+\item definito positivo (risp. negativo)  se $\phi(v,v) >0 \, \text{ ( risp. } <0 \text{ ) }   \quad \forall v \in V - \{  0\} $
+\item definito se \'e definito positivo o negativo
+\item semidefinito positivo  (risp. negativo ) se $\phi(v,v ) \geq 0 \, \text{ (risp. } \leq 0 \text{ ) } \quad \forall v \in V$
+\item semidefinito se \'e semidefinito positivo o negativo
+\end{itemize}
+\end{defn}
+\spazio
+\begin{defn}[Segnatura]\bianco 
+Sia $(V,\phi)$ un $\R$-spazio vettoriale, allora definiamo segnatura di $\phi $ la seguente terna di numeri
+$$ \sigma(\phi) = \left( i_+(\phi),\,  i_- (\phi) ,\,  i_0 (\phi) \right) $$
+dove
+\begin{itemize}
+\item $i_+ $ \'e l' Indice di positivit\'a 
+$$i_+ (\phi) =\max \{ \dim W \, \vert \, W \text{ sottospazio tale che }  \phi_{\vert W } \text{ \'e definito positivo} \} $$
+\item $i_-$ \'e l'indice di negativit\'a 
+$$i_- (\phi) =\max \{ \dim W \, \vert \, W \text{ sottospazio tale che }  \phi_{\vert W } \text{ \'e definito negativo} \} $$
+\item $i_0$ \'e l'indice di nullit\'a 
+$$ i_0(\phi) = \dim Rad(\phi)$$
+\end{itemize}
+\end{defn}
+\begin{oss}La segnatura \'e un invariante per isometria, infatti le isometrie preservano il prodotto scalare e dunque anche il segno di $\phi(v,v)$
+\end{oss}
+\spazio
+\begin{thm}[Teorema di Sylvester reale]\bianco
+Sia $V$ un $\R$-spazio vettoriale e sia $\B $ una base ortonormale per $\phi$ tale che 
+$$ M_\B (\phi) = \left( \begin{array}{c|c|c }
+I_r & & \\ \hline 
+& -I_s & \\ \hline
+& & 0 
+\end{array} \right) $$
+Allora 
+$$ r= i_+(\phi) \qquad s=i_-(\phi) $$
+\proof
+Sia $$\B = \{ v_1 , \cdots , v_r, v_{r+1} , \cdots , v_s, \cdots v_{s+1}, \cdots, v_n \} $$
+\begin{itemize}
+\item $\phi_{Span(v_1, \cdots , v_r )} $ \'e definito positivo quindi $i_+(\phi) \geq r $
+\item Sia $Z= Span(v_{r+1} , \cdots , v_n )$\\
+$\phi_{\vert Z} $ \'e semidefinito negativo infatti 
+$$ \forall z \in Z \quad z= \sum_{i=r+1}^n a_i v_i \quad \phi(z,z) = - \left( a_{r+1}^2 + \cdots + a_{r+s}^2 \right) \leq 0 $$
+Sia $W$ un sottospazio che realizza l'indice di positivit\'a allora $W$ e $Z$ sono in somma diretta infatti
+$$ \forall w \in W \quad \phi(w,w)>0 \qquad \forall z \in Z \quad \phi(z,z)\leq 0$$
+dunque 
+$$ W \oplus Z \subseteq V \quad \implica \dim W + \dim Z \leq \dim V \quad \implica \quad i_+(\phi) \leq r$$
+\end{itemize}
+Ora valgono entrambe le disuguaglianze quindi $i_+(\phi)=r$\\
+Inoltre sappiamo che $i_+ (\phi) + i_- (\phi) = rk(\phi) = r+s $ dunque $s= i_- (\phi)$\\
+\endproof
+\end{thm}
+\spazio
+\begin{cor}La segnatura \'e un invariante completo per la relazione di isometria su $\R$
+\end{cor}
+\spazio
+\spazio
+\begin{defn}[Base ortonormale]\bianco Sia $\phi$ un prodotto scalare su $V$, 
+$\B$ base di $V$ si dice base ortonormale se $M_\B(\phi)=I$
+\end{defn}
+\newpage
+\subsection{Teorema di estensione di Witt}
+\begin{defn}[Sottospazi congruenti]\bianco
+Siano $W_1, W_2$ due sottospazi di $(V, \phi)$.\\
+$W_1$  e $W_2$ sono congruenti se 
+$$\exists f \in O(\phi) \quad f(W_1)=W_2$$
+\end{defn}
+\begin{oss}Se una tale $f$ esiste allora
+$$ f_\vert :\, W_1 \to W_2 \text{ \'e un isometria}$$
+Quindi una condizione necessaria affinch\'e due sottospazi siano congruenti \'e che esista un isometria tra di loro, il seguente teorema, ci dice che sotto alcune ipotesi, tale condizione \'e anche sufficiente 
+\end{oss}
+\subsubsection{Teorema di estensione - caso non degenere}
+\begin{thm}[Teorema di estensione -caso non degenere]\bianco
+Sia $\phi_{\vert W_1 } $ e $\phi_{\vert W_2}$ non degeneri.
+$$ \exists \beta:\, W_1 \to W_2 \text{ isometria } \quad \implica \quad \exists f \in O(\phi) \text{ tale che } f_{\vert W_1}=\beta $$
+\proof Per induzione su $k=\dim W$ \\
+Passo base $k=0 $.\\
+Ogni $f \in O(\phi)$ estende $\beta $ infatti $f(0)=0$\\
+$n-1 \implica n $\\
+Sia $$\{ w_1, \dots, w_k\} \text{ una base ortonormale di }W_1$$ essendo $\phi_{\vert W_1}$ non degenere i vettori sono non isotropi.\\
+Poich\'e $\beta$ \'e un isomorfismo 
+$$ \{u_1=\beta(w_1), \dots, u_k =\beta(w_k) \} \text{ \'e una base ortonormale di } W_2$$
+Consideriamo 
+$$ W_1'=Span(w_1, \dots, w_{k-1})$$
+$$ W_2'=Span(u_1, \dots, u_{k-1})$$
+e 
+$$ \beta':\, W_1' \to W_2' \qquad v_i = u_i \quad \forall i=1, \dots, k-1$$
+Ora poich\'e $\dim W_1'=n-1$ possiamo usare l'ipotesi induttiva quindi
+$$ \exists g \in O(\phi) \quad g_{\vert W_1'}=\beta'$$
+Ora si possono verificare 2 ipotesi
+\begin{itemize}
+\item $g(w_k)= u_k$ dunque poniamo $f=g$
+\item $g(w_k)=a_k \neq u_k$.\\
+In questo caso essendo $g$ un isometria $ \phi(a_k,a_k)= \phi(w_k,w_k) \neq 0 $\\
+Per considerazioni fatte nella proposizione~\ref{rifle} basta comporre $g$ con riflessioni parallela 
+\end{itemize}
+\endproof
+\end{thm}
+\subsubsection{Complementi non degeneri}
+\begin{defn}[Ampliamento non degenere]\bianco
+Sia $W$ un sottospazio vettoriale di $(V,\phi) $ e sia $\hat{W}$ tale che 
+$$ W \subseteq \hat{W} \subseteq V $$ 
+$\hat{W}$ \'e detto un ampliamento non degenero di $W$ se $\phi_{\vert \hat{W}} $ \'e non degenere
+\end{defn}
+
+\begin{defn}[Completamento non degenere]
+Se $\hat{W}$ \'e un ampliamento non degenere di $W$ di dimensione minima, $ \hat{W}$ \'e detto completamento non degenere
+\end{defn}
+\begin{oss}Il completamento non degenere \'e ben definito infatti l'insieme degli ampliamenti non degeneri non \'e vuoto infatti $V$ \'e un ampliamento algebrico di qualsiasi sottospazio.
+\end{oss}
+\spazio
+\begin{thm}\bianco
+Dato $W $ sottospazio di $(V,\phi) $
+\begin{itemize}
+\item[(i)]Esistenza costruttivi di completamenti non degeneri di $W$
+\item[(ii)]Se esistono 2 completamenti non degeneri sono congruenti (il completamento algebrico \'e unico a meno di isometrie)
+\end{itemize}
+\proof \bianco
+\begin{itemize}
+\item[(i)]Consideriamo $Z=Rad \,\left( \phi_{\vert W } \right) $\\
+Se $Z=\{ 0\} $ allora $\hat{W}=W $\\
+Consideriamo ora il caso in cui $\dim Z= s \neq 0 $ 
+$$ W = U \perp Z $$
+Fissiamo una base $\{ u_1, \cdots , u_r , z_1 , \cdots , z_s \} $ adattata alla decomposizione.\\
+Mostriamo che esiste 
+$$ \hat{W}=U \perp P_1 \perp \cdots \perp P_s $$ 
+dove i $P_i$ sono piani iperbolici di $V$ muniti di una base iperbolica $\{ z_i , t_i \} $
+
+Consideriamo la costruzione per $s=1$ per $s>1$ iteriamo la procedura.\\
+Sia $$\B =\{ u_1, \cdots , u_r, z , v_1, \dots, v_n \}  \text{  una base di } V$$
+Sia $z^\star \in  V^\star$, ora poich\'e $\phi$ \'e non degenere per il teorema di rappresentazione
+$$ \exists d \in V \tc z^\star= \varphi_d $$ 
+dunque in particolare
+$$ \phi(d,u_i)= 0 \text{ infatti } z^\star (u_i)= 0 $$ 
+$$ \phi(d,z)= 1 \text{ infatti } z^\star (z)=1 $$ 
+Mostriamo che 
+$$ \{ u_1, \dots, u_r,z,d \} \text{ sono linearmente indipendenti}$$ 
+Supponiamo per assurdo che
+$$ d = \sum_{i=1}^r a_i u_i + az $$
+Allora
+$$ \phi ( d,z) =  \sum_{i=1}^r a_1 \phi(u_i,z) + a \phi(z,z)=0 \quad z \in Rad(\phi)$$
+Dunque se i vettori sono dipendenti $0=1$.\\
+Ora ponendo $P=Span(z,d)$ otteniamo che esso \'e un piano iperbolico, dunque esiste una base iperbolica $\{ z, t \}$ per $P$.
+$$ \hat{W}=U \perp P $$
+\spazio
+
+Abbiamo dimostrato che $\hat{W}$ sopra costruito \'e un ampliamento, mostriamo che esso \'e un completamento.\\
+Sia $\hat{W}'$ un completamento non degenere.\\
+Reiterando la costruzione ma estendiamo  
+$$ \{ u_1, \dots, u_r,z \} $$
+ad una base di $\hat{W}'$.\\
+Essendo $\ds \phi_{\vert \hat{W}'} $ non degenere giungiamo alle stesse conclusioni ovvero
+$$ W \subseteq \hat{W}\subseteq \hat{W}'$$
+Ora poich\'e il completamento non degenere ha dimensione minima $\hat{W}=\hat{W}'$
+\item[(ii)]Siano $W= U \perp Rad \left( \phi_{\vert W } \right) $ e consideriamo 
+$$ \hat{W_1}= U \perp P_1 \perp \cdots \perp P_s \qquad \hat{W_2}= U \perp P_1' \perp \cdots \perp P_s' $$
+dove i $P_i $ hanno come base iperbolica $\{ z_i , t_i \} $ e i $P_i'$ hanno $\{ z_i, t_i' \} $.\\
+Consideriamo $\beta:\, \hat{W_1 }\to\hat{ W_2} $ tale che $\beta (u_i)=u_i$ e $\beta(t_i)=t_i' $.\\
+$\beta$ \'e un isometrie infatti manda $U$ in se stesso e basi iperboliche in basi iperboliche.\\
+Si conclude con il teorema di estensione nel caso non degenere
+\end{itemize}
+\endproof
+\end{thm}
+\newpage
+\subsubsection{Teorema di estensione caso generale}
+\begin{thm}
+$$ \exists \beta :\, W_1 \to W_2 \text{ isometria } \quad \implica \quad \exists f \in O(\phi) \tc f_{\vert W_1}=\beta$$
+\proof
+Poniamo $Z= Rad \left(\phi_{\vert W_1} \right)$ e $S= Rad \left(\phi_{\vert W_1} \right)$
+Sia
+$$ \{ z_1, \dots, z_k \} \text{ una base di } Z$$
+$$ W= U \perp Z$$
+Sia 
+$$ U_2 =\beta (U_1)$$
+$$ s_i= \beta (z_i) \quad  \forall i=1,\dots, k$$
+Poich\'e $\beta$ \'e un isometria 
+$$ \{ s_1, \dots, s_k\} \text{ \'e una base di } S $$
+$$ W_2= U_2 \perp S $$ 
+Andiamo a costruire i 2 completamenti non degeneri ottenendo
+$$ \hat{W_1}=U_1 \perp P_1 \perp \dot \perp P_k \quad \{ z_i, t_i \} \text{ base iperbolica per } P_i $$
+$$ \hat{W_2}=U_2 \perp P_1'\perp \dot \perp P_k' \quad \{ s_i, t_i' \} \text{ base iperbolica per } P_i' $$
+Estendiamo $\beta $ con $\beta'$ 
+$$\beta':\, \hat{W_1 } \to \hat{W_2} \tc \beta'_{\vert W_1} = \beta \quad \beta'(t_i)=t_i'$$
+Per costruzione $\beta'$ risulta un isometria, quindi applicando il teorema nel caso non degenere otteniamo $f\in O(\psi)$ che estende $\beta'$ dunque $\beta $
+\endproof
+\end{thm}
+\newpage
+\subsection{Gruppo ortogonale}
+\begin{defn}[Gruppo ortogonale]\bianco
+Si definisce gruppo ortogonale di $(V, \phi ) $ l'insieme
+$$ O(\phi)=\{ f \in GL(V) \quad \vert \quad f \text{ \'e isometria } $$
+\end{defn}
+\spazio
+Possiamo anche vederlo in versione matriciale fissando una base di  $V$ ($\dim V=n $)
+$$ \phi(X,Y) = X^t M Y \qquad M = M^t \qquad rk(M) = n \quad \left[ \phi \text{ non degenere} \right]$$
+
+$ A \in GL(n,\K)$
+$$ A \in O ( \phi) \quad \ses \quad \forall X,Y \in \K^n \quad X^t M Y = (AX)^t M (AY) \quad \ses \quad X^t M Y = X^t ( A^t M A ) \quad \ses $$
+$$ \ses \quad M = A^t M A $$
+\begin{defn}[Gruppo ortogonale matriciale]\bianco
+Sia $M \in M(n,\K)$ simmetrica di rango massimo 
+$$ O(M) = \{ A \in GL(n,\K) \, \vert \, A^t M A = M \} $$
+\end{defn}
+
+Specializziamolo nel caso in cui $\K= \C$ e prendiamo $\B$ una base ortonormale.\\
+In questo caso $M= I $ e possiamo definire
+\begin{defn}[Gruppo ortogonale complesso classico]
+$$ O(n, \C) = \{ P \in GL(n,\C) \, \vert \, P^t = P^{-1} \} $$
+\end{defn}
+In modo analogo con $\K= \R$
+\begin{defn}[Gruppo ortogonale reale classico]\bianco
+Sia $\phi$ definito positivo
+$$O(n,\R) = \{ P \in GL (n, \R ) \, \vert \, P^t = P^{-1} $$
+\end{defn}
+Di particolare importanza sono anche i seguenti gruppi dove il prodotto scalare non \'e definito positivo.
+\begin{defn}
+$$ O(s, n, \R) = \{ P \in GL(n,\R) \, \vert \, P^t I_{s,t} P = I_{s,t} $$ dove
+$$ I_{s,t}  = \left( \begin{array}{c|c}
+I_s & 0 \\ \hline 0 & I_r 
+\end{array} \right)$$
+\end{defn}
+Sopratutto il gruppo di Lorentz $ O(3,1,\R) $ che rappresenta le simmetrie della relativit\'a 
+\newpage
+
+\subsubsection{Riflessioni parallele ad un vettore}
+Sia $v \in V$ non isotropo allora $Rad (\phi) \cap Span(v) =\{0 \} $ quindi 
+$$ V = Span(v)\oplus Span(v)^\perp= Span (v)  \oplus W $$
+$$ \forall u \in V  \quad \exists ! \lambda\in \K \quad w \in W \tc u = \lambda v + w $$
+\begin{defn}[Riflessione parallela ad un vettore $v$]
+$$ \rho_v(u) = - \lambda v + w$$ 
+\end{defn}
+\begin{prop}\label{prop} .
+\begin{itemize}
+\item[(i)] $ \rho_v^2 = id $ ovvero \'e un involuzione 
+\item[(ii)] $\rho_v \in O(\phi) $
+\item[(iii)]$-id$ \'e composizione di $n$ riflessioni
+\item[(iv)] Sia $w $ non isotropo.\\
+Se $ \tilde{\rho_v} $ \'e una riflessione su $ Span(w)^\perp $ questa si estende alla riflessione $\rho _v$ su $V$
+\end{itemize}
+\proof .\begin{itemize}
+\item[(i)]Ovvia
+\item[(ii)]Siano $\lambda_1 , \lambda_2 \in \K $ e $w_1, w_2 \in Span(v)^\perp$ allora 
+$$ \phi\left( \rho_v( \lambda_1 v + w_1 ), \rho_v( \lambda_2 v + w_2) \right) = \phi(-\lambda_1 v + w_1 , - \lambda_2 v + w_2 ) = $$
+$$=\lambda_1 \lambda_2 \phi(v,v) - \lambda_1 \phi(v,w_2) -\lambda_2\phi(v,w_1) + \phi(w_1, w_2 )  $$ 
+Ora $w_1, w_2 \in Span(v)^\perp $ quindi
+$$\phi\left( \rho_v( \lambda_1 v + w_1 ), \rho_v( \lambda_2 v + w_2) \right) =\lambda_1 \lambda_2 \phi(v,v) + \phi(w_1, w_2 )=\phi(\lambda_1 v + w_1 , \lambda_2 v + w_2 )$$
+\item[(iii)]
+Infatti sia $\{ \nvett \} $ una base ortogonale di $V$ allora
+$$ - id = \rho_{v_1 } \circ \cdots \circ \rho_{v_n } $$
+infatti se $ u \in V $ allora $u= a_1 v_1 + \cdots + a_n v_n $\\ La riflessione $\rho_{v_i} $ inverte solo la componente $a_i$
+\item[(iv)] 
+$$ V = Span(w)\oplus Span(w)^\perp$$
+Ora $v$ non \'e isotropo quindi 
+$$ Span(w)^\perp = Span(v)\oplus T $$
+Dove T \'e ortogonale di $Span(v)$ in $Span(w)^\perp $
+Dunque 
+$$ V = Span(v) \oplus^\perp ( Span(w)\oplus T)$$
+\end{itemize}
+\endproof
+\end{prop}
+
+\spazio
+\begin{prop}\label{rifle}Siano $w_1, w_2 \in V $  $$ \phi (w_1,w_1) = \phi(w_2,w_2) \neq 0  $$
+Allora vale almeno una delle seguenti affermazioni
+\begin{itemize}
+\item[(i)]$ \exists v \in V \tc \rho_v (w_1) =w_2 $
+\item[(ii)]$ \exists v \in V \tc \rho_v (w_1) =-w_2 $
+\end{itemize}
+\proof 
+Consideriamo i vettori $w_1+ w_2 $ e $w_1 - w_2 $ essi sono ortogonali infatti 
+$$ \phi(w_1+ w_2, w_1 - w_2) = \phi(w_2, w_2) - \phi(w_1, w_1) = 0 $$
+Mostriamo inoltre che non possono essere entrambi isotropi altrimenti
+$$ \begin{cases} \phi(w_1+w_2,w_1+w_2) = 0  \\ 
+\phi(w_1-w_2,w_1-w_2) = 0 
+\end{cases} 
+\quad 
+\begin{cases} \phi(w_1,w_1) + \phi(w_2,w_2)  + 2 \phi(w_1, w_2 ) = 0 \\
+\phi(w_1,w_1) + \phi(w_2,w_2) - 2 \phi(w_1, w_2 ) = 0
+\end{cases}
+\quad 4 \phi(w_1,w_1) = 0 
+$$
+Ma l'ultima uguaglianza \'e assurda infatti $4 \neq 0 $ per la caratteristica del campo  e $\varphi(w_1) \neq 0 $ \\
+
+Osservando che  
+$$ w_1 = \frac{1}{2} ( w_1 - w_2) + \frac{1}{2}( w_1+ w_2) $$
+possiamo considerare 
+\begin{itemize}
+\item[(i)]$w_1-w_2 $ non isotropo da cui possiamo considerare la riflessione
+$$ \rho_{w_1-w_2}(w_1) =- \frac{1}{2} ( w_1 - w_2) + \frac{1}{2}( w_1+ w_2)=w_2 $$
+\item[(i)]$w_1+w_2 $ non isotropo da cui possiamo considerare la riflessione
+$$ \rho_{w_1+w_2}(w_1) = \frac{1}{2} ( w_1 - w_2) - \frac{1}{2}( w_1+ w_2)=-w_2 $$
+\end{itemize}
+\endproof
+\end{prop}
+
+\begin{cor}Dati $w_1, w_2 $ come sopra 
+$$ \exists v \in V \quad \rho_v(Span(w_1) ) = Span(w_2) $$
+\end{cor}
+\newpage
+\begin{thm}[Teorema di struttura dell'ortogonale]\bianco
+Ogni isometria $f$ si pu\'o scrivere come composizione di riflessione 
+\proof
+Distinguiamo 2 casi 
+\begin{itemize}
+\item $f=id$ allora $id = \rho^2_v $ $\forall v $ non isotropo
+\item $f \neq id $ e dimostriamolo per induzione su $n = \dim V \geq 1 $\\
+Passo base $n=1 $ \\$V = Span (v) $ e essendo  $\phi $ non degenere $v$ non \'e isotropo.\\
+Ora poich\'e $f \in End(V) $ ne segue che $ f(v)=\lambda_v $\\
+Inoltre essendo un isometria
+$$ \phi(v,v) = \phi(f(v),f(v)) \quad \ses \quad \phi(v,v) = \lambda^2 \phi(v,v)$$
+Ovvero $\lambda=\pm 1 $ ma essendo $f\neq Id $ 
+$$ f = -Id \quad \implica \quad f=\rho_v$$
+Proviamo ore che $n-1 \implica n $\\
+Sia $ w \in  V $ non isotropo allora
+$$ V = Span(w) \oplus Span(w)^\perp \quad \text{  denotiamo con } Z= Span(w)^\perp $$
+Consideriamo 2 casi
+\begin{itemize}
+\item $f(w)=w$.\\
+ $Z$ \'e $f$-invariante e  applicando l'ipotesi induttiva su $ Z $ con $\phi $ ristretto otteniamo 
+$$ f_{\vert Z } = \tilde{ \rho_{v_1}} \circ \cdots v\circ  \tilde{ \rho_{v_k}}$$ ma per la propiet\'a \ref{prop} (iv) vale $$ f= \rho_{v_1} \circ \cdots \circ \rho_{v_k}$$
+\item $f(w) = w' \neq w$\\
+Ora essendo $f$ un isometria $\phi(w,w)=\phi(w',w')$ dunque dalla proposizione~\ref{rifle} si possono verificare 2 casi differenti
+\begin{itemize}
+
+
+\item $\exists v $ $ \rho_v(w')= w $ in questo caso $$ f= \rho_v \circ rho_{v_1} \circ \cdots \circ \rho_{v_k}$$
+\item $\exists v $ $ \rho_v(w')= -w $ in questo caso $$ f= (-id) \circ rho_{v_1} \circ \cdots \circ \rho_{v_k}$$
+ma $-id $ si scrive come composizioni di riflessioni (\ref{prop} (iii))
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\endproof
+\end{thm}
+\begin{cor} Sia $(V, \phi ) $ con $n=\dim V $.\\
+Allora  $\forall f \in O(\phi) $ con $f \neq id $\\ $\exists c(n) $ tale che $f$ si scrive come composizione di al pi\'u $c(n)$ riflessioni
+\end{cor}
+\newpage
+\subsection{Prodotti scalari anisotropi}
+\begin{defn}[Anisotropo]\bianco
+Sia $V$ un $\R$-spazio vettoriale, $\phi$ si dice anisotropo se il cono isotropo \'e ridotto al solo $0$ ovvero se
+$$ \forall v \in V \quad v\neq 0 \quad \implica \phi(v,v) \neq 0 $$
+\end{defn}
+\begin{oss}
+$$\phi \text{ anisotropo } \quad \implica \quad \phi \text{ non degenere } $$
+in generale non vale l'altra implicazione 
+\end{oss}
+\spazio
+\begin{prop} [Caratterizzazione degli anisotropi] \label{anisotropi}Sia $V$ un $K$-spazio vettoriale e sia $\phi$ un prodotto scalare non degenere allora 
+\begin{itemize}
+\item[(i)] Se $\K=\C$ vale 
+$$ \phi \text{ anisotropo } \quad \ses \quad \dim V = 1 $$
+\item[(ii)] Se $\K=\R$ vale
+$$ \phi \text{ anisotropo } \quad \ses \quad \phi \text{ definito } $$
+\end{itemize}
+\proof \bianco
+\begin{itemize}
+\item[(i)] $\implica $ in modo contro nominale.\\
+Sia $\dim V = 2 $ allora esiste una base $\B =\{ v_1, v_2 \}$ ortogonale normalizzata per $V$ .\\
+Il vettore $v= v_1+iv_2 $ \'e isotropo infatti
+$$ \phi(v,v) = \phi(v_1,v_1) + 2i \phi(v_1, v_2) - \phi(v_2,v_2) $$
+ma essendo la base ortogonale normalizzata segue che
+$$ \phi(v,v) = 1+0-1=0 $$
+$\Leftarrow$ Se $\dim V = 1 $ allora $V = Span(v) $.\\
+Ora $ \forall w \in V \quad w= \lambda v $ 
+$$ \phi(w,w) = \lambda^2  \phi(v,v) $$ 
+Ora $\phi(v,v)  \neq 0 $ infatti $\phi$ non degenere 
+\item[(ii)]$\implica$ in modo contro nominale.\\
+Supponiamo che $\phi$ non \'e definito allora esiste una base $\{ v_1, \cdots v_p, v_{p+1},\cdots , v_n \} $ tale che che 
+$$ M_\B (\phi) = \left( \begin{array}{c|c} I_p & \\ \hline & -I_{n-p} 
+\end{array} \right) $$
+Dunque $\phi(v_1 + v_{p+1}, v_1, v_{p+1}) = 0 $\\ \\
+$\Leftarrow $ Se $\phi$ \'e definito allora 
+$$ \forall v \in V \, v \neq 0 \quad \phi(v,v) >0 \text{ oppure } \phi(v,v) <0 $$
+\endproof
+\end{itemize}
+\end{prop}
+\newpage
+
+\subsection{Piano iperbolico}
+\begin{defn} $(P,\phi) $ \'e un piano iperbolico se ha le seguenti propiet\'a
+\begin{itemize}
+\item[(i)]$\dim P=2 $
+\item[(ii)]$\phi $ non degenere 
+\item[(iii)]$\exists v \in P , \, v\neq 0 $ isotropo
+\end{itemize}
+\end{defn}
+\begin{defn}[Base iperbolica]\bianco
+Dato $(P, \phi) $ $\B$ \'e una base iperbolica per $\phi $ se 
+$$ M_\B(\phi) = \begin{pmatrix}
+0 & 1 \\ 1 & 0 
+\end{pmatrix}$$
+\end{defn}
+\begin{lem}\label{baseiper}Sia $(P,\phi) $ un piano iperbolico con $ v\neq 0 $ isotropo.\\
+Allora esiste una base iperbolica per $\phi$ della forma $\{ v , t \} $.
+\proof
+Essendo $v\neq 0 $ lo possiamo estendere ad una base $\B = \{ v, f \} $ di $P$
+$$ M_\D(\phi)= \begin{pmatrix}
+0 & b \\ b & a 
+\end{pmatrix}$$ 
+Ora essendo il prodotto scalare non degenere la matrice \'e invertibile quindi $ -b^2 \neq 0 $ da cui $b \neq 0 $\\
+Per ottenere la matrice voluta considero questa trasformazione
+$$\begin{cases} v = v \\
+t= \lambda v +\alpha d 
+\end{cases}$$ 
+quindi imponendo le condizioni per ottenere una base iperbolica ottengo
+$$ \begin{cases}\phi( v, \lambda v +\alpha d ) = 1 \\
+\phi(\lambda v +\alpha d , \lambda v +\alpha d )= 0 
+\end{cases} \quad \begin{cases} \alpha \phi(v,d)=1 \\
+2\alpha\lambda\phi(v,d)+ \alpha^2 \phi(d,d)=0
+\end{cases}
+ \quad
+  \begin{cases} \alpha b =1 \\
+2\lambda \alpha b + \alpha^2 d =0
+\end{cases} $$
+Quindi
+$$ \begin{cases} \alpha=b^{-1} \\
+\lambda= -( 2b^2)^{-1} a 
+\end{cases}$$
+Osserviamo che tali valori hanno senso infatti $b \neq 0 $
+\endproof
+\end{lem}
+%\begin{defn}[Piano iperbolico di $V$]\bianco
+%Un piano iperbolico di $V$ \'e $P\subseteq V $ sottospazio tale che $\left( P, \phi_{\vert P} \right) $ \'e un piano iperbolico
+%\end{defn}
+\newpage
+\subsection{Decomposizione di Witt}
+\begin{defn}[Somma diretta ortogonale]
+Diremo che 
+$$ W_1 \perp \cdots \perp W_k $$
+se valgono contemporaneamente
+\begin{itemize}
+\item[(i)] $W_1 \oplus \cdots \oplus W_k $
+\item[(ii)] $ \forall i \neq j \quad v_j \in W_j , v_i \in W_i \quad \phi(v_i, v_j)=0 $
+\end{itemize}
+\end{defn}
+\spazio
+\begin{defn}Sia $\phi$ non degenere allora chiamiamo decomposizione di Witt di $(V,\phi) $ una decomposizione 
+$$ V = P_1 \perp \cdots \perp P_k \perp A $$
+dove $P_i $ sono piani iperbolici e $A$ \'e anisotropo
+\end{defn}
+Analizziamo le varie decomposizione possibili su $\C$ e su $\R$ sfruttando la caratterizzazione degli anisotropi (\ref{anisotropi})
+\subsubsection{Caso complesso}
+\begin{itemize}
+\item $A=\{ 0 \} $ dunque $\dim V  = 2n $.\\
+Sia $\B= \{ v_1, w_1, \cdots, v_n , w_n\} $ una base ortonormale per  $\phi$ allora  
+$$ M_{ \{v_i, w_i \} }  \left( \phi_{\vert Span(v_i,w_j) } \right) = \begin{pmatrix}
+1 & 0 \\ 0 & 1 
+\end{pmatrix}$$
+inoltre il vettore $v_i + i w_i $ \'e isotropo dunque:
+$P_i=Span(v_i, w_i) $ \'e un piano iperbolico inoltre segue che 
+$$ V = P_1 \vert \cdots \vert P_n $$ 
+\item $\dim A = \{ 1 \} $ dunque $\dim V = 2n+1 $.\\
+Possiamo considerare  una base ortonormale 
+$\B =\{ v_1, w_1, \cdots , v_n , w_n , z \} $ e considerare 
+$$ V = Span(v_1, w_1, \cdots , v_n , w_n \} \perp Span(z)$$ 
+Ora iterando il caso precedente al primo termine della somma otteniamo 
+$$ V = P_1 \perp \cdots \perp P_n \perp Span(z)$$
+Ora $\dim Span(z) = 1 $ quindi la decomposizione scritta \'e una decomposizione di Witt
+\end{itemize}
+\subsubsection{Caso reale}
+\begin{itemize}
+\item $p= i_+(\phi) \leq i_-(\phi) $.\\ \\
+Sia $\B = \{ v_1, \cdots , v_p, w_1, \cdots , w_p, \cdots, w_{n-p} \} $\\
+Sia $P_i =Span(v_i, w_i) $ per ogni $i=1,\cdots , p $ e $A= Span(w_{p+1}, \cdots , w_{n-p} )$.\\
+Ora $v_i +w_i $ \'e isotropo dunque $P_i$ \'e un piano iperbolico, inoltre $\phi_{\vert A } $ \'e definito negativo dunque \'e anisotropo.\\
+Ne segue che 
+$$ V = P_1\vert \cdots \vert P_p \vert A $$ 
+dove l'ultima decomposizione \'e una decomposizione di Witt
+\item $p=i_-(\phi) \leq i_-(\phi)$
+La costruzione \'e analoga al caso precedente ma $\phi_{\vert A } $ \'e definito positivo
+\end{itemize}
+\spazio
+
+Possiamo riassumere quanto precedente detto in questo modo
+\begin{thm}Sia $\phi$ un prodotto scalare non degenere, allora nel caso complesso reale e complesso esiste la decomposizione di Witt e vale 
+\begin{itemize}
+\item $\K=\C$  e $\dim W =2m $ allora $\#P_i=m$ e $\dim A =0$
+\item $\K=\C$ e $\dim W= 2m+1$ allora $\#P_i=m$ e $\dim A=1$
+\item $\K=\R$ allora $\#P_i=\min(i_+(\phi), i_-(\phi))$
+\end{itemize}
+\end{thm}
+\spazio
+\begin{defn}[Indice di Witt] \bianco
+$$ w(\phi)= \max \{ \dim W \, \vert \, W\subseteq V \quad \phi_{\vert W } \equiv 0 \} $$
+\end{defn}
+\spazio
+\begin{prop}[Propiet\'a dell'indice di Witt]\bianco
+\begin{itemize}
+\item[(i)] Se $\phi $ non degenere allora $ w(\phi)  \leq \frac{\dim V}{2}$
+\item[(ii)] Se $V= P_1 \perp \cdots P_h \perp A $ \'e una decomposizione di Witt allora $h \leq w(\phi)$\\ inoltre se $\K=\C $ oppure $\K=\R$  allora $w(\phi)=h$
+\end{itemize}
+\end{prop}
+
+\spazio
+\begin{thm}Siano $(V,\phi) $ e $(V, \psi) $ non degeneri.\\
+$$ (V,\phi) \text{ e } (V, \psi) \text{ sono isometrici } \quad \ses \quad w(\phi) = w(\psi) \text{ e le parti anisotrope sono isometriche}$$
+\end{thm}
+\newpage
+
+
+\newpage
+
+
+\subsection{Teorema di rappresentazione}
+
+Come abbiamo \ref{isoDuale}
+osservato se $\dim V= n $ allora esiste un isomorfismo  tra $V $ e $V^*$, tale isomorfismo per\'o non \'e canonico poich\'e dipende dalla scelta arbitraria di una base.\\
+Vediamo come $\phi$ prodotto scalare su $V$ non degenere permette di individuare un isomorfismo canonico tra $V$ ed il suo duale.\\
+\begin{thm}[Teorema di rappresentazione di Riesz]\bianco
+Sia $V$ uno spazio vettoriale e sia $\phi$ un prodotto scalare non degenere.\\
+Allora esiste un isomorfismo canonico tra $V$  e il suo duale.
+\proof
+$$ F_\phi: \, V \to V^* \qquad F_\phi(v) = \varphi_v $$
+Definisco $\varphi_v :\, V \to \K $ nel seguente modo
+$$ \forall w \in V \quad \varphi_v (w) = \phi(v,w) $$ 
+Affinch\'e  sia un isomorfismo ben definito occorre
+\begin{itemize}
+\item $ \varphi_v $ \'e lineare.
+$$\varphi_v(w_1+ w_2) = \phi(v,w_1+w_2) = \phi(v,w_1) + \phi(v,w_2) $$
+Dove abbiamo utilizzato la linearit\'a a destra del prodotto scalare
+\item $F_\phi$ \'e lineare
+$$ F_\phi(v_1+v_2) = \varphi_{v_1+v_2} $$
+$$\forall w \in V \quad \varphi_{v_1+ v_2}= \phi(v_1+ v_2, w) = \phi(v_1,w) + \phi(v_2,w) = \varphi_{v_1}(w) + \varphi_{v_2}(w)$$
+Dove abbiamo utilizzato la linearit\'a a sinistra del prodotto scalare
+\item $F_\phi$ sia iniettivo ( $\dim V = \dim V^*$)
+$$ \ker F_\phi= \{ v \in V \, :\, \varphi_v \equiv 0 \} $$
+
+$$ \varphi_v \equiv 0 \quad \implica \quad \forall w \in V \quad \phi(v,w) = 0 \quad \implica \quad v \in Rad \, \phi$$
+Quindi essendo $\phi$ non degenere 
+$$ \ker F_\phi = Rad\, \phi= \{ 0 \} $$
+\end{itemize}
+\endproof
+\begin{oss}Il nome deriva perch\'e ogni funzionale del duale si pu\'o rappresentare con un vettore dello spazio tramite l'intermediazione del prodotto scalare 
+\end{oss}
+\end{thm}
+\newpage
+
+
+\newpage
+
+\subsection{Aggiunto}
+
+Sia $(V,\phi)$ uno spazio vettoriale finitamente generato e $\phi$ non degenere.\\
+\'E utile ricordare come avevamo definito l'applicazione trasposta
+\begin{defn}[Applicazione trasposta]\bianco
+Sia 
+$$ f:\, V \to V $$ 
+Allora definiamo 
+$$ f^t:\, V^\star \gets V^\star \qquad \forall \psi \in V^\star \quad f^t ( \psi) = \psi \circ f $$
+\end{defn}
+Tale applicazione ci permette di definire un isomorfismo tra 
+$$ End (V ) \to End(V^\star) \qquad f\to f^t$$
+e di identificare canonicamente
+$$ End (V) = End \left( V^{\star \star } \right)$$ 
+Dunque si ha 
+$$ \forall f \in End(V) \quad  f = f^{tt} $$
+\hspace{0.1 cm }
+Inoltre per il teorema di rappresentazione possiamo costruire l' isomorfismo
+$$ F_\phi:\, V \to V^\star \qquad v \to \phi(v, \circ)$$
+
+\begin{defn}[Aggiunto]\bianco
+Dato $f\in End(V) $ definiamo l'endomorfismo $\phi$-aggiunto di $f$ una mappa $f^\star$ che faccia commutare 
+$$ \begin{tikzcd}
+& V\arrow{d}{F_\phi}
+\arrow[leftarrow] {r}{f^\star} &V \arrow{d}{F_\phi}\\
+&V^\star \arrow[leftarrow] {r}{f^t} &V^\star
+\end{tikzcd}$$
+\end{defn}
+\spazio
+\begin{oss}Dalla commutativit\'a del diagramma visto sopra si deduce che
+$$ \forall v, w \in V \qquad \phi(v,f(w))= \phi \left( f^\star (v),  w \right)$$
+\end{oss}
+\spazio
+\begin{prop}L'aggiunto \'e l'unico endomorfismo con la propiet\'a 
+$$ \forall v, w \in V \qquad \phi(v,f(w))= \phi \left( f^\star (v),  w \right)$$
+\proof
+Siano $f,g\in End(V)$ tale che 
+$$ \phi(v,f(w))= \phi(g(v),w) \quad \forall v,w\in V $$
+Fissiamo una base $\B$ di $V$ e ponendo 
+$$ M_\B(\phi)=M $$
+$$ M_\B(f)=A$$
+$$ M_\B(g)=B $$
+$$ [v]_\B = X \quad [w]_\B=Y$$
+la precedente uguaglianza diventa
+$$ X^t M (AY)= (BX)^t M Y \quad \ses \quad X^t ( MA) Y = X^t (B^t M ) Y $$ 
+e poich\'e vale $\forall X,Y \in \K^n $
+$$ MA = B^t M \quad \ses \quad A^t M^t = M^t B \quad \ses \quad B = \left( M^t \right)^{-1} A^t M^t $$
+Abbiamo provato che una tale $g$ se esiste \'e unica; ora poich\'e l'aggiunto soddisfa tale propiet\'a \'e l'unica funzione con tale caratteristica
+\endproof
+\begin{oss}
+Nel caso particolare in cui prendiamo una base $\B$ ortonormale allora $$M_\B(\phi)= I \quad \implica \quad A^\star = A^t $$
+\end{oss}
+\end{prop}
+\spazio
+\begin{prop}[Propiet\'a dell'aggiunto] .
+\begin{itemize}
+\item $ \left( f^\star \right)^\star = f $
+\item $\ker(f^\star) = \left( Im (f) \right)^\perp$
+\item $Im(f^\star) = \left( \ker (f) \right)^\perp$
+\end{itemize}
+\end{prop}
+
+\spazio
+\begin{defn}[Autoaggiunto] Se $f \in End(V) $ tale che 
+$$ f = f^\star $$ 
+allora $f$ si dice autoaggiunto
+\begin{oss}In questo caso se prendiamo $\B$ base ortonormale, risulta
+$$ f=f^\star \quad \ses \quad A=A^t $$
+\end{oss}
+\end{defn}
+
+\newpage
+\subsection{Teorema spettrale reale}
+Sia $V$ un $\R$-spazio vettoriale e $\phi$ un prodotto scalare definito positivo.\\
+Sappiamo che esistono basi ortonormali tale che $\phi$ \'e rappresentato dalla matrice identit\'a e 
+$$ f= f^\star \quad \ses A=A^t$$
+
+Prima di dimostrare il teorema dimostriamo i seguente lemma 
+\begin{lem} \label{spet1}
+Sia $A\in M(n,\R)$ una matrice simmetrica, allora $Sp(A)\not = \emptyset$
+\proof
+Sia $A$ vista come matrice complessa, ora in $\C$ il polinomio caratteristico \'e completamente fattorizzabile quindi
+$$ \exists \lambda \in \C \, \exists X \in \C^n \tc AX = \lambda X $$
+Coniugando 
+$$\overline{AX}=\overline{\lambda} \overline{X}$$
+ma $A \in M(n,\R) $ da cui
+$$ A\overline{X}= \overline{\lambda X}$$
+Moltiplichiamo da entrambi i termini per $X^t$
+$$ X^t A  \overline{X} = \overline{\lambda} X^t \overline{X}$$ 
+Ora $X^t A= (A^tX)^t = (AX)^t = \lambda X^t $ quindi
+$$ \lambda X^t \overline{X}= \overline{\lambda} X^t \overline{X} \quad \implica \quad ( \lambda-\overline{\lambda}) X^t \overline{X}=0 \quad \implica \quad (\lambda-\overline{\lambda}) \vert \vert X \vert \vert ^2 =0 \quad \implica \lambda=\overline{\lambda}$$
+Dunque $\lambda\in \R $
+\endproof
+\end{lem}
+\spazio
+\begin{lem}\label{spet2}
+Sia $f \in End(V) $ autoaggiunto e sia $W\subseteq V $ un sottospazio
+$$ W \text{ f-invariante} \quad \implica \quad W^\perp \text{ f-invariante} $$
+\proof
+Devo dimostrare che $\forall x \in W^\perp $ vale che $f(x) \in W^\perp$\\
+$$ x \in W^\perp \quad
+ \implica \quad \phi(x,w) = 0 \quad \forall w \in W \quad \implica \quad \phi(x,f(w))=0 \quad \forall w \in W $$
+Dove l'ultima implicazione \'e data dal fatto che $W$ \'e $f$-invariante.\\
+$$ \phi(x,f(w))=0 \quad \forall w \in W \quad \implica \quad \phi (f^\star(x), w)=0 \quad \forall w \in W \quad \implica \phi(f(x), w) =0 \quad \forall w \in W \quad \implica $$ $$  f(x)\in W^\perp$$
+\endproof
+ \end{lem}
+\newpage
+\begin{defn}[Ortogonalmente diagonalizzabile]\bianco
+$f \in End(V) $ \'e ortogonalmente diagonalizzabile se 
+$$ \exists \B \text{ base di V  ortonormale } \tc M_\B (f) \text{ \'e diagonale } $$
+\end{defn}
+
+\spazio
+\begin{thm}[Teorema spettrale caso reale]\bianco
+Sia $V$ un $\R$-spazio vettoriale e sia $\phi$ un prodotto scalare su $\phi$ definito positivo.\\
+$f \in End(V)$
+$$ f \text{ \'e ortogonalmente diagonalizzabile } \quad \ses \quad f = f^\star $$
+\proof
+$\implica$ se $f$ \'e ortogonalmente diagonalizzabile allora $$\exists \B \text{ base ortogonale}  \tc M_\B(f) =D  \text{ diagonale } $$
+Ora essendo la base ortogonale $$D^\star = D^t = D \text{ infatti } D \text{ \'e diagonale } $$
+
+Dunque $D=D^\star$ ovvero $f=f^\star $ \\ \\
+$\Leftarrow$ per induzione su $\dim V = n $\\
+Il passo base $n=1$ \'e ovvio.\\
+Dimostriamo che $n-1\implica n $\\
+Per il lemma~\ref{spet1}  $$\exists \lambda \exists v \neq 0 \tc f(v) = \lambda v$$
+Ora essendo $\phi$ definito positivo, allora $v$ non \'e isotropo dunque 
+$$ V = Span(v) \perp Span(v)^\perp $$
+Poich\'e $Span(v)$ \'e $f$-invariante per il lemma~\ref{spet2} anche $Span(v)^\perp$ lo \'e\\
+Allora per ipotesi induttiva essendo 
+$ \dim \left( Span(v)^\perp \right)=n-1$ 
+$$ \exists \{v_2, \cdots , v_n\} \text{ base ortonormale di } Span(v)^\perp \text{ formata da aurovettori di } f_\vert \text { e dunque di f }$$
+Concludiamo dicendo che $ \{ \frac{v}{\vert \vert v \vert \vert }, v_2 , \cdots , v_n \} $ \'e una base ortonormale formata da autovalori per $f$  \\
+\endproof
+\end{thm}
+Una formulazione equivalente nel caso matriciale 
+\begin{thm}
+$$ \exists P \in O(n, \R) \quad P^{-1} A P \text{ \'e diagonale } \quad \ses \quad A = A^t$$
+\end{thm}
+
+\newpage
+\begin{thm}[Teorema ortogonalizzazione simultanea]\bianco
+Sia $V$ un $\R$-spazio vettoriale e $\phi, \psi $ prodotti scalari su $V$
+$$ \phi \text{ definito positivo } \quad \implica \quad \exists \B \text{ base di V, ortonormale per } \phi \text{ e ortogonale per } \psi$$
+\end{thm}
+
+\spazio
+\begin{prop}$A \in M(n,\R)$ 
+$$ A \text{ simmetrica } \quad \ses \quad \begin{cases}
+A^t A = A A^t \\
+A \text{ triangolabile}
+\end{cases}$$
+\end{prop}
+\spazio
+\begin{prop}[Radice quadrata]\bianco
+Sia $A\in M(n,\R) $ simmetrica.\\
+$$ A \text{ definita positiva } \quad \ses \quad \exists ! S \in M(n,\R) \text{ simmetrica e definita positiva } \quad A = S^2 $$ 
+\end{prop}
+\spazio
+\begin{prop}[Decomposizione polare]\bianco
+Sia $A \in GL(n,\R) $, allora
+$$ \exists ! S \in M(n,\R) \text{ simmetrica e definita positiva  e } P \in O(n) \quad A = SP $$
+\end{prop}
+%\end{document}

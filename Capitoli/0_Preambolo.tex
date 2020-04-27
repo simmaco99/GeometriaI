@@ -1,0 +1,58 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[a4paper, top=2cm,bottom=2cm,right=2cm,left=2cm]{geometry}
+
+\usepackage{bm,xcolor,mathdots,latexsym,amsfonts,amsthm,amsmath,
+					mathrsfs,graphicx,cancel,tikz-cd,hyperref,booktabs,caption,amssymb}
+\hypersetup{colorlinks=true,linkcolor=blue}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+\newcommand{\N}{\mathbb{N}} %naturali 
+\newcommand{\R}{\mathbb{R}} %Reali
+\newcommand{\K}{\mathbb{K}} % Campo K 
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\B}{\mathfrak{B}} %Base B
+\newcommand{\D}{\mathfrak{D}}%Base D
+\newcommand{\RR}{\mathfrak{R}}%Base R 
+\newcommand{\Can}{\mathfrak{C}}%Base canonica
+\newcommand{\Rif}{\mathfrak{R}}%Riferimento affine
+\newcommand{\AB}{M_\D ^\B }% matrice applicazione rispetto alla base B e D 
+
+\newcommand{\vett}{\overrightarrow}
+\newcommand{\sd}{\sim_{SD}}%relazione sx dx
+\newcommand{\sbarra}{\backslash} %% \ 
+\newcommand{\ds}{\displaystyle} 
+\newcommand{\alla}{^}  
+\newcommand{\implica}{\Rightarrow}
+\newcommand{\ses}{\Leftrightarrow} %se e solo se
+\newcommand{\tc}{\quad \text{ t. c .} \quad } % tale che 
+\newcommand{\spazio}{\vspace{0.5 cm}}
+\newcommand{\bbianco}{\textcolor{white}{,}}
+\newcommand{\bianco}{\textcolor{white}{,} \\}% per andare a capo dopo 																					definizioni teoremi ...
+\newcommand{\nvett}{v_1, \, \dots , \, v_n} % v1 ... vn
+\newcommand{\ncomb}{a_1 v_1 + \dots + a_n v_n} %a1 v1 + ... +an vn
+\newcommand{\nrif}{P_1, \cdots , P_n} 
+\newcommand{\bidu}{\left( V^\star \right)^\star}
+
+%per creare teoremi, dimostrazioni ... 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section] 
+\newtheorem{ese}[thm]{Esempio} 
+\newtheorem{ex}[thm]{Esercizio} 
+
+\newtheorem{cor}[thm]{Corollario} 
+\newtheorem{lem}[thm]{Lemma} 
+\newtheorem{al}[thm]{Algoritmo}
+\newtheorem{prop}[thm]{Proposizione} 
+\theoremstyle{definition} 
+\newtheorem{defn}{Definizione}[section] 
+\theoremstyle{remark} 
+\newtheorem{oss}{Osservazione} 
+
+
+% diagrammi commutativi tikzcd
+% per leggere la documentazione texdoc

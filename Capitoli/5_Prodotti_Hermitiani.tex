@@ -1,0 +1,99 @@
+%\input{0_Preambolo.tex}
+%\begin{document}
+\section{Prodotti Hermitiani}
+Ricordiamo la definizione di applicazione lineare
+\begin{defn} [Lineare]\bianco
+Sia $V$ un $\K$-spazio vettoriale.\\
+$f:\, V \to V $ c \'e lineare se 
+$$ \forall x,y \in V \quad \forall a, b \in \K \quad f(ax+by) = a f(x) + b f(y)$$
+\end{defn}
+\spazio
+\begin{defn}[Antilineare]\bianco
+Sia $V$ un $\C$-spazio vettoriale.
+$ f:\, V \to V $ di dice antilineare se 
+$$ \forall x,y \in V \quad \forall a, b \in \K \quad f(ax+by) = \overline{a}f(x) + \overline{b} f(y)$$
+\end{defn}
+\spazio
+Grazie a queste 2 definizione possiamo definire i prodotti Hermitiani
+\begin{defn}[Prodotto Hermitiano]\bianco
+Sia $V$ un $\C$-spazio vettoriale, allora
+un prodotto scalare \'e su $V$ una funzione
+$$ \phi:\, V \times V \to \C$$ 
+tale che
+\begin{itemize}
+\item[(i)] $\phi$ \'e lineare sulla prima componente
+\item[(ii)] $\phi$ \'e antilineare sulla seconda componente
+\item[(iii)] $\phi(v,w) = \overline{\phi(w,v)} \quad \forall v,w \in V $
+\end{itemize}
+\end{defn}
+\begin{defn}[Sesquilineare]\bianco
+Una funzione con solo le  prime 2 propiet\'a si chiama  forma sesquilineare
+\end{defn}
+\spazio
+\begin{oss} Dalla propiet\'a (iii) segue che $\phi(v,v) \in \R$ quindi possiamo estendere ai prodotti Hermitiani tutte quelle nozioni che abbiamo definito sui prodotti scalari reali (definito positivo, indice di positivit\'a, ...)
+\end{oss}
+\spazio
+Nel caso dei prodotti scalari potevamo definire un prodotto scalare mediante una base $\B$ e valeva che 
+$$ \phi(v,w) = [v]^t_\B \cdot A \cdot [w]_\B \quad \text{ con } 
+A=M_\B(\phi)=A^t$$
+Possiamo reiterare il ragionamento per un prodotto Hermitiano $\psi$ ottenendo
+$$ \psi(v,w)= [v]^t_\B \cdot A \cdot \overline{[w]_\B} \quad \text{ con } A = \overline{A^t}$$
+\spazio
+\begin{defn}[Basi unitarie]\bianco
+Sia $\phi$ un prodotto Hermitiano, allora $\B$ \'e un base unitaria se $M_\B (\phi)=I $ 
+
+\end{defn}
+\spazio
+\begin{defn}[Gruppo unitario]
+$$ U(n) = \{ P \in GL(n,\C) \, \vert P^{-1}=\overline{P^t}`$$
+
+\end{defn}
+\begin{oss}Le basi unitarie corrispondono alle basi unitarie del prodotto scalare\\
+Il gruppo ortogonale \'e il corrispettivo del gruppo ortogonale dei prodotti scalari
+\end{oss}
+\newpage
+\subsection{Teorema spettrale e operatori normali}
+Definiamo l'aggiunto in modo analogo al caso dei prodotti scalari
+\begin{defn}[Endomorfismi normali]\bianco
+$f \in End(V) $ si dice normale se commuta con il suo aggiunto ovvero
+$$ f \circ f^\star = f^\star \circ f $$
+Alcuni operatori aggiunti sono
+\begin{itemize}
+\item Autoaggiunto se $f=f^\star$
+\item Antiautoaggiunto se $f^\star = -f$
+\item Unitario se $f^\star=f^{-1}$
+\end{itemize}
+\end{defn}
+\spazio
+\begin{thm}[Teorema spettrale hermitiano]\label{TSpettraleH}\bianco
+Sia $V$ un $\C$-spazio vettoriale e sia $\phi$ un prodotto Hermitiano su $V$ definito positivo.\\
+$f \in End(V)$
+$$ f \text{ unitariamente diagonalizzabile } \quad \ses \quad f \text{ \'e normale } $$
+\end{thm}
+\spazio
+La seguente proposizione d\'a una spiegazione del perch\'e il teorema \ref{TSpettraleH} si chiama teorema spettrale
+\begin{prop}Sia $(V, \phi) $ con $V$ uno spazio vettoriale su $\C$ e $\phi $ definito positivo.\\
+Sia $f \in End(V)$ normale allora
+\begin{enumerate}
+\item $f$ \'e autoaggiunto $\ses$ $Sp(f) \subseteq \R$
+\item $f$ \'e antiautoaggiunto $\ses$ $Sp(f) \subseteq \C - \R$
+\item $f$ \'e unitario $\ses$ $Sp(f) $\'e unitario ovvero formato da autovalori di norma $1$
+
+\end{enumerate}
+\proof $$f \text{ normale} \quad \implica \quad \exists \B \text{ unitaria } \tc M_\B(f)=D \text{ diagonale }$$
+Inoltre essendo $\B$ unitaria vale che 
+$f^\star$ viene rappresentata da $\overline{D}^t=\overline{D}$
+
+\begin{enumerate}
+\item  
+$$ f = f^\star \quad \ses \quad D=\overline{D} \quad \ses \quad D \text{ reale } \quad \ses \quad Sp(f)\subseteq \R$$
+\item 
+$$ f=f^{-1} \quad \ses  \quad D=-\overline{D} \quad \ses \quad D \text{ immaginario puro } \quad \ses \quad Sp(f) \text{ immaginario puro } $$
+\item 
+$$f^{-1}=f^\star \quad \ses \quad D^{-1}= D^\star \quad \ses \quad I = D \overline{D}$$
+Ora se $D$ ha sulla diagonale $\mu_1, \cdots , \mu_n $ allora $D \overline{D}$ avr\'a sulla diagonale $\vert \vert \mu_1 \vert \vert ^2, \cdots, \vert \vert \mu_1 \vert \vert ^2$ quindi
+$$ I = D \overline{D}\quad \ses \quad \vert \vert \mu_i\vert \vert = 1 \quad \forall i=1,\cdots, n $$
+\end{enumerate}
+\endproof
+\end{prop}
+%\end{document}

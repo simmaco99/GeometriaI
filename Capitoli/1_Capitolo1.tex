@@ -1,0 +1,1633 @@
+%\input{0_Preambolo.tex}
+%\begin{document}
+
+\section{Spazi Vettoriali}
+
+\begin{defn}[Spazio vettoriale]\bianco
+Sia $\K$ un campo e sia $V$ un insieme non vuoto sul quale sono definite 2 operazioni:
+$$+:\, V \times V  \to V $$
+$$\cdot:\, \K \times V \to V $$
+che verificano le seguenti proprietà:
+\begin{enumerate}
+\item $(V,+)$ rende V un gruppo commutativo
+\item $\forall \lambda_1, \, \lambda_2 \in \K \, \, \forall v \in V \quad (\lambda_1+\lambda_2)\cdot v = \lambda_1 \cdot v + \lambda_2 \cdot v)$
+\item $\forall \lambda \in \K \, \, \forall v_1, \, v_2  \in V \quad \lambda\cdot (v_1+v_2)=\lambda\cdot v_1 + \lambda\cdot v_2$
+\item $\forall \lambda_1, \, \lambda_2 \in \K \, \, \forall v \in V \quad (\lambda_1\cdot \lambda_2)\cdot v = \lambda_1 \cdot ( \lambda_2 \cdot v)$
+\item $ \forall v \in \K \quad 1 \cdot v = v $
+\end{enumerate}
+Allora $V$ \`e detto uno spazio vettoriale sul campo $\K$ oppure un $\K$-spazio vettoriale
+
+\end{defn}
+\begin{oss}Gli elementi dello spazio vettoriale vengono chiamati vettori mentre gli elementi del campo scalari.\\
+Usando la notazione di sopra la prima operazione prende il nome di somma di vettori mentre la seconda prodotto per scalari 
+\end{oss}
+\begin{ese} $\K \alla n $ \`e uno spazio vettoriale su $\K$.\\
+Le 2 operazioni sono cos\`i definite:
+$$ \begin{pmatrix}
+x_1 \\
+\vdots \\
+x_n
+\end{pmatrix} + \begin{pmatrix}
+y_1 \\
+\vdots \\
+y_n
+\end{pmatrix}= 
+\begin{pmatrix}
+x_1 + y_1 \\
+\vdots \\
+x_n+ y_n
+\end{pmatrix}$$
+$$ \lambda \begin{pmatrix}
+x_1 \\
+\vdots \\
+x_n
+\end{pmatrix}= \begin{pmatrix}
+\lambda \cdot x_1 \\
+\vdots \\
+ \lambda \cdot  x_n
+\end{pmatrix}$$
+\end{ese}
+
+\begin{ese} $ \K \alla E = \{ f : \, E \to \K \} $ con le seguenti operazioni 
+
+$$ (f+g) (x)=f(x)+g(x) $$
+$$ ( \lambda f ) (x)=\lambda f(x) $$
+\`e $\K$-spazio vettoriale.\\
+\end{ese}
+\begin{ese}
+$\K[x] $ con le usuali somme e prodotto per uno scalare di polinomi \`e un $\K$-spazio vettoriale
+\end{ese}
+\newpage
+
+\subsection{Spazio di matrici}
+
+La matrice è una tabella di numeri organizzati in righe e colonne.\\
+Denotiamo con $M(m,n,\K)$  la matrice di taglia $m \times n $ (m righe, n colonne) a coefficienti in $\K$.\\
+Ogni elemento della matrice è denotato da 2 indici che indicano rispettivamente l'indice di riga e di colonna.
+$$ A=\begin{pmatrix} a_{11} &  \cdots &a_{1n}\\
+\vdots & \cdots & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{pmatrix}$$
+
+\begin{defn} Sia $ A \in M(m,n, \K ) $\\
+Denotiamo con : 
+\begin{itemize}
+\item $A_i$ la riga i-eisma
+\item $A^j$ la colonna j-esima
+\item $[A]_{i,j}$ l'entrata di posto ij della matrice
+\end{itemize}
+\end{defn}
+
+\spazio
+
+\begin{defn}[Somma tra matrici]\bianco
+La somma tra matrici si fa posto per posto.\\
+Siano $A, B \in M (m,n,\K ) $ allora $$\forall i= 1,\cdots ,m \quad \forall j=1,\cdots , n\qquad [A+B]_{i,j}=[A]_{i,j}+[B]_{i,j}$$
+\end{defn}
+
+\begin{defn}[Prodotto per scalari]\bianco
+Il prodotto di una matrice per uno scalare  si fa moltiplicando tutte le entrate della matrice per lo scalare.\\
+Siano $A \in M(m,n,\K)$ e $ \lambda \in K $ allora:
+$$ \forall i= 1,\cdots ,m \quad \forall j=1,\cdots , n\qquad [\lambda \cdot A]_{i,j}=\lambda [A]_{i,j}$$ 
+\end{defn}
+\begin{prop}L'insieme $M(m,n,\K)$ con le 2 operazioni sopra definite \`e uno spazio vettoriale sul campo $\K$
+\end{prop}
+\spazio
+\begin{defn}[Prodotto tra matrici] \bianco
+Il prodotto tra 2 matrici \`e un operazione cos\`i definita:
+$$M(m,k,\K)\times M(k,n,\K)\to M(m,n,\K)\qquad (A,B)\to AB$$ 
+$$\forall i,j \quad [AB]_{ij}=\sum_{h=1}^k [A]_{ih}\cdot [B]_{hj}$$
+\end{defn}
+\begin{oss}Il prodotto tra matrici non \`e commutativo 
+\end{oss}
+\newpage
+
+\begin{defn}[Diagonale ]\bianco Sia $ A \in M(m,n,\K)$, la diagonale di A è
+$$ \{ [A]_{ii} \, | \, 1 \leq i \leq \min(m,n) \} $$
+\end{defn}
+\begin{defn} Sia $ A \in M(m,n, \K)$ diciamo che A \`e
+\begin{itemize}
+\item Diagonale se $ \forall i \neq j\quad [A]_{ij}=0$
+\item Triangolare superiore se $ \forall i>j \quad [A]_{ij}=0$
+\item Triangolare inferiore se $\forall i<j \quad [A]_{ij}=0$
+\end{itemize}
+\end{defn}
+
+\newpage
+
+\section{Sottospazi vettoriali}
+\begin{defn} [Sottospazio vettoriale] Sia V $\K$-spazio vettoriale.\\ 
+$ W \subseteq V $ si dice sottospazio vettoriale di V se:
+\begin{enumerate}
+\item $ 0 \in W $ oppure $ W \neq \emptyset$  
+\item $\forall w_1, w_2 \in W \quad w_1+w_2 \in W $ (chiuso per somma)
+\item $ \forall \lambda \in \K \, \forall	w \in W \quad \lambda \cdot w \in W $ (chiuso per prodotto per scalari)
+\end{enumerate}
+Se W è un sottospazio vettoriale di V, W con l'operazione di somma e prodotto ristrette è uno spazio vettoriale
+\end{defn}
+
+\begin{prop}\label{intsottospazi}
+L' intersezione di 2 sottospazi vettoriali è un sottospazio vettoriale e pi\`u in generale l'intersezione numerabile di una famiglia di sottospazi \`e un sottospazio.
+\proof \bbianco
+\begin{itemize}
+\item Essendo  $A$ e $B$ sottospazi vettoriali
+ $$0 \in A \quad  0 \in B$$ 
+dunque $$ 0 \in A \cap B$$
+\item Siano $x,y \in A\cap B $.\\
+Essendo $A$ e $B$ sottospazi vettoriali
+ $$  x+y \in A, \,x+y \in B $$
+ dunque $$ x+y \in A \cap B$$
+ 
+\item La dimostrazione della chiusura per prodotto di scalari è analoga alla precedente.
+\end{itemize}
+\endproof
+\end{prop}
+
+\begin{oss}
+In generale, l'unione di sottospazi vettoriali non è un sottospazio vettoriale.\\
+In $\R^2$  due rette distinte passanti per l'origine sono sottospazi di $\R^2$ ma se consideriamo la loro unione essa non \`e chiusa per somma
+\end{oss}
+\newpage
+
+\begin{defn}[Span X]\bianco
+Sia V uno spazio vettoriale e sia $X$ un suo sottoinsieme non vuoto
+$$ Span(X)= \bigcap_{ \, X \subseteq W \atop{ W \text{ sottospazio vettoriale di } V}} W $$
+\begin{oss}
+Span(X) è un sottospazio vettoriale per la proposizione~\ref{intsottospazi}
+\end{oss}
+\end{defn}
+\spazio
+
+\begin{defn}[Combinazione lineare]\bianco
+Sia X un sottoinsieme di V (spazio vettoriale).\\
+$v \in V $ si esprime come combinazione lineare di elementi di $X$ se 
+$$v=\sum _{x \in X} a_x x \quad   a_x \in \K  \quad  \{ x \, \vert \, a_x\neq 0 \} \text{ \`e finito}   $$
+\end{defn}
+
+\begin{defn}[Comb X]
+$$ Comb(X)= \{ v \in V  \, \vert \, v \text{ si esprime come c.i di }  X \}$$
+\end{defn}
+
+\begin{thm} Comb(X) è un sottospazio vettoriale.\\
+\proof \bbianco
+\begin{itemize}
+\item Poich\`e $X \neq \emptyset$  consideriamo la combinazione lineare
+ $$\sum_{x \in X } 0 \cdot x  $$ 
+ tale combinazione esprime il vettore nullo quindi $ 0 \in Comb (X)$
+\item Se $v,w \in Comb(X)$ allora 
+$$ v= \sum_{x \in X} a_x x \quad w=\sum_{x \in X } b_x x $$ quindi 
+$$
+ v+w=\sum_{x \in X} (a_x+b_x)x $$ da cui segue che $ v+w \in Comb(X)$
+\item Se $ v \in Comb(X) $ allora 
+$$  v= \sum_{x \in X} a_x x $$ quindi 
+$\forall \lambda \in \K $ $$ \lambda v = \lambda \sum_{x \in X }a_x x = \sum_{x \in X} (\lambda a_x) x $$ ovvero $\lambda v \in Comb(X)$
+\end{itemize}
+
+\endproof
+\end{thm}
+
+\begin{lem}[Minimalit\'a di Comb X]\label{minimalita} \bianco
+Sia $V$ uno spazio vettoriale \\
+Sia $S$ un sottospazio vettoriale di $V$   e $X$ un sottoinsieme finito non vuoto di $V$
+$$X\subset S \subseteq Comb(X) \quad \implica  \quad S =Comb(X)$$
+\proof  \bianco$ \subseteq $ per tesi  \\
+$\supseteq$ Sia $X=\{ x_1, \, \cdots , \, x_n \}$
+$$\forall x \in Comb(X)  \quad  x=\lambda_1 x_1 + \cdots + \lambda_n x_n  \quad \text{ dove   } \lambda_i  \in \K  \quad \forall i =1, \dots \, n $$
+ ora da $ X \subset S $ segue che $x_i \in S $ e poich\`e $S$ \`e un sottospazio vettoriale $\lambda_1 x_1 + \cdots + \lambda_n x_n \in S $
+\endproof
+\begin{oss}Il lemma precedente ci dice che $Comb(X)$ \`e il pi\`u piccolo (rispetto all'inclusione) sottospazio vettoriale che contiene l'insieme $X$
+\end{oss}
+\end{lem}
+\spazio
+
+\begin{thm} Comb(X)=Span(X)
+\proof  \bbianco
+\begin{enumerate}
+\item $ X\subseteq Span (X) $\\
+ infatti tutti i $W $ che interseco per ottenere $Span(X) $ contengono $X$, quindi anche la loro intersezione lo contiene
+\item $Span(X)\subseteq Comb (X) $ \\
+infatti  $X\subseteq Comb(X) $ in modo ovvio, dunque poich\`e l'intersezione \`e pi\'u piccola (rispetto l'inclusione) abbiamo la disuguaglianza
+\end{enumerate}
+Dai 2 punti ottengo $$ X \subseteq Span(X) \subseteq Comb(X) $$ 
+dunque per la minimalit\'a di $Comb(X)$(Lemma~\ref{minimalita}) segue la tesi.
+\end{thm}
+\newpage
+\subsubsection{Somma di sottospazi}
+\begin{defn}[Somma di sottospazi]\bianco
+Siano $W_1 \text{ e } W_2 $ sottospazi vettoriali di un medesimo spazio.\\
+Allora 
+$$ W_1+W_2 = Span (W_1 \cup W_2)$$ 
+\begin{oss}
+Possiamo giustificare la notazione infatti 
+$$ \forall v \in W_1 + W_2 \quad \exists w_1 \in W_1 \, w_2 \in W_2 \qquad v=w_1+w_2 $$
+\end{oss}
+\end{defn}
+\spazio 
+\begin{defn} [Somma diretta] \bianco
+ Se $W_1 \cap W_2=\{0\}$ allora denotiamo 
+ $ W_1+W_2$ con 
+$$W_1  \oplus W_2 $$ 
+tale somma prende il nome di somma diretta
+\end{defn}
+
+
+\begin{thm} Se la somma tra $W_1$ e $W_2$ è diretta allora $$\forall z \in W_1 +  W_2 \quad  \exists ! w_1 \in W_1 \, w_2 \in W_2 \quad z=w_1+w_2$$
+\proof Supponiamo per assurdo che 
+$$z=w_1+w_2=w'_1+w'_2 \text {  con }w_1, w'_1 \in W_1 \quad w_2,w'_2 \in W_2$$ allora 
+$w_1-w'_1=w_2-w'_2$ quindi poiché $W_1$ e $W_2$ sono chiusi rispetto alla somma $$w_1-w'_1 \in W_1 \quad w_2-w'_2 \in W_2$$ da ciò segue che $$ w_1-w'_1=w_2-w'_2 \in W_1 \cap W_2=\{ 0 \} \quad \implica \quad w_1= w'_1\quad w_2=w'_2$$ \endproof
+\end{thm}
+
+\newpage
+
+\section{Applicazioni lineari}
+\begin{defn}[Applicazione lineare]\bianco
+Siano V e W spazi vettoriali su uno stesso campo $\K$.\\
+Una funzione $f:\, V \to W $ si dice lineare se 
+\begin{enumerate}
+\item $ \forall v,v' \in V \quad f(v+v')=f(v)+f(v')$ (rispetta la somma)
+\item $\forall \lambda \in \K , \, \forall v \in V \quad f(\lambda \cdot v )= \lambda \cdot f(v)$ (rispetta il prodotto per scalari)
+\end{enumerate}
+\end{defn}
+Diamo una definizione equivalente
+\begin{defn}
+Sia $f$ come sopra.\\
+$f$  \`e lineare se trasforma combinazioni lineari di $V$ in combinazioni lineari di $W$ con gli stessi coefficienti
+
+\end{defn}
+\begin{oss} Se f è lineare allora $f(0)=0$.\\
+$$f(0)=f(0+0)=f(0)+f(0) \Rightarrow f(0)=0$$
+\end{oss}
+\vspace{0.5 cm}
+
+\begin{defn} [Omomorfismi] \bianco
+Siano V e W spazi vettoriali sullo stesso campo $\K$.
+$$Hom(V,W)=\{ f: V \to W \, | \,\text{  lineare } \}$$ 
+\end{defn}
+\begin{prop} $Hom(V,W)$ è un sottospazio vettoriale.
+\end{prop}
+\spazio
+
+\begin{defn}[Endomorfismi] \bianco
+Sia $V$ uno spazio vettoriale.\\
+Sia  $f:\, V \to V $ un'applicazione lineare allora $f$ prende il nome di endomorfismo di $V$.\\
+L'insieme degli endomorfismi di uno spazio vettoriale si indica con
+$$ End(V)=Hom(V,V) $$
+\end{defn}
+\spazio
+
+\begin{defn}[Isomorfismi]\bianco
+Sia $f\in Hom(V,W)$, $f$ \`e un isomorfismo se 
+\begin{itemize}
+
+\item $f$ \`e bigettiva
+\item $f^{-1}$ \`e lineare ovvero $ f^{-1} \in Hom(W,V)$
+
+\end{itemize}
+\end{defn}
+\begin{thm} Sia $f \in Hom(V,W)$
+$$ f \text{ bigettiva } \quad \implica \quad f \text{ \`e un isomorfismo }$$
+\proof Chiamiamo $g=f^{-1}$\\
+Essendo $f$ bigettiva
+$$\forall w_1, w_2 \in W \quad  \exists ! v_1, v_2 \in V \tc  f(v_1)=w_1 \text { e }  f(v_2)=w_2$$
+Dalla linearit\'a di $f$ otteniamo 
+$$ f ( \lambda_1 v_1 + \lambda_2 v_2 ) = \lambda_1 w_1 + \lambda_2 v_2  \quad \forall \lambda_1, \lambda_2 \in \K $$
+e applicando ad entrambi i membri $g$
+$$ \lambda_1 g(w_1)  + \lambda_2 g(w_2)= g( \lambda_1 w_1 + \lambda_2 w_2) \quad \forall w_1, w_2 \in W \quad \forall \lambda_1, \lambda_2 \in \K$$
+\endproof
+\end{thm}
+\newpage
+
+\begin{thm}[Composizione] Siano V, W, Z spazi vettoriali  su uno stesso campo 
+$$ f \in Hom(V,W) \, g \in Hom (W,Z) \quad \implica \quad f\circ g \in Hom (V,Z)$$
+\proof Dobbiamo provare che $g\circ f $ \`e lineare.\\
+Mostriamo solamente che la composizione rispetta la somma (la verifica per il prodotto \`e analoga)
+$$ \forall v_1, v_2 \in V \quad (g \circ f)(v_1 + v_2)=g(f(v_1+v_2))$$
+sfruttando la linearit\'a di $f$ 
+$$ (g \circ f)(v_1 + v_2)= g(f(v_1)+f(v_2))$$
+ora, anche $g$ \`e lineare quindi:
+$$ (g \circ f)(v_1 + v_2)= (g\circ f)(v_1) + (g\circ f)(v_2)$$
+\endproof
+\end{thm}
+
+\vspace{0.5 cm}
+
+\begin{defn}[Gruppo lineare di V]\bianco
+$$ GL(V)=\{ f \in End (V) \, | \, f \, invertibile \}$$
+\begin{thm}[($(GL(V), \circ )$ è un gruppo ]\bianco
+\proof \bbianco
+\begin{itemize}
+\item Se $f,g \in End(V)$ anche $ f\circ g \in End(V)$.\\
+$f\circ g: \, V \to V $ e la composizioni di funzioni lineari è lineare
+\item $ 	\circ $ è associativa $g((f+h))(v)=g(f(v)+h(v))= g\circ f(v)+g \circ h(v)$
+\item $id_V $ è elemento neutro infatti $ id_V \circ f = f \circ id_V=f$
+\end{itemize}
+\endproof
+\end{thm}
+\begin{oss} In generale il gruppo lineare di V non è abeliano (non vale la proprietà commutativa)
+\end{oss}
+\end{defn}
+\newpage
+
+\subsection{Alcuni sottospazi indotti da $f$}
+\begin{prop}[Immagine]\bianco
+L'immagine della funzione lineare $f: \, V \to W $ è un sottospazio vettoriale.
+\proof \bbianco
+\begin{enumerate}
+\item  $f(0)=0$ quindi $0 \in f(V) $
+\item $w_1, w_2 \in f(V)\quad \implica \quad \exists v_1, v_2 \in V \quad f(v_1)=w_1 \, \,  f(v_2)=w_2$
+$$w_1+w_2=f(v_1)+f(v_2)=f(v_1+v_2) \in f(V)$$
+\item La dimostrazione del fatto che sia chiuso rispetto al prodotto è analoga
+\end{enumerate}
+\end{prop}
+\spazio
+
+\begin{defn}[Nucleo] \bianco
+Sia $ f\in Hom(V,W) $
+$$Ker (f)= f^{-1}(\{ 0 \})=\{  v \in V \, | \,  f(v)=0 \}$$
+\end{defn}
+
+\begin{prop}
+$ Ker(f)$ è un sottospazio vettoriale di $V$
+\proof \bbianco 
+\begin{enumerate}
+\item $ 0 \in Ker(f)$ infatti se f è lineare $f(0)=0$
+\item Se  $v_1, v_2 \in Ker(f) $ allora $ f(v_1)=f(v_2)=0 $ dunque  $$f(v_1+v_2)=f(v_1)+f(v_2)=0$$ La somma di 2 elementi del nucleo appartiene al nucleo.
+\item Se $v_1 \in Ker (f)$ allora $f(v_1)=0 $ dunque 
+$$f(\lambda  v ) = \lambda f(v)=\lambda \cdot 0 = 0 $$ Il prodotto di un elemento di un nucleo per un qualsiasi scalare appartiene al nucleo.
+\end{enumerate}
+\endproof
+\end{prop}
+
+
+\begin{prop} Se f è una funzione lineare, $$ \text{f è iniettiva }\Leftrightarrow \, Ker (f)=\{ 0 \}$$
+\proof $\Rightarrow $ \\ 
+Poich\`e $f$ \`e lineare allora $ f(0)= 0 $.\\
+Ora poich\`e $f$ \`e   iniettiva 
+$$\forall v \in V, \, v \neq 0 \quad f(v)\neq f(0)= 0$$ 
+dunque $Ker(f) = \{ 0 \}$ 
+$\Leftarrow $ Siano $v_1, v_2 \in V $ tale che $f(v_1)=f(v_2)$ allora 
+$$ f(v_1) - f(v_2)=f(v_1-v_2)=0 \quad \implica \quad v_1-v_2 \in Ker (f)$$
+Ora poich\`e il nucleo \`e ridotto al solo $\{0\}$ $v_1-v_2=0 $ ovvero $v_1=v_2$
+\endproof
+\end{prop}
+
+\subsection{Matrici e applicazioni lineari}\label{Matrici_Come_Lineari}
+\begin{prop}
+Ogni matrice induce un'applicazione lineare.
+\proof
+Sia $ A \in M(m,n,\K ) $ allora definiamo 
+$$ L_A:\, \K \alla n \to \K \alla  m \quad X \to A \cdot X $$ 
+l'applicazione appena definita \`e lineare poich\`e lo \`e la moltiplicazione di matrici 
+\endproof
+\end{prop}
+
+\begin{prop} Ogni applicazione lineare \`e indotta da una matrice. 
+$$ \forall g \in Hom ( \K\alla m , \, \K \alla n  ) \quad \exists ! A \in M( n,\, m ,\, \K ) \quad t.c \quad g=L_A$$
+\proof
+Da 
+$$ g(e_1) = A \begin{pmatrix}
+1 \\ 0 \\ \vdots \\ 0 
+\end{pmatrix} = A^1 $$ 
+deduco che l 'unica matrice possibile \`e  della forma 
+ $$ A = ( g( e_1 ) , \, \cdots , \, g ( e_m )) $$
+ Verifichiamo che con questa scelta di A, si verifica che $$ g(X)= A \cdot X  \quad \forall X \in \K \alla m $$
+ $$ A \cdot X = x_1 g( e_1 ) + \cdots + x_m g( e_m ) = g ( x_1 e_1 + \cdots + x_m e_m ) = g \begin{pmatrix}
+ x_1 \\ \vdots \\ x_m 
+ \end{pmatrix}= g(X)
+ $$ 
+ \endproof
+\end{prop}
+Mettendo insieme le proposizioni precedenti otteniamo
+\begin{prop} $$ M ( m ,\, n ,\, \K ) \cong Hom ( \K \alla n , \, \K \alla m ) $$ 
+\end{prop}
+Data questa "uguaglianza" tra applicazioni lineari e matrici, a volte, useremo la notazione "la funzione $A$" sottintendendo la funzione lineare associata ad $A$ $(L_A)$
+\newpage
+
+\subsection{Alcune applicazioni sulle matrici}
+\begin{defn}[Trasposta] $$ {}^t:\, M(m,n,\K) \to M(n,m,\K) \quad A \to A^t$$
+ $$\text{con } [A^t]_{ij}=[A]_{ji}$$
+\end{defn}
+\begin{prop}La trasposta è lineare.
+\end{prop} 
+\begin{defn}Sia $A \in M(m,n,\K)$ A si dice :
+\begin{itemize}
+\item simmetrico se $A^t = A$
+\item antisimmetrico se $A^t=-A$
+\end{itemize}
+Sia inoltre:
+\begin{itemize}
+\item $\mathcal{S}_n=\{ A \in M(n,\K)\, | \, A^t=A\}$ 
+\item $\mathcal{A}_n=\{ A \in M(n,\K)\, | \, A^t=-A\}$
+\end{itemize}
+\end{defn}
+\begin{prop} se in $ \K $ $ 2 \neq 0 $ allora 
+$$ M(n,\K)= \mathcal{S}_n \oplus \mathcal{A}_n$$
+
+\proof \bbianco
+\begin{itemize}
+	\item In modo ovvio vale che $S_n + A_n \subseteq M(n,\K)$.\\
+	Andiamo a mostrare l'altra inclusione 
+	$$ \forall B \in M(n,\K) \quad B+B^t \in \mathcal{S}_n \quad B-B^t \in \mathcal{A}_n $$
+	inoltre
+	$$ B = (B+B^t) + (B-B^t)$$
+	\item Sia $B \in \mathcal{S}_n \cap \mathcal{A}_n$ allora
+	$$ B^t=B \quad B\text{ \`e simmetrica}$$
+	$$ B^t =-B \quad B \text{ \`e antisimmetrica}$$
+	dunque 
+	$$2A=0\quad A=0 $$
+\end{itemize}
+\endproof
+\end{prop}
+\spazio
+\begin{defn}[Traccia]
+$$ tr: \, M (n,\K) \to \K \quad tr( A) = \sum_{i=1}\alla n [A]_{ii}$$
+Ovvero una funzione che associa ad ogni matrice la somma degli elementi della diagonale
+\end{defn}
+\begin{prop} La traccia \`e un'applicazione lineare
+\end{prop}
+\newpage
+\section{Basi e dimensioni}
+\begin{defn}[Finitamente generato]\bianco
+Sia $V$ un $\K$-spazio vettoriale.\\
+V  è finitamente generato se $$ \exists \nvett \in V  \tc  V= Span( \nvett ) $$
+In tal caso $ \{\nvett \} $ \`e detto insieme di generatori di $V$ 
+\end{defn}
+\spazio 
+\begin{defn}[Indipendenza lineare]  \bianco
+Siano $\nvett  \in V$ ($\K$-spazio vettoriale), essi sono linearmente indipendenti  se
+$$ \forall \sum_{i=1}^n a_i v_i = 0 \quad \implica \quad a_i = 0 \quad \forall i=1, \dots ,n $$
+ovvero se $0$ si esprime come combinazione lineare di $\{ \nvett \} $ allora tutti i coefficienti della combinazione devono essere nulli. 
+\end{defn}
+
+\begin{prop} $ \nvett$ sono dipendenti $\Leftrightarrow \exists i \in [ 1, \, n ] \quad v_i \in Span( v_1, \, \dots \, \cancel{v_i} \, \dots ,\, v_n ) $
+\proof $ \Rightarrow $ \\
+Se $\nvett $ sono dipendenti allora $\ncomb =0 $ e $ \exists i \quad a_i\neq 0 $
+$$ v_i=-a_i \alla { -1 } ( a_1 v_1 + \dots +  \cancel{ a_i v_i } + \dots + a_n v_n) $$
+\proof $\Leftarrow $ \\
+Supponiamo che quello $v_1 $ appartenga allo Span degli altri.
+$$ v_1= a_2 v_2 + \cdots + a_n v_n $$
+quindi se considero questa combinazione 
+$$a_1 v_1 - ( a_2 v_2 +\cdots + a_n v_n )= 0 $$
+ma i coefficienti possono anche non essere tutti 0 $ a_1=1 $ e gli altri 1 
+\endproof
+\end{prop}
+
+\spazio
+\begin{defn}[Base]\bianco 
+Un insieme ordinato $ \{ \nvett \} $  di vettori di V \`e una base di V  se 
+\begin{itemize}
+\item $ \nvett $ sono linearmente indipendenti 
+\item  $\{ \nvett \} $ \`e un insieme di generatori
+\end{itemize}
+\end{defn}
+\newpage
+\begin{prop}[Algoritmo di estrazione ad una base] \bianco
+Da ogni insieme finito di generatori non nulli si pu\'o estrarre una base .\\ \\ 
+Sia $ X= \{ \nvett \} $ un insieme di generatori non nulli.\\
+L'algoritmo \`e definito in modo induttivo, ad ogni passo dell'algoritmo si avr\'a una situazione del tipo $$ Y \, \vert \, X $$
+\begin{itemize}
+\item Passo 1 
+$$ \begin{cases} Y_1 = \{ v_1 \} \\ X_1 =\{ v_2,\, \dots, \, v_n \} 
+\end{cases} $$
+\item Regola di passaggio.\\
+Al passo m-esimo sia $X_m =\{ x_0 , \dots \} $
+\begin{itemize}
+\item se $ x_0 \in Span (Y_m ) $  $$ \begin{cases} Y_{m+1}=Y_m  \\ X_{m+1} = X_m - \{ x_0 \}   \end{cases}$$
+\item se $ x_0 \not \in Span (Y_m ) $  $$ \begin{cases} Y_{m+1}=Y_m \cup \{ x_0 \}   \\ X_{m+1} = X_m - \{ x_0 \}   \end{cases}$$
+ 
+ \end{itemize}
+
+\end{itemize}
+L'algoritmo termina quando si realizza la configurazione $ Y \, \vert , \, \emptyset$ e $Y$ \`e la base voluta 
+\end{prop}
+\begin{lem} L'algoritmo che trasforma X in Y genera una base di V .\\
+Occorre dimostrare :
+ \begin{enumerate}
+\item L'algoritmo termina
+\item$Y$ è linearmente indipendente
+\item $Y$ genera $V$
+\end{enumerate}
+
+\proof \bianco Sia $ Y=\{ y_1,\cdots , y_m \}$ dove $y_i = v_j  \quad \forall i =1 , \, \dots , \, m $
+\begin{enumerate}
+\item L'algoritmo termina in un numero finito di passaggi infatti ad ogni passo $$\vert X_{m+1} \vert = \vert X_m \vert - 1 $$
+\item Per assurdo suppongo che $Y$ non è formato da vettori linearmente indipendenti allora  $$\exists \sum_{j=1}^n a_j y_j =0 \quad \text{ con } \quad a_j \neq 0$$
+Sia $k = \max \{ i \, \vert \,  a_i \neq 0 \} $ ($k$ esiste perch\`e l'insieme non \`e vuoto)
+ $$
+\sum_{j=1}	^k a_j y_j =0 \quad \implica \quad 
+a_k y_k=-\sum_{j=1}^{k-1} a_j v_j \quad \implica \quad 
+y_k=\sum_{j=1}^{k-1} b_j y_j
+$$
+quindi $y_k$ è combinazione lineare dei vettori che lo precedono ma questo è assurdo  per come funziona l'algoritmo 
+\item 
+$Y$ genera $V$ poiché $X$ genera $V$  ed  vettori di $X$ che vengono esclusi da $Y$ si possono ottenere come combinazione lineare di quelli che restano in $Y$
+\end{enumerate}
+
+\endproof
+\end{lem}
+
+\begin{prop}
+[Algoritmo di estensione ad una base]\bianco
+Se  lo spazio \`e finitamente generato, da ogni insieme finito di vettori linearmente indipendenti si si pu\'o estrarre una base 
+\proof  Sia
+$$X=\{ x_1,\dots , x_n \} \text{ un  insieme di vettori linearmente indipendenti} $$
+Sia $V$ uno spazio vettoriale finitamente generato, quindi
+ $$ \exists Z=\{ z_1,\dots ,z_k \} \text{ un insieme di generatori } $$
+Sia $$\tilde{ X} = \{ x_1 , \dots , x_n, z_1, \dots , z_k \} $$
+tale insieme genera poich\`e contiene $Z$, dunque possiamo applicare l'algoritmo di estrazione ottenendo una base $Y$.\\
+Inoltre per come opera l'algoritmo $ X \subseteq Y$ dunque ho esteso $X$ ad una base di $V$  
+\endproof
+\end{prop}
+\newpage
+\begin{lem} [Valori su una base] \label{Valori_Base}\bianco
+Un'applicazione lineare $f \in Hom( V, W) $  \`e ben definita se si assegnano i valori di $f$ solamente sui  vettori di una base di $V$.
+\proof
+Sia $\B= \{ \nvett \} $ una base di $V$.\\
+Supponiamo di aver assegnato
+$$ f(v_1) = w _1 $$ $$\vdots $$ $$ f(v_n)= w_n  $$ $$ \text{ con } w_i \in W  $$
+Proviamo che $\forall v \in V $ \`e ben definito il valore di $f(v)$.\\
+Dal fatto che $\B$ \`e una base di $V$ ne segue che 
+$$\exists a_1, \dots , a_n \in \K \quad  v= \ncomb $$ 
+Dunque sfruttando la linearit\'a di $f$ otteniamo 
+$$f(v)= a_1 f(v_1) + \cdots + a_n f(v_n) = a_1 w_1 + \cdots + a_n w_n$$
+\endproof
+\begin{oss} Il lemma precedente dimostra molto di pi\'u infatti dice che esiste un' unica applicazione lineare che manda una base in vettori preassegnati 
+\end{oss}
+\end{lem}
+
+\newpage
+\subsection{Dimensioni}
+\begin{prop} Sia $V$ uno spazio vettoriale finitamente generato e siano 
+ \begin{itemize}
+\item $X$ un insieme di generatori 
+\item $Z$ è linearmente indipendente
+\end{itemize}
+allora $$\vert X \vert \geq \vert Z \vert $$
+\proof Siano $$ X=\{ x_1, \dots , x_n \} $$ 
+$$ Z=\{ z_1, \dots , z_k \}$$
+Se considero l'insieme ordinato  $ {z_1} \cup X $ genera poiché $X$ genera; tale insieme non non è linearmente indipendente infatti $z_1 \in Span (X)$ ($X$ genera).\\
+Comincio ad applicare l'algoritmo di estrazione (comincio da $z_1$) finché non elimino il primo elemento (esiste poiché per quanto detto sopra l'insieme non è linearmente indipendente) .\\ Aggiungo anche $z_2$ all'insieme ottenuto con il primo algoritmo e riapplico l'algoritmo (un altro $x_j$ viene eliminato per lo stesso motivo di prima).\\
+Iterando si possono verificare 2 diverse possibilità:
+\begin{enumerate}
+\item Introduco tutti gli $z_j$ quindi $\vert Z \vert  \leq \vert  X \vert $
+\item Se $n < k $ riesco ad introdurre solamente $z_1, \dots, z_n $.\\
+ dunque $\{ z_1, \dots, z_n \} $ genera  $V$  quindi $z_{n+1} \in Span(z_1,\dots , z_n) $ ma ciò è assurdo poiché l'insieme $Z$ è linearmente indipendente.
+\end{enumerate}
+\endproof
+\end{prop}
+\begin{cor} Se $X$ e $Y$ sono basi di $V$ (spazio vettoriale finitamente generato) allora 
+$$ \vert X  \vert = \vert Y \vert$$
+\proof\bbianco
+\begin{itemize}
+\item $ \geq $ 
+\\
+$X$ \`e un insieme di generatori \\
+$Z$ è formato da vettori linearmente indipendenti $$\vert X  \vert \geq \vert Z \vert$$
+\item $\leq $\\
+$Z$ \`e un insieme di generatori \\
+$X$ è formato da vettori linearmente indipendenti
+ $$\vert X\vert \leq \vert Z \vert $$
+\end{itemize}
+Poiché valgono entrambe le disuguaglianze $\vert X  \vert= \vert Z \vert $
+\endproof
+\end{cor}
+Grazie al  corollario precedente è possibile introdurre la seguente definizione:
+\begin{defn}[Dimensione] \bianco Sia V uno spazio vettoriale allora definiamo la dimensione di V
+ $$ \dim V= \vert X \vert $$ 
+ dove X è una base arbitraria di V.
+\end{defn}
+\newpage
+
+\begin{prop}[Formula delle dimensioni]\bianco \label{dim_ker_imm}
+Sia $f \in Hom(V,W) $ allora 
+$$ \dim V=\dim Im f +\dim Ker f $$
+
+\proof Sia 
+$$ \{ z_1, \dots , z_s \} \text{ una base del nucleo} $$
+estendiamola  a 
+$$ \{ z_1, \dots, z_s, x_1, \dots, x_n \}\text{ base di } V $$
+Mostriamo che 
+$$ \{ f(v_1), \dots,f(v_n)\} $$
+\`e una base dell'immagine.
+\begin{itemize}
+\item L'insieme genera
+$$ \forall w\in Im (f) \quad \exists v \in V \quad w=f(v)$$ 
+Dunque 
+$$w= f \left( \sum_{i=1}^s  a_i z_i + \sum_{i=1}^n b_i v_i \right)=\sum_{i=1}^s a_i f(z_i) + \sum_{i=1}^n b_i f(v_i) = \sum_{i=1}^n b_i f(v_i) $$
+\item L'insieme \`e formato da vettori linearmente indipendenti.\\
+Sia 
+$$  \sum_{ i=1}^n a_i f(v_i) = 0 $$
+dunque per linearit\'a
+$$ f\left(  \sum_{i=1}^n a_i v_i \right) =0 $$ ovvero 
+$\ds   \sum_{i=1}^n a_i v_i  \in Ker f$ da cui
+ $$ \sum_{i=1}^n a_i v_i  = \sum_{i=1}^s b_i z_i $$
+ $$  \sum_{i=1}^n a_i v_i  - \sum_{i=1}^s b_i z_i =0$$
+L'ultima combinazione esprime il vettore nullo come combinazione lineare di elementi di una base quindi, in particolare, $ a_i= 0 \quad \forall i=1, \dots, n $\\
+Ovvero
+$$  \sum_{ i=1}^n a_i f(v_i) = 0 \quad \implica \quad  a_i= 0 \quad \forall i=1, \dots, n $$
+
+\end{itemize}
+\endproof
+\end{prop}
+\begin{oss} La proposizione appena enunciata oltre a dimostrare la formula delle dimensioni ci fornisce anche un modo per poter costruire una base dell'immagine di f.
+\end{oss}
+\spazio
+\begin{cor}\label{iso_base_in_base}$f \in Hom(V,W)$
+$$ f\text{ isomorfismo } \ses f \text{ manda una base di } V \text{ in una base di } W $$
+\proof $\implica$ Sia $\B =\{ \nvett \} $ una base di $V$.\\
+Nella dimostrazione della formula delle dimensione abbiamo dimostrato che $f(\B)$ \`e una base dell'immagine di $f$, ora dal fatto che $f$ \`e un isomorfismo segue che $Im f = W $ da cui $f(\B)$ \`e una base di $W$\\
+$\Leftarrow$ 
+Sia $\B$ come sopra e sia $w_i = f(v_i ) \quad \forall i=1, \dots, n $.\\
+Supponiamo che $\{ w_1, \dots, w_n \} $ \`e una base di $W$.\\
+L'applicazione $f$ risulta dunque invertibile infatti $f$ ammette un' inversa $g$ 
+$$ g:\, W \to V \quad g(w_i)=v_i \quad \forall i =1, \dots, n $$ 
+Osserviamo che $g$ \`e ben definita perch\`e \`e costruita assegnando i valori su una base 
+\endproof
+\end{cor}
+\spazio
+\begin{prop}[Invariante completo isomorfismo]\bianco
+$$ \text{V,W sono isomorfi } \Leftrightarrow \dim V=\dim W$$
+\proof $\implica$\\
+Se $V$ e $W$ sono isomorfi allora esiste $f:\, V \to W$ isomorfismo e per il corollario~\ref{iso_base_in_base} $f$ manda una base di $V$ in una di $W$ da cui l'uguaglianza delle dimensioni
+\proof $ \Leftarrow $\\
+Sia $$\{ \nvett \} \text{  base di } V$$ e
+$$ \{ w_1, \dots , w_n \} \text{ base di } W $$
+Sia $$f:\, V \to W \qquad \sum_{i=1}^n a_i v_i \to \sum_{i=1}^n a_i w_i  $$
+\begin{itemize}
+\item $f$ \`e lineare 
+$$\forall v,w \in V\quad  v= \sum_{i=1} a_i v_i \quad w=\sum_{i=1}^n b_i v_i $$
+$$ f(v+w) = f \left( \sum_{i=1}^n (a_i + b_i) v_i \right)= \sum_{i=1}^n (a_i+ b_i ) w_i = f(v) + f(w) $$
+\item $f$ \`e biettiva infatti si pu\'o costruire la funzione inversa
+$$ f^{-1}: \, W \to V \quad  \sum_{i=1}^n a_i w_i \to \sum_{i=1}^n a_i v_i $$
+\end{itemize}
+\endproof
+\begin{oss} Dalla proposizione segue che ogni spazio vettoriale è isomorfo ad uno spazio standard della stessa dimensione di V\\  se $\dim V=n $ allora $$ V \cong \K^ n $$.\\
+Infatti $\dim \K^ n  =  n $  poich\`e $e_1 , \, \cdots, \, e_n $ \`e una sua base
+\end{oss}
+\end{prop}
+\newpage
+\begin{prop}[Formula di Grassman]\bianco
+Siano $W$ e $ Z$ sottospazi di $V$ finitamente generato.
+$$ \dim (W+Z) = \dim W + \dim Z - \dim(W\cap Z ) $$
+Sia 
+$$ \D = \{ t_1, \dots , t_s \} \text{ base di } V \cap Z $$ 
+estendiamola a 
+$$ \B_W =\{ t_1, \dots, t_s, w_1, \dots, w_k \} \text{ base di } W $$
+e 
+$$ \B_Z=\{t_1, \dots , t_s, z_1, \dots, z_n \} \text{ base di } Z $$
+Mostriamo che $\B=\B_W \cup \B_Z$ \`e base di $W+Z$
+\begin{itemize}
+\item $\B$ \`e un insieme di generatori.
+$$ \forall v \in W + Z \quad \exists w \in W \, z \in Z \quad v = w+z $$
+Ora 
+$$ w = \sum_{i=1}^s a_i t_i + \sum_{i=1}^k b_i w_i $$
+$$ z = \sum_{i=1}^s c_i t_1+ \sum_{i=1}^n d_i z_i$$
+dunque 
+$$ \forall v \in W+Z \quad v= w+z =\sum_{i=1}^s (a_i + c_i) t_1 + \sum_{i=1}^k b_i w_i + \sum_{i=1}^n d_i w_i$$
+\item L'insieme $\B$ \`e formato da vettori linearmente indipendenti.\\
+Supponiamo che 
+$$ \sum_{i=1}^s a_i t_i + \sum_{i=1}^k b_i w_i +\sum_{i=1}^n c_i z_i=0$$
+allora
+$$ \sum_{i=1}^s a_i t_i + \sum_{i=1}^k b_i w_i =- \sum_{i=1}^n c_i z_i $$
+dunque
+
+$$ \sum_{i=1}^n c_i z_i \in W \cap Z \quad \implica \quad  \sum_{i=1}^n c_1 z_1 = \sum_{i=1}^s d_i t_i \quad \implica \quad \sum_{i=1}^n c_i z_i - \sum_{i=1}^s d_i t_i =0 \quad \implica$$
+$$ \implica \quad  c_i = 0 \quad \forall i = 1, \dots, n \quad d_j =0 \quad \forall j=1, \dots,s $$
+inoltre 
+$$ \sum_{i=1}^s a_i t_i + \sum_{i=1}^k b_i w_i \in W\cap Z  \quad \implica \quad  \sum_{i=1}^s a_i t_i + \sum_{i=1}^k b_i w_i = -\sum_{i=1}^s d_i t_i  \quad \implica \quad $$
+$$ \sum_{i=1}^s (a_i + d_i)t_i + \sum_{i=1}^k b_i w_i=0 \quad \implica \quad a_i=0 \quad \forall i=i, \dots, s \quad b_j =0 \quad \forall j=1,\dots, k $$
+\end{itemize}
+\endproof
+
+\end{prop}
+\newpage
+
+\subsection{Coordinate}
+\begin{prop} [Unicità della combinazione] Sia $\B$ una base di V con n elementi allora $$ \forall v \in V \quad v = \sum_{j=1}^n a_j v_j \text{ è unica }$$
+\proof Supponiamo che 
+$$ v= \sum_{i=1}^n b_i v_i $$
+Allora 
+$$ \sum_{i=1}^n a_i v_i = \sum_{i=1}^n b_i v_1 \quad \implica\quad \sum _{i=1}^n (a_i - b_i) v_i = 0 \quad \implica \quad a_i - b_i = 0 \quad \implica \quad a_i = b_i  \quad \forall i = 1, \dots, n $$
+\endproof
+\end{prop}
+
+Grazie alla precedente proposizione \`e possibile definire le coordinate
+\begin{defn}[Coordinate] \bianco 
+Le coordinate del vettore $v$ rispetto alla base $\B$ sono i coefficienti dell'unica combinazione lineare che esprime $v$.\\
+Tale coordinate si indica con $\ds [v]_\B $
+\end{defn}
+\spazio
+\begin{prop} $$[\,]_\B : \, V \to \K^n \quad v \to [v]_\B$$
+è un isomorfismo di spazi vettoriali.
+\proof Fissiamo $\B=\{ \nvett \} $ base di V  
+\begin{itemize}
+\item lineare.\\
+Sia $v=\ncomb $ e $w=b_1v_1+ \cdots + b_n v_n $ allora
+$$ [ v+ w]_{\B} =\begin{pmatrix}
+a_1+ b_1 \\ \vdots \\ a_n+  b_n 
+\end{pmatrix}= \begin{pmatrix}a_1\\ \vdots \\ a_n 
+\end{pmatrix} + \begin{pmatrix}
+b_1\\ \vdots \\ b_n 
+\end{pmatrix} = [v]_{\B} + [w]_{\B} $$
+
+
+$$ [ \lambda v]_{\B} =\begin{pmatrix}
+\lambda a_1 \\ \vdots \\ \lambda a_n  
+\end{pmatrix}= \lambda \begin{pmatrix}a_1\\ \vdots \\ a_n 
+\end{pmatrix} =\lambda [v]_{\B}  $$
+\item iniettiva.\\
+$$Ker [\, ]_{\B} = \left\{ v \in V \, \left| \,[v]_{\B} = \begin{pmatrix}
+0 \\ \vdots \\ 0
+\end{pmatrix} \right. \right\} =\{ 0 \} $$
+\item suriettiva.\\
+$$ \forall \begin{pmatrix}
+a_1 \\ \vdots \\ a_n
+\end{pmatrix} \in \K ^ n  \quad \exists v= \ncomb \quad [v]_{\B}=\begin{pmatrix}
+a_1 \\ \vdots \\ a_n
+\end{pmatrix}$$
+\end{itemize}
+
+\end{prop}
+
+\newpage
+\section{Matrice associata ad un'applicazione lineare}
+\begin{defn}[Matrice associata a $f$ rispetto a $\B $ e  $\D$]\bianco
+Data $f \in Hom(V,W)$ e $\B$ e $\D$ basi rispettivamente di $V$ e $W$ \`e definita un unica applicazione lineare $$ \AB(f) :\, \K^n \to \K^n $$ che fa commutare il seguente diagramma
+$$ \begin{tikzcd} V \arrow[r,"f"]
+\arrow{d}{[\, ]_\B} & V \arrow{d}{[\,]_\D} \\ \K^n \arrow{r}{\AB(f)} & \K^m
+\end{tikzcd}$$
+\begin{oss}\label{mat_appl} Se $\B = \{ \nvett \} $ allora
+
+$$ \AB (f) = \left( [f(v_1)]_\D , \dots , [f(v_n)]_\D  \right) $$
+infatti poich\`e il diagramma commuta 
+ 
+Inoltre discende dalla definizione che
+
+$$ \forall v \in V \qquad \left[ f(v) \right]_\D = \AB (f) \cdot \left[ v \right]_\B $$
+\end{oss}
+\end{defn}
+\spazio
+\begin{prop}[Matrice associata alla composizione]\label{mat_comp}\bianco
+Siano $f\in Hom(V,W) $ e $g \in Hom(W,Z)$, dette $\B $, $\D$ e $\RR$  basi rispettivamente di $V$, $W$ e $Z$ segue che 
+$$ M^\B_\RR (g\circ f ) = M^\D_\RR (g) \cdot \AB (f)$$
+\proof
+$\forall v \in V $
+$$ [ g(f(v)]_\RR = M_\RR^\D (g) \cdot [ f(v)]_\D = M_\RR^\D(g) \cdot \AB (f) \cdot [v]_\B $$
+Dove i passaggi sono giustificati dall'osservazione precedente.\\
+Ora poich\`e vale $\forall v$ abbiamo l'uguaglianza voluta
+\endproof
+\begin{oss}Grazie alla proposizione sopra enunciata otteniamo che il seguente diagramma commuta
+
+$$\begin{tikzcd} V \arrow[r,"f"] \arrow[bend left]{rr}{g\circ f} \arrow{d}{[\,]_\B } &W \arrow[r,"g"] \arrow{d}{[\, ]_\D }  & Z \arrow{d}{[\,]_\RR }\\ \K^n \arrow[r, "A" ] \arrow[bend right]{rr}{B\cdot A } & \K^m \arrow[r,"B"] & \K^q 
+\end{tikzcd}$$
+dove 
+$$ A = \AB (f) \qquad  B =M^\D_\RR (g)$$
+
+\end{oss}
+\end{prop}
+\newpage
+Grazie alle matrici associate ad un applicazione lineare possiamo  riprendere quanto detto in \ref{Matrici_Come_Lineari} e esplicitare l'isomorfismo tra $Hom(\K^n , \K^m ) $ e $M(m,n,\K)$
+\begin{thm}[$ \AB $ \`e un isomorfismo ] 
+Siano $V$ e $W$ spazi vettoriali 
+Sia $ \B =\{ \nvett \} $ una base di $V$ e  $ \D =\{ w_1, \, \dots , \, w_m \} $ una base di $W$.\\
+Allora l'applicazione
+$$ \AB :\, Hom (V ,W ) \to M ( m,n, \K ) \qquad f \to \AB (f) $$
+\`e un isomorfismo
+\proof
+Mostriamo che $f$ \`e
+\begin{itemize}
+\item lineare.\\
+Siano $f,g \in Hom (V,W ) $ allora
+$$ \AB ( f+g) = ( [ (f+g)(v_1) ]_{\D} , \, \dots , \,  [ (f+g)(v_n) ]_{\D} ) =$$
+$$  ( [ f(v_1)+g(v_1) ]_{\D} , \, \dots , \,  [ f(v_n) + g (v_n) ]_{\D} ) =
+$$
+$$ = ( [f(v_1)]_{\D} , \, \dots , \, [f(v_n)]_{\D} )\quad + \quad ( [g(v_1)]_{\D} , \, \dots , \, [g(v_n)]_{\D} )= \AB ( f) + \AB (g) $$
+\item Iniettiva.\\
+Se $f \in Ker \AB $ allora
+$$ f(v_1)= \cdots = f(v_n ) = 0 $$ 
+Ora poich\`e abbiamo definito $f$ su una base esse \`e ben definita ed \`e l'applicazione nulla, il nucleo, dunque, \`e ridotto al solo $0$ di $Hom(V,W)$
+\item Suriettiva.\\
+$\forall A \in M(m,n,\K)$ possiamo considerare una $f$ che faccia commutare il diagramma 
+$$ \begin{tikzcd} V \arrow[r,"f"] \arrow{d}{[\, ]_\B} & V \arrow{d}{[\,]_\D} \\ \K^n \arrow[r,"A"] & \K^m
+\end{tikzcd} $$
+tale $f$ esiste poich\`e $[\,]_\B$ e $[\,]_\D$ sono isomorfismi dunque invertibili.\\
+Dalla definizione data di matrice associata segue che $A=\AB (f) $
+\end{itemize}
+\endproof
+\end{thm}
+\spazio
+\begin{cor}$$ End (V) \cong M(n,\K)$$
+$$ GL(V)\cong GL(n,\K)$$
+\proof
+Prendiamo in entrambi i casi come base in partenza ed in arriva la stessa base $\B$ di V dunque le matrici sono quadrate.\\
+Inoltre per dimostrare il secondo isomorfismo, osserviamo che
+$$ f\in GL(V) \quad \implica \quad \exists f^{-1} \in GL(V)$$ 
+ora per quanto visto sulla composizione di funzioni
+$$M_\B^\B (f \circ f^{-1}) = M_\B^\B (f) \cdot M_\B^\B(f^{-1} )$$
+Ma $$M_\B^B (f\circ f^{-1}) = M_\B^\B (id) = I_n  \quad \implica \quad 
+ \left( M_\B^\B(f) \right)^{-1} = M_\B^\B (f^{-1})$$
+\endproof \end{cor}
+\newpage
+
+\subsection{Matrice cambiamento di base}
+\begin{defn}[Matrice cambiamento di base] \bianco
+Siano $\D$ e $\B$ basi di $V$.\\
+Definiamo matrice del cambiamento di base da $\D$ a $\B$ la matrice 
+$$ \AB (id_V) $$
+\end{defn}
+\spazio
+\begin{lem}Sia 
+$$ g:\, V \to \K^n $$ 
+Allora  $$\exists ! \B \text{ base di } V \tc g = [\, ]_\B $$
+\proof
+Se una tale $\B$ esiste allora poich\`e $[\, ]_\B$ \`e invertibile anche $g$ lo \`e dunque 
+$$ \B = \left\{ g^{-1}(e_1), \dots, g^{-1}(e_n) \right\}$$
+Osserviamo, inoltre, che una tale base soddisfa le richieste.
+\endproof
+\end{lem}
+
+\begin{prop} Sia $V $ uno spazio vettoriale  e sia $\B$ una sua base.\\
+Sia $A \in GL(n) $ . Allora
+\begin{itemize}
+\item[(i)] $ \exists ! \D $ base di V tale che $ A = \AB (id) $
+\item[(ii)] $ \exists ! \mathfrak{T}$ base di V tale che $ A =M_{\B}\alla { \mathfrak{T}}(id)$
+
+\end{itemize}
+\proof $(i) $ Le ipotesi creano un diagramma del genere
+$$\begin{tikzcd} 
+V
+\arrow[r,"id"]
+\arrow{d}{[\,]_\B } 
+&V
+\\
+K^n 
+\arrow[r,"A"]
+&K^n
+\end{tikzcd}$$
+Ponendo $g=A \circ [\, ]_\B $ segue che il diagramma  sottostante commuta 
+$$\begin{tikzcd} 
+V
+\arrow[r,"id"]
+\arrow{d}{[\,]_\B}
+&V
+\arrow[d,"g"]\\
+K^n 
+\arrow[r,"A"]
+&K^n
+\end{tikzcd}$$
+Ora concludo applicando il lemma precedente
+\endproof
+\begin{oss}La proposizione precedente ci dice che ogni matrice invertibile pu\'o essere interpretata come
+\begin{itemize}
+\item Un endomorfismo
+\item Una matrice di cambiamento di base (in avanti o in indietro)
+\end{itemize}
+\end{oss}
+\end{prop}
+\newpage
+\section{SD-equivalenza}
+\begin{defn}[SD-equivalenza funzioni]
+Siano $f,g \in Hom (V,W)$ 
+$$f \sim _{SD} g \quad \Leftrightarrow\quad \exists h \in GL(V),\quad \exists k \in GL(W) \quad g=k\circ f \circ h$$
+\end{defn}
+ed in versione matriciale 
+\begin{defn}[SD-equivalenza matrici]
+Siano $A,b \in M(m,\, n,\, \K) $ Allora
+$$ A\sd B \quad \Leftrightarrow \quad \exists M \in GL(m) , \quad \exists N \in Gl(n) \quad B=MAN$$
+\end{defn}
+\begin{oss}
+Le relazioni sopra definite sono di equivalenza 
+\end{oss}
+
+\spazio
+\begin{prop}
+I seguenti fatti sono equivalenti
+\begin{itemize}
+\item[(i)] $ f\sd g $
+\item[(ii)] $\exists \B $ base di $V$ e $\exists \D$ base di $W$ tali che 
+$$ \AB (f) \sd \AB(g)$$
+\item[(iii)] $ \exists \B, \, \B' $ basi di $V$ e $\exists \D, \, \D'$ basi di $W$ tali che 
+$$ M_{\D'}^{\B'} (f)= \AB (g)$$
+\end{itemize}
+\proof Dimostriamo le varie implicazioni
+\begin{itemize}
+\item (i) $\implica $ (ii).\\
+Le ipotesi ci portano alla seguente situazione
+$$ \begin{tikzcd} 
+V \arrow[r,"k"] \arrow{d}{[\,]_\B } &V \arrow[r,"f"] \arrow{d}{[\,]_\B} & W \arrow[r,"h"] \arrow{d}{[\,]_\D }&W \arrow{d}{[\,]_\D }\\ \K^n \arrow[dashed,r,"N"] & \K^n \arrow[r,"A"] &\K^m \arrow[dashed, r,"M"]&\K^m
+\end{tikzcd}$$
+Ora poich\`e $ g = h \circ f \circ k $ ne segue per quanto detto in~\ref{mat_comp} che $\AB (g) = NAM $.\\
+Ora 
+$$ h\in GL(W) \quad \implica M \in GL(m,\K)$$
+$$ k\in GL(V) \quad \implica M \in GL(n,\K)$$
+da cui 
+$$ \AB (g)= M \AB (f) N \quad \implica \quad \AB (g) \sd \AB(f)$$
+\item (ii)  $\implica$ (i)\\
+Le ipotesi ci portano alla seguente situazione
+$$ \begin{tikzcd} 
+V \arrow[dashed, r,"k"] \arrow{d}{[\,]_\B } &V \arrow[r,"f"] \arrow{d}{[\,]_\B} & W \arrow[dashed, r,"h"] \arrow{d}{[\,]_\D }&W \arrow{d}{[\,]_\D }\\ \K^n \arrow[r,"N"] & \K^n \arrow[r,"A"] &\K^m \arrow[r,"M"]&\K^m
+\end{tikzcd}$$
+dove $MAN=\AB (g)$ ora poich\`e 
+$$ M\in GL(m,\K) \quad \implica h \in GL(W)$$
+$$ N \in GL(n,\K) \quad \implica M \in GL(V)$$
+da cui 
+$$ g = h\circ f \circ k \quad \implica \quad f \sd g $$
+\item  (i) $\implica$ (iii)\\
+L'ipotesi ci porta ad un diagramma come segue 
+$$ \begin{tikzcd} 
+V \arrow[r,"k"] \arrow{d}{[\,]_\B } &V \arrow[r,"f"] \arrow{d}{[\,]_\B} & W \arrow[r,"h"] \arrow{d}{[\,]_\D }&W \arrow{d}{[\,]_\D }\\ \K^n \arrow[dashed,r,"N"] & \K^n \arrow[r,"A"] &\K^m \arrow[dashed, r,"M"]&\K^m
+\end{tikzcd}$$
+dove $\AB(g)=MAN $\\
+Ora poich\`e $M$ e $N$ sono invertibili li posso interpretare come matrice di cambiamento di base quindi
+$$ \exists \B' \text{ base di } V \tc M^{\B'}_\B (id_V) = N $$
+$$ \exists \D' \text{ base di } W \tc M_{\D'}^\D(id_W) = M $$
+otteniamo dunque
+$$ \begin{tikzcd} 
+V \arrow{r}{id_V} \arrow{d}{[\,]_{\B'} } &V \arrow[r,"f"] \arrow{d}{[\,]_\B} & W \arrow{r}{id_W} \arrow{d}{[\,]_\D }&W \arrow{d}{[\,]_{\D'} }\\ \K^n \arrow[r,"N"] & \K^n \arrow[r,"A"] &\K^m \arrow[r,"M"]&\K^m
+\end{tikzcd}$$
+Dunque 
+$$ M^{\B'}_{\D'} (f) = M^{\B'}_{\D'} (id_W\circ f \circ id_V) =M A N =\AB(g)$$
+\item (iii) $\implica$ (ii)\\
+Sia $ N = M^{\B'}_\B $ e $M =M^\D_{\D'}$ allora  per quanto detto sopra
+$$ M^{B'}_{\D'}(f)= N \AB (f) M $$
+Ora poich\`e $N$ e $M$ sono matrici di cambiamento di basi sono invertibili dunque
+$$  M^{B'}_{\D'}(f) \sd \AB (f)$$
+Ma per ipotesi $ M^{B'}_{\D'}(f)=\AB (g)$ dunque
+$$ \AB (f) \sd \AB(g)$$
+\end{itemize}
+\endproof
+\end{prop}
+\newpage
+Per continuare a studiare la relazione \`e utile la seguente definizione
+\begin{defn}[Rango]\bianco
+Sia $f \in Hom (V,W)$, allora definiamo il rango di f come 
+$$rk( f) = \dim Im \, f $$
+\end{defn}
+
+\spazio
+
+\begin{prop}[Invariante completo per $\sd$]
+$$ f\sd g \quad \ses \quad rk (f) =rk(g)  $$
+\proof $\implica$ $g=k ]\circ f \circ h $ con $k$ e $h$ isomorfismi.
+Poich\`e applicazioni lineari mandano sottospazi in sottospazi e  gli isomorfismi preservano la dimensione si conclude che 
+$$ \dim Im f = \dim Im g$$
+$\Leftarrow$ Ripercorriamo quanto fatto nella dimostrazione della formula delle dimensioni di nucleo e immagine (vedi~\ref{dim_ker_imm})\\
+Siano $f, g \in Hom(V,W) $ con $\dim V = n $ e $\dim W =m $ e sia $ rk(f)=rk(g)=r$.\\
+Sia $$\{  v_{r+1}, \, \dots , \, v_n \} \text{ una base del nucleo di } f $$
+Estendiamolo a $$\B= \{ v_1 \, \dots , \, v_r, \, v_{r+1}, \, \dots \, v_n \} \text{ base di } V$$
+Da fatti noti sappiamo che  $$ \{ f(v_1), \dots, f(v_r)  \} \text{ \`e una base  dell'immagine di} f $$
+Estendiamola tale base a 
+$$\D=\{ f(v_1), \dots , f(v_r) , \, w_{r+1}, \, \cdots , \, w_m \} \text{  base di } W$$
+Per come sono state costruite le basi risulta che
+$$\AB (f)= \begin{pmatrix}
+I_r & 0 \\
+0 & 0 
+\end{pmatrix}$$
+Se ripercorriamo la costruzione, considerando $g$, otteniamo 2 basi $\B' $ (base di $V$) e $\D' $ (base di $W$) tale che   
+$$ M_{\D'}\alla { \B ' }(g)= \begin{pmatrix}
+I_r & 0 \\
+0 & 0 
+\end{pmatrix}$$
+Da ci\'o segue che
+$$\AB (f)=M_{\D'}\alla { \B ' }(g)\quad \implica \quad f\sd g $$
+\endproof
+
+\begin{oss}
+In ogni classe SD-equivalenza possiamo scegliere un rappresentante in forma normale $ J_r (m,n)$ dove r è il rango.\\
+$$
+J_r=
+\left(
+\begin{array}{c|c}
+I_r & 0 \\
+\hline
+0 & 0
+\end{array}
+\right)
+$$
+
+\end{oss}
+\end{prop}
+\newpage
+\begin{lem}
+$$ M \in GL(n,\K) \quad \implica \quad M^t \in GL(n,\K)$$
+\proof
+Essendo $M$ invertibile 
+$$ \exists M^{-1}\in GL(n.\K) \tc M M^{-1} =I_n $$ 
+Ora applicando la trasposta e ricordando che $(AB)^t = B^t A^t $ otteniamo 
+$$ \left( M^{-1} \right)^t M^t = I_n^t =I_n$$ 
+ora se consideriamo anche $M^{-1}M=I_n$ e data l'unicit\'a dell'inversa otteniamo
+$$ \forall M \in GL(n, \K) \quad \left( M^t \right)^{-1}= \left(M^{-1}\right)^t \quad \implica \quad M^t \in GL(n,\K)$$
+\endproof
+\end{lem}
+\begin{cor}
+$$ rk (A) = rk \left( A^t \right)$$
+\proof
+Sia $A \in M(m,n,\K )$ e sia $rK(A)=r $ .\\
+Poich\`e il rango \`e un invariante completo per $\sd$ allora  
+$$ A \sd J_r \quad \implica \quad  
+ \exists M , \, N \text{ invertibili } \tc A = M\cdot J_r \cdot N  $$
+Dunque se consideriamo 
+$$  A^t  = N^t  \cdot J_r^t  \cdot  M^t  = N^t  \cdot  J_r \cdot   M^t   $$ 
+Ora per il lemma precedente $ M^t$ e $N^t $ sono invertibili  dunque
+ $$  A^t \sd J_r \quad \implica \quad  rk\left( A^t \right)=r=rk(A)$$
+\endproof
+\end{cor}
+\newpage
+\section{Sistemi lineari e algoritmo di Gauss}
+\subsection{Sistemi lineari}
+\begin{defn}
+Definiamo il sistema lineare di m equazione in n incognite
+$$ \begin{cases}
+a_{11} x_1 + \, \cdots \, + a_{1n}x_n=b_1 \\
+\vdots \\ 
+a_{m1} x_1 + \, \cdots \, + a_{mn}x_n=b_m 
+\end{cases}$$
+\end{defn}
+\begin{oss}
+Il sistema lineare pu\'o essere scritto nella forma $AX=B $ dove
+$$ A= \begin{pmatrix}
+a_{11} & \cdots & a_{1n}\\
+\vdots & \ddots & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{pmatrix} \in M( m,n , \K ) , $$ 
+
+$$ X = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \in \K^n ,\qquad B=\begin{pmatrix}
+b_1\\ \vdots \\ b_m 
+\end{pmatrix} \in \K \alla m $$
+\end{oss}
+\spazio
+\begin{defn} Se $B=0$ il sistema si dice omogeneo.\\
+Le soluzioni del sistema omogeneo sono
+$$ \{ X \in \K ^n \quad \vert \quad AX=0 \} = Ker(A)$$
+\end{defn}
+\begin{defn} Sia $AX=B$.\\
+Il sistema omogeneo associato \`e il sistema $AX=0$
+\end{defn}
+
+\spazio
+\begin{prop}Dato un sistema $AX=B$.\\
+Se il sistema ha soluzione, presa una particolare $Y_B$ allora 
+$$ Sol_B= \{ Y_B + X \, \vert X \in Sol_0 \} $$
+\proof $\supseteq$ Sia $X \in Sol_0 $  
+$$ Y_B+X \in Sol_B \quad \ses \quad A ( Y_B + X )=B \quad \ses \quad AY_B +AX=B+0=B$$
+L'ultima implicazione \`e vera, dunque anche la prima
+\proof $\subseteq$ Sia $X \in Sol_B $.\\
+$$X=Y_B + ( X- Y_B) \quad X-Y_B\in Sol_0 $$
+infatti $$ A ( X-Y_B)= AX- AY_B=B-B=0 $$
+\endproof
+\end{prop}
+\subsection{Algoritmo di Gauss}
+
+L'algoritmo agisce o sulle righe o sulle colonne, qui viene descritto sulle righe ma per le colonne é del tutto analogo.\\
+L'algoritmo prende in input una matrice $ A \in M(m,n, \K) $ e ne restituisce un'altra denotata con $\hat{A}_R \in M(m,n,\K)$ , il pedice indica che la matrice è ottenuta mediante le righe.\\
+L'algoritmo costa di operazioni elementari sulle righe, distinte in 3 tipi:
+\begin{itemize}
+    \item [I)] Scambia tra loro 2 righe $A_i \leftrightarrow  A_J$
+    \item[II)] Moltiplica una riga per uno scalare $ \neq 0 $  $ A_i \rightarrow c A_i \quad c \neq 0$
+    \item[III)]	Somma ad una riga un multiplo di un altra $ A_i \rightarrow A_i + c A_j$
+\end{itemize}
+\spazio
+Specifichiamo come funziona l'algoritmo:\\
+Indichiamo con $A^1, \, \cdots \, A^n$ le colonne di A.\\
+
+Se $ A=0 $ allora $\hat{A}_R=0$ e l'algoritmo si interrompe.\\
+Se $ A \neq 0 $ allora esiste una colonna non nulla, si consideri il più piccolo indice $j$ tale che $A_j \neq 0 $ .\\
+Sia $i$ il più piccolo indice di riga tale che $a_{ij}\neq 0 $ in questo caso $A_i\leftrightarrow A_j$\\
+Abbiamo ottenuto una matrice del genere 
+$$\begin{pmatrix}
+0 & \cdots & 0 & 1 & \cdots\\
+\vdots & & \vdots & ? & \vdots\\
+0 & \cdots & 0 & ? & \vdots
+\end{pmatrix}$$Applichiamo operazione del secondo tipo in modo che sotto il primo 1 ci siano solamente 0 
+$$\begin{pmatrix}
+0 & \cdots & 0 & 1 & \cdots\\
+\vdots & & \vdots & \vdots & \vdots\\
+0 & \cdots & 0 & 0 & \vdots
+\end{pmatrix}$$A questo punto consideriamo la matrice $ \tilde{A}$ ottenuta dimenticando la prima riga, e applichiamo l'algoritmo finché é possibile.\\
+Iteriamo il procedimento e otteniamo una matrice $\overline{A}_R$ (simile a questa) detta matrici a scalini
+$$\begin{pmatrix}
+0 & 1 &  ? & ?  &? & ? \\
+0 & 0 & 0 & 1 &? & ?\\
+0 & 0 & 0 & 0 & 0& 1\\
+0 & 0 & 0 & 0 & 0& 0 \\
+\end{pmatrix}$$
+Ora continuando ad applicare operazione del 3 tipo si riesce ad ottenere degli zeri sopra gli $1$, ottenendo così la matrice $\hat{A}_R $ detta a scalini completi
+$$\begin{pmatrix}
+0 & 1 &  ? & 0  &? & 0 \\
+0 & 0 & 0 & 1 &? & 0\\
+0 & 0 & 0 & 0 & 0& 1\\
+0 & 0 & 0 & 0 & 0& 0 \\
+\end{pmatrix}$$
+Gli $1$ vengono chiamati PIVOT di $\hat{A}_R$ .\\
+La matrice $\hat{A}_R$ ha degli 0, sotto, sopra e destra dei pivot .
+\spazio
+\subsubsection{Calcolo del rango}
+\begin{defn}[Matrice R-elementare]\bianco
+Sia F una matrice di taglia $ n \times n $.\\
+ F si dice  R-elementare se si ottiene applicando un' operazione R-elementare alla matrice identica $I_n$
+\end{defn}
+
+\begin{lem}
+Sia A una matrice $ m \times n $ e sia $ \omega $ un'operazione elementare di un dato tipo.
+
+$$A\xrightarrow{\omega}A'$$
+$$ I_m \xrightarrow {\omega} F_\omega $$Allora $$A'=F_\omega A$$
+
+\end{lem}\spazio
+\begin{lem}
+Ogni matrice R-elementare è invertibile e la sua inversa è elementare dello stesso tipo
+\end{lem}
+
+\begin{oss}
+L'algoritmo applica una serie di operazione elementari quindi :
+$$ \hat{A}_R=F_k \cdots F_1 A $$ ma $F_k ,\cdots, F_1 \in GL (m,\K) $ quindi anche il loro prodotto appartiene al gruppo lineare ne segue che 
+$$ \hat{A}_R \sim_S A$$ %e trasponendo $$\hat{A}_C \sim_D A $$
+\end{oss}
+
+\spazio
+\begin{prop}[Rango] $$rk(A)=rk(\hat{A} )$$
+\proof 
+Sia $ A \in M(m,n, \K) $ .
+Essendo $ \hat{A}_R \sim_S A$ allora $ rango \, A = rango \, \hat{A}_R$ infatti possiamo vedere la relazione $\sim_S$ come un caso particolare di $\sd$\\
+\begin{oss} 
+L'algoritmo di Gauss permette di calcolare facilmente il rango di una matrice, conoscendo la sua ridotta a scalini, infatti il rango di una matrice a scalini \`e dato dal numero di pivot.
+\end{oss}
+\end{prop}
+\newpage
+\subsubsection{Sistema omogeneo}
+\begin{prop}[Nucleo] $$\ker A= \ker \hat{A}_R$$ 
+\proof
+Se $ A \sim_S D $ allora vale che $D=QA$.
+Mostriamo che valgono entrambe le inclusioni.
+\begin{itemize}
+\item Sia $x \in \ker A $
+$$ DX= (QA)X=Q(0)=0  \text{ ovvero }  \ker A  \subseteq \ker D $$
+\item 
+Sia $ x \in \ker D  $
+$$  DX=(QA)X = 0 \quad Q(A(X))=0 $$  ma $ Q \in GL$ quindi ammette inversa  $$ AX=0 \text{ ovvero } \ker D  \subseteq \ker A $$
+\end{itemize}
+Valgono entrambe le disuguaglianze dunque $\ker A =\ker D$
+\endproof
+\end{prop}
+\begin{oss}[Equazione omogenea]
+Dalla proposizione osserviamo che invece che risolvere l'equazione
+$ AX=0$ possiamo risolvere $ \hat{A}_R X=0$
+\end{oss}
+\subsubsection{Sistema non omogeneo}
+Occupiamoci ora del sistema non $ AX=B$ con $ B \neq 0$ quindi non omogeneo
+\begin{defn}[Matrice completa del sistema]
+Consideriamo la matrice 
+$$ 
+\begin{pmatrix}
+A  & \vert  & B 
+\end{pmatrix}$$
+tale matrice viene chiamata matrice completa del sistema e si ottiene dalla matrice A dei coefficienti aggiungendo la colonna B dei termini noti.
+\end{defn}
+\spazio 
+\begin{prop} [Principio di Rouché - Capelli]\bianco % dubbio di logica
+Il sistema $ AX=B$ ha soluzione se e solo se 
+$$ rk \begin{pmatrix}
+A
+\end{pmatrix}= rk \begin{pmatrix}
+A &  \vert & B 
+\end{pmatrix}
+$$
+\proof $ \implica$ \\
+Sia  $ A = ( A^1 \cdots A^n )$.
+Supponiamo che il sistema abbia soluzione dunque
+$$ \exists \begin{pmatrix} x_1 \\ \vdots \\ x_n  \end{pmatrix}  \in \K^n\tc B = x_1 A^1 + \cdots x_n A^n$$ dunque
+$$Span ( A^1, \cdots , A^n ) = Span ( A^1, \cdots , A^n , B )  \quad \implica \quad rk \begin{pmatrix}
+A
+\end{pmatrix}= rk \begin{pmatrix}
+A &  \vert & B 
+\end{pmatrix}$$
+ $\Leftarrow$ in modo contro-nominale.\\
+Supponiamo che il sistema non abbia soluzione quindi $ B \neq AX \quad \forall X\in \K ^n $ da cui
+$$ Span ( A^1, \, \cdots \, A^n ) \subseteq Span ( A^1 , \, \cdots , \, B ) \implica rk \begin{pmatrix}
+A
+\end{pmatrix}<  rk \begin{pmatrix}
+A &  \vert & B 
+\end{pmatrix}$$
+\endproof 
+\end{prop}
+\subsubsection{Calcolo dell'inversa}
+\begin{prop}[Matrici invertibili]
+Sia A una matrice di taglia $ n \times n$ 
+$$ A \in GL(n, \mathbb{K}) \quad \ses \quad rk(A)= n $$
+\proof $\implica$\\
+Se $ A \in GL(n) $ allora $\exists Q \in  GL(n) $ tale che $QA=I_n$ quindi
+$$ A \sim_S I_n \implica rk(A)=rk(I_n)=n $$
+\proof $\Leftarrow$\\
+Se $ rk(A)=n $ allora
+ $$A\sim_S I_n \implica \exists Q \in GL(n) \tc QA=I \implica A \in GL(n)$$
+\endproof
+\begin{oss}
+Per trovare la matrice inversa basta tenere conto delle operazione R-elementari per passare dalla matrice $ A $ a $I_n$ ovvero 
+$$ \begin{pmatrix}
+A & \vert &I_n 
+\end{pmatrix} \xrightarrow{R-Gauss} \begin{pmatrix}
+I_n &\vert &  Q
+\end{pmatrix}
+$$
+infatti se $A$ viene trasformata con R-Gauss in $I_n$ 
+$$ I_n= F_1 \cdots F_n \cdot A \text { con }  F_i \text{  R-elementari} $$
+Pongo $$Q =A^{-1}=  F_1 \cdots F_n$$
+\end{oss}
+\end{prop}
+\begin{cor} Ogni matrice invertibile \`e prodotto di matrici R-elementare
+\end{cor}
+\spazio
+\subsubsection{Vettori linearmente indipendenti}
+\begin{prop} Estrazione di una base da un gruppo di generatori.\\
+Dati $\nvett \in \K ^n $, sia $ A= ( v_1 \, \vert \, \cdots \, \vert \, v_n )$.\\
+Detta S una ridotta a scalini di A, se $ S^{a_1} , \, \cdots \, , S\alla{ a_r} $ sono le colonne dove sono presenti i pivot allora $ \{ v_{a_1}, \, \cdots \, ,\, v_{a_r} \} $ sono una base di $Span( \nvett ) $
+\end{prop}
+\newpage
+\section{D-equivalenza}
+\begin{defn}[D-equivalenza]\bianco
+Siano $A,B \in M(m,n,\K) $ allora
+$$ A \sim_D B \quad \ses \quad \exists P \in GL(n) \quad B=AP$$
+\end{defn}
+\begin{oss} Lo spazio generato dalle colonne \`e invariante, quindi se $A
+\sim_D B $ allora $Im(A)=Im(B) $ da cui anche $rk(A)=rk(B) $
+\end{oss}
+
+\begin{defn}
+$\forall  0\leq r \leq \min(m,n) $ allora definiamo 
+$$ M_r(m,n, \K ) = \{ A \in M(m,n,\K) \, \vert \, rk(A)=r \} $$
+\end{defn}
+Lo spazio $M(m,n,\K) $ \`e l'unione disgiunta degli insiemi $M_r(m,n,\K) $ al variare del rango $r$, possiamo restringere la relazione $\sim_D$ a ciascuna di essi.\\
+Per semplicit\'a ci restringiamo nel caso di rango massimo ovvero $ r=\min(m,n) $ 
+
+\spazio
+
+
+ \subsection*{Regime suriettivo} 
+
+
+$$\begin{tikzcd} \K^n\arrow[r,"A"] & \K ^m \end{tikzcd} $$
+In questo caso $Im(A)= \K ^m $ da cui $rk(A)=m $.\\
+Essendo la funzione suriettiva vale che $n \geq m $ 	quindi se $rk(A)=m$ \`e il massimo possibile . 
+\spazio
+Considero $ \hat{A}_C$ dato che il rango \`e m ottengo che 
+$$ \hat{A}_C=J_m(m,n)= \begin{pmatrix}
+I_m & \vert & 0_{m,n-m} 
+\end{pmatrix}$$
+Ne segue che il quoziente $M_m(m,n,\K)\backslash\sim_D$ \`e ridotto ad un solo punto e quindi $J_m(m,n)$ \`e il rappresentante normale dell'unica classe di equivalenza
+ \newpage
+ \subsection*{Regime iniettivo} 
+ $$\begin{tikzcd} \K^n\arrow[r,"A"] & \K ^m \end{tikzcd} $$
+ In questo caso $Im(A)=\K^n $ da cui $rk(A)=n $.\\
+ Essendo la funzione iniettiva vale che $n\leq m $
+ \begin{defn}[Simbolo di Schubert]\bianco
+ Sia $\hat{A}_C$ la matrice ottenuta applicando ad $A$ l'algoritmo di Gauss (completo) rispetto alle colonne.\\
+Se il rango di $A$ \`e n la matrice a scalini avr\'a $n$ pivot.
+ $$s(\hat{A}_C)=(s_1,\, \cdots\, ,\, s_n )$$
+ dove $s_j$ \`e uguale all'indice di riga del j-esimo pivot di $\hat{A}_C$
+ \end{defn}
+ 
+ Poniamo $\forall j=0,\, \cdots \, , \, m $
+ $$ p_j:\, \K^m \to \K^{m-j} \qquad  p_j \begin{pmatrix}
+ x_1 \\ \vdots \\ x_m
+ \end{pmatrix} = \begin{pmatrix}
+ x_1 \\ \vdots \\ x_{m-j} 
+ \end{pmatrix}$$
+ Poniamo inoltre
+ $$ d_j=\dim(p_j(Im(A))$$
+ \begin{prop} La dimensione $d_j$ varia da $n$ a $0$ in modo monotono diminuendo di 1, passando da $d_{s_i+1} $ a $d_{s_i}$ .\\
+ Da ci\'o segue che il simbolo dipende solo da $Im(A)$ dunque pu\'o essere definito anche 
+ $$s(A)=s(Im(A)) \quad \forall A \in M_n(m,n,\K) $$
+ Il simbolo resta costante, dunque sulla classe di equivalenza .
+\proof Segue immediatamente dalla forma della matrice a scalini
+ \end{prop}
+ \spazio
+ Poniamo $\forall s $ simbolo 
+ $$M_{n,s}(m,n,\K) = \{ A \in M_n(m,n,\K) \, \vert \, s(A)=s \} $$ 
+ \begin{prop} Fissato un simbolo $s$.\\
+ Siano $A,B \in M_{n,s}(m,n,\K) $.
+ $$ Im(A)=Im(B) \quad \implica \quad \hat{A}_C= \hat{B}_C $$
+ \proof
+ Poniamo $L=Im(A)$.\\ 
+ Per la proposizione precedente segue che $s=s(L)=s(A)=s(\hat{A}_C)$.\\
+ Sia 
+ $$ p_s :\, \K ^m \to \K^n \qquad p_s(X)= \begin{pmatrix}
+ x_{s_1} \\ \vdots \\ x_{s_n} 
+ \end{pmatrix}$$ 
+ \`e facile verificare che la restrizione di $p_s$ ad $L$ \`e un isomorfismo.\\
+ Le colonne di $\hat{A}_C$ formano l'unica base di L che viene mandata dalla restrizione nella base canonica di $\K^n $; da ci\'o segue che $\hat{A}_C $ \`e completamente determinato da $L $ da cui segue la proposizione.
+ \endproof
+ \end{prop}
+ \spazio
+Mettendo insieme quanto detto fino ad ora
+\begin{cor}[Invariante completo]\bianco
+Siano $A,B \in M(m,n,\K) $ allora
+$$ A \sim_D B \quad \ses \quad Im(A)=Im(B)$$
+Per ogni $A$ come sopra, $\hat{A}_C$ \`e il rappresentante in forma normale della classe di equivalenza $[A]_D$
+\end{cor}
+
+\spazio
+Possiamo riformulare quanto detto sopra.
+\begin{defn}[Insieme di Grassman]
+$$G_{m,n} =\{ L \in \K ^m \, \vert \, \dim L=n \}$$
+\end{defn}
+
+L'applicazione
+$$ \pi :\, M_n(m,n,\K) \to G_{n,m}  \qquad \pi(A)= Im(A)$$
+\`e suriettiva, inoltre $ \pi(A)=\pi(B) $ se e solo se $ A \sim_D B $ quindi l'insieme di Grassman pu\'o essere identificato con il quoziente per la relazione $\sim_D$ 
+$$ G_{m,n} =M(m,n,\K) \sbarra \sim_D$$
+dunque $\pi$ si identifica come la proiezione naturale al quoziente 
+\spazio
+
+\begin{defn} Per ognuno dei $ { m \choose n } $ simboli $s$
+$$ B_s=\{ L \in G_{m,n} \, \vert \, s(L)=s \} $$
+$$\mathcal{A}_{C,s}=\{ \hat{A}_C \in  M_n(m,n,\K) \, \vert \, s(\hat{A}_C)=s $$
+\end{defn}
+\begin{oss} $G_{m,n} $ \`e unione disgiunta dei $B_s$ 
+\end{oss}
+
+Esplicitiamo la struttura di $\mathcal{A}_{C,s}$ 
+\begin{defn} Sia $J_s$ l' unica matrice in $\mathcal{A}_{C,s}$ le cui entrate diverse dai pivot sono uguali a zero.
+\end{defn}
+
+Sia 
+$$ \phi _s : \, \mathcal{A}_{C,s} \to M(m,n,\K) \qquad \phi_s (\hat{A}_C)=\hat{A}_C -J_s$$ 
+Inoltre sia $\mathcal{V}_s=Im(\phi_s)$.\\
+Chiaramente se
+$$ \phi _s : \, \mathcal{A}_{C,s} \to \mathcal{V}_s$$
+\`e biettivo 
+
+\newpage
+\begin{prop} Per ogni simbolo $s=(s_1,\, \cdots \, , \, s_n $, $\mathcal{V}_s$ \`e un sottospazio vettoriale di $M(m,n,\K) $ di dimensione
+$$ d_s=\dim \mathcal{V}_s= \sum_{j=1}^n ( m-s_j-(n-j))$$
+\proof Ogni matrice di $\mathcal{V}_s$ \`e caratterizzata da avere un pacchetto di entrate necessariamente nulle che dipendono dal simbolo, le altre entrate sono libere, la formula ha per j-esimo addendo il numero di parametri liberi sulla j-esima colonna.
+\endproof
+\end{prop}
+$\mathcal{V}_s$ \`e detto cella di Schubert di $G_{m,n}$ di simbolo $s$ e dimensione $d_s$  ed \`e uno spazio affine $  \mathcal{A}_{C,s} = J_s+  \mathcal{V}_s$
+\begin{oss} Alcune osservazioni sulle celle
+\begin{enumerate}
+\item La dimensione massima \`e $d_{max}=n(m-n) $ corrispondente al simbolo $s_{max}=(1,2,3,\, \cdots, n )$
+\item La dimensione minima \`e $d_{min}=0$ corrispondente al simbolo $s_{min}=(m-n+1, \, \cdots, n )$
+\end{enumerate}
+\end{oss}
+\spazio 
+\spazio
+\section{S-equivalenza}
+Trasponendo e sostituendo ovunque "colonna" con "riga" abbiamo un trattamento "duale" della relazione per cui $A\sim_S B$ in particolare abbiamo
+\begin{prop}
+$$A \sim_S B \quad \ses \quad Ker(A)=Ker(B) $$
+Per ogni $A$, $\hat{A}_R$ \`e il rappresentante in forma normale di $[A]_S$.\\
+Nel regime iniettivo il quoziente \`e ridotto ad un solo punto e $J_{s_max} $ \`e il rappresentante in forma normale dell'unica classe di equivalenza.\\
+Nel regime suriettivo il quoziente si identifica con $G_{m,n-m}$
+\end{prop}
+\newpage
+\section{Spazio duale}
+\begin{defn}
+Sia V uno spazio vettoriale su $\K$, si definisce spazio duale
+$$ V \alla * = Hom(V,\K) $$
+Gli elementi $\varphi \in V^*$ sono detti funzionali.
+\end{defn}
+\begin{prop} Sia $\dim V= n $ allora $\dim V^*=n $
+$$ V^*=Hom(V,\K) \cong Hom(\K^n,\K) = M(1,n,\K)$$
+dove il primo isomorfismo deriva tramite passaggio di coordinate rispetto ad una base arbitrale di $V$ da cui 
+$$\dim V^*=\dim M(1,n,\K)=n$$
+\endproof
+\end{prop}
+\begin{defn}[Base duale]\bianco
+Fissiamo una base $\B=\{ \nvett \, \} $ di V.\\
+Allora la base duale di $\B^*$ di $\B$  
+$$ \B^*=\{ v_1^*, \, \cdots \, , \, v_n^* \, \} $$ 
+gli elementi $v_j^*$ sono definiti dalla propriet\'a
+$$ v_j ^*=\delta_{i,j}= \begin{cases} 1 \quad \text{ se } i=j \\
+0 \quad \text{ se } i \neq j
+\end{cases}$$
+$\delta_{i,j} $ viene chiamato delta di Kronecker.
+\end{defn}
+\begin{prop} Mostriamo che la base duale \`e una base dello spazio duale
+\proof Mostriamo che i funzionali sono linearmente indipendenti, se 
+$$ a_1 v_1^*+ \cdots + a_n v_n ^* =0 $$
+dove lo $0$ \`e inteso il funzionale identicamente nullo (manda a 0 gli elementi di una base)
+$$ \forall j \quad ( a_1 v_1^*+ \cdots + a_n v_n ^* )(v_j)=(a_j v_j^*)v_j=a_j=0$$
+Poich\`e i funzionali sono $n$ e sono linearmente indipendenti, formano una base
+\endproof
+\end{prop}
+\label{isoDuale}
+\begin{cor} $\forall \B $ base di $V$.
+$$ \varphi_\B : \, V \to V^* \qquad \varphi_\B(v_i)=v_i^*$$
+\`e un isomorfismo
+
+\begin{oss} L'isomorfismo sopra definito non \`e canonico perch\`e dipende dalla scelta della base $\B$
+\end{oss}
+\end{cor}
+\spazio
+\begin{defn}[Bi-duale]\bianco 
+Sia $V$ uno spazio vettoriale.
+$$\bidu =Hom \left( V^*,\K \right) $$
+\end{defn}
+\begin{oss} Poich\`e essere isomorfi \`e una relazione di equivalenza e dato che, per il corollario precedente, uno spazio vettoriale \`e isomorfo al suo duale ne segue che 
+$$ V \cong V^\star  \quad V^\star \cong \bidu \quad\implica \quad V \cong \bidu$$
+\end{oss}
+\begin{prop} L' applicazione 
+$$ \phi: \, V \to \bidu$$
+$$ v \to \varphi_v $$
+dove
+$$ \varphi_v:\, V^\star \to \K $$
+$$ \psi \to \psi(v)$$
+\begin{itemize}
+\item[(i)]\`e un isomorfismo canonico
+\item[(ii)] $\forall \B$ base di $V$ , $ \varphi_{\B^*} \circ \varphi_\B$
+\end{itemize}
+\proof  \bianco\begin{itemize}
+\item[(i)]
+\begin{itemize}
+
+
+\item Mostriamo che $\forall v \in V $ la funzione $\varphi_v$ \`e lineare. 
+$$ \forall\psi_1, \psi_2 \in V^\star $$ $$\varphi_v( \psi_1 + \psi_2)=(\psi_1+\psi_2)(v)=\psi_1(v)+ \psi_2(v)=\varphi_v(\psi_1) + \varphi_v(\psi_2) $$
+Il prodotto per scalari \`e analoga
+\item Mostriamo che $\phi $ \`e lineare
+$$ \forall v_1, v_2 \in V $$
+$$ \phi( v_1+v_2)=\varphi_{v_1+v_2}(\psi)=\psi(v_1+v_2)=\psi(v_1)+\psi(v_2) = \varphi_{v_1}(\psi)+\varphi_{v_2}(\psi)=\phi(v_1)+\phi(v_2)$$
+Il prodotto per scalari \`e analoga
+\item $\phi$ \`e isomorfismo.\\
+Poich\`e $\dim V= \dim \bidu$ basta dimostrare l'iniettivit\'a di $\phi$
+$$Ker \phi=\big\{ v \in V \, \vert \, \phi(v)=0_{ \left( V^* \right) ^* }  \big \} \implica \forall \psi \in V^* \quad \varphi_v ( \psi )=0 \implica \psi(v)=0$$
+Da cui segue che il kernel \`e ridotto al solo 0 
+
+Dai punti precedenti segue che $\phi$ \`e un isomorfismo canonico tra uno spazio ed il suo bi-duale
+\end{itemize}
+\item[(ii)]
+Sia 
+$$ \B= \{ \nvett \} \text{ una base di V } $$
+Poich\`e una funzione \`e univocamente determinata dai valori che assume su una base, occorre dimostrare che
+$$ \phi(v_i ) = \varphi_{\B^\star} \circ \varphi_\B (v_i)   \quad \forall i = 1, \dot n $$
+$$ \phi(v_i) = \varphi_{v_i}$$
+$$ \varphi_{\B^\star} \circ \varphi_\B (v_i)= \varphi_{\B^\star} (v_i \star )= \left( v_i ^\star \right)^\star$$
+Ora poich\`e $\B^\star$ \`e una base di $V^\star $ basta provare che 
+$$ \varphi_{v_i} (v_j^\star ) = \left( v_i ^\star \right)^\star (v_j^\star) \quad \forall j=1,\dots , n \quad \forall i =1,\dots, n $$
+Ora vale l'uguaglianza infatti entrambe valgono $\delta_{i,j}$
+\end{itemize}
+\endproof 
+\end{prop}
+\newpage
+\subsection{Annullatore e luogo di zeri}
+\begin{defn}[Annullatore] \bianco
+Sia $W$ un sottospazio vettoriale di $V$ 
+$$ Ann(W)=\{ \psi \in V^* \, \vert \, \forall w \in W \, \psi(w)=0 \} $$
+\end{defn}
+
+\begin{prop} L'annullatore di $W$ \`e un sottospazio di $V^*$ di dimensione 
+$$ \dim (Ann(W))=\dim V - \dim W $$
+\proof  Mostriamo che \`e un sottospazio 
+\begin{itemize}
+\item il funzionale identicamente nullo, annulla tutti i vettori di $V$ quindi anche quelli di $W$
+\item $\forall \psi, \, \varphi \in Ann(W) \quad \forall w \in W \, \psi (w)=\varphi (w)=0 $ quindi
+$$ (\psi + \varphi)(w)= psi (w)+ \varphi (w)=0 $$
+In modo analogo si mostra la chiusura rispetto al prodotto scalare
+\end{itemize}
+Mostriamo che vale la formula sulle dimensioni.\\
+Sia $\dim V = n $ e $ \dim W = k $ con $ n \geq k $.\\
+Sia 
+$$\{ w_1,\, \dots , \, w_k\} \text{  una base di } $$ estendiamola a 
+$$ \{ w_1,\, \dots , \, w_k,\, v_{k+1} ,\, \dots ,\, v_n \} \text{ base di } V$$
+
+L'insieme $$ \{v_{k+1}^* ,\, \dots ,\, v_n ^*\}$$ \`e una base dell'annullatore.\\
+Poich'\`e tali vettori appartengono alla base duale, sono linearmente indipendenti, mostriamo che generano $Ann(W)$\\
+$ \forall f \in Ann(W) $ poich\`e $\B^\star$ \`e una base dello spazio duale 
+$$f= a_1 w_1^* + \dots + a_k w_k^* + a_{k+1} v_{k+1} ^* + \dots + a_n v_n ^* $$
+Ora 
+$$ f \in Ann (W) \quad \implica \quad f(w)=0 \quad \forall w \in W \quad \implica \quad f(w_i)=0 \quad \forall i=1,\dots k $$
+quindi
+$$ f(w_i) = (  a_1 w_1^* + \dots + a_k w_k^* + a_{k+1} v_{k+1} ^* + \dots + a_n v_n ^*) w_i = a_i =0 $$
+Da cui segue che 
+$$ \forall f \in Ann(W) \quad f = a_1 v_{k+1} + \dots + a_n v_n $$
+\endproof
+\end{prop}
+
+\begin{defn}[Luogo di zeri]\bianco
+Sia $ U$ un sottospazio di $V^*$ allora
+$$Z(U)=\{ v \in V \, \vert \, \forall \psi \in U \quad \psi (v)=0 \} $$
+\end{defn}
+Posso vedere il luogo di zeri come una funzione
+$$ Z: \, G_{n-k} (V^*) \to G_k(V) \quad U \to Z(U) $$
+\begin{prop}
+Il luogo di zeri \`e un sottospazio di $V$, la dimostrazione \`e analoga all'annullatore
+\end{prop}
+\begin{prop} Alcune propriet\'a dell'annullatore e del luogo di zeri
+\begin{itemize}
+\item[(i)] $ S \subseteq T \implica Ann(T)\subseteq Ann(S) $
+\item[(ii)] $ \forall f \in V^* \quad Ann (f)=\phi(Ker f ) $ con $\phi $ isomorfismo canonico $V \to  \left( V^* \right) ^* $
+\item[(iii)] $\forall U $ sottospazio di V $\quad Ann(Ann(U))=\phi(U) $
+\item[(iv)] $Ann(Ann(W))=W$
+\item[(v)] $Z(Ann(W))=W $
+\end{itemize}
+\proof \bianco \begin{itemize}
+\item[(i)]
+$$f \in Ann(T) \implica f(v)=0 \quad \forall v \in T \implica f(v)=0 \quad \forall v\in S \implica f \in Ann(S)$$
+\item[(ii)]
+$$ Ann(f)= \{ h \in  \left( V^* \right) ^* \, \vert \, h(f)=0 \} =
+\{ \phi (x) \in  \left( V^* \right) ^* \, \vert \, \phi(x)(f)=f(x)=0 \}=$$
+$$ = \phi \left( \big\{  x \in V \, \vert \, f(x)=0\big\}\right)=\phi(Ker f ) $$
+\item[(iii)]
+Sia $\dim V = n $ e $ U $ sottospazio di $V$  allora
+$$ \dim Ann(U)=n -\dim U $$
+$$ \dim Ann(Ann(U))=n -\dim Ann(U)=n -n + \dim U $$
+Ma poich\`e $ U \cong \phi(U) $ vale che $$\dim \phi (U) = \dim U = \dim (Ann (Ann(U))$$
+Quindi poich\`e i due sottospazi hanno la stessa dimensione basta dimostrare una sola inclusione
+$$ \forall u \in U \quad \forall \psi \in Ann(U) \quad \phi (u)(\psi)=\psi(u)=0$$
+quindi vale che $\phi(U)\subseteq Ann(Ann(U))$
+\end{itemize}
+\endproof
+\end{prop}
+$$ 
+\begin{tikzcd} 
+G_k(V)
+\arrow[r,"Ann"]
+&G_{k-n}(V^*) 
+\arrow[d,"Z"]
+\arrow[r,"Ann"]
+& G_k\left( \left( V ^*\right) ^* \right) 
+\\
+& G_k(V) 
+\arrow{ur} [leftrightarrow]{\phi} 
+\end{tikzcd}
+$$
+Il diagramma commuta dove $\phi$ \`e ottenuto dall'isomorfismo canonico tra uno spazio ed il suo bi-duale
+\newpage
+\subsection{Trasposta}
+\begin{defn}[Applicazione trasposta]\bianco
+Sia $f:\, V \to W $ allora definiamo l'applicazione trasposta
+$${}^t f:\, W^*\to V^* \qquad  {}^t f(\psi)=\psi \circ f  $$
+\end{defn}
+\begin{oss}Osserviamo che la funzione \`e ben definita.\\
+Supponiamo che $\psi \in W^*$ allora $\psi:\, W \to \K $ quindi
+$$\begin{tikzcd}
+V
+\arrow[r,"f"]
+&W 
+\arrow{r}{\psi}
+&\K
+\end{tikzcd}$$
+ovvero $\psi \circ f \in V^* $ quindi ${}^tf:\, W^* \to V^*$
+\end{oss}
+\begin{prop}La trasposta \`e lineare\\
+Siano $\psi , \varphi \in W^* $ allora
+$$ {}^t f( \psi + \varphi ) = (\psi + \varphi ) \circ f = \psi \circ f + \varphi \circ f =  {}^t f( \psi ) +  {}^t f( \varphi)  $$
+Sia $a \in \K $ 
+$$  {}^t f(a \psi ) =(a\psi ) \circ f = a(\psi \circ f ) =  a \cdot {}^t f( \psi )$$
+\endproof
+\end{prop}
+\begin{prop}Per l'applicazione trasposta sono veri i seguenti fatti
+\begin{itemize}
+\item[(i)] ${}^t \left( {}^t (f) \right)=f$
+\item[(ii)] Se $h:\, W \to Z$ lineare allora
+$$ {}^t(h \circ f ) = {}^t f \circ {}^t h$$
+\item[(iii)]$ Ker ({}^t f )=Ann(Im (f) ) $ 
+\item[(iv)] $Imm ({}^t f )=Ann(Ker (f) ) $
+\item[(v)] Se $\B $ base di V e $\D$ base di W allora
+$$ M_{\B^*} ^{\D^*} \left({}^tf \right) = {}^t \left( \AB (f) \right)$$
+\end{itemize}
+\proof \bianco
+\begin{itemize}
+\item[(i)]
+$$
+\begin{tikzcd}
+V 
+\arrow[r,"f"]
+\arrow{d}{\phi_V} 
+&W 
+\arrow{d}{\phi_W}\\
+\left( V ^* \right)^* 
+\arrow{r}{{}^t \left( {}^t f\right)}
+&\left( W ^* \right)^* 
+\end{tikzcd} $$
+Devo dimostrare che il diagramma commuta quindi che 
+$$ \phi_W \circ f = {}^t \left( {}^t f\right) \circ \phi_V \text{ ovvero }$$
+$ \forall v \in V $
+$$( \phi_W \circ f)(v) =  \left( {}^t \left( {}^t f\right) \circ \phi_V \right) (v) \text{ ovvero } $$
+$\forall \psi \in W^* $ 
+$$( \phi_W \circ f)(v) (\psi) =  \left( {}^t \left( {}^t f\right) \circ \phi_V \right) (v) (\psi)  $$
+Mostriamo che \`e vera l'ultima uguaglianza 
+$$ ( \phi_W \circ f)(v) (\psi) =( \phi_W (f(v)) ) (\psi)=\psi(f(v))=(\psi \circ f ) (v) $$
+ $$\left( {}^t \left( {}^t f\right) \circ \phi_V \right) (v) (\psi)= 
+{}^t \left( {}^t f \right) (  \phi_V(v))( \psi) =\left( {}^t \left( {}^t f \right)  \circ \phi_V (v)\right)(\psi)=$$
+$$= \left( \phi_V \circ {}^t f \right) (\psi)= \phi_V(v)\left( {}^t f \circ \psi \right)=\left( {}^t f \circ \psi \right) (v)=(\psi \circ f ) (v) $$
+\item[(ii)] ${}^t ( h \circ f ) :\, Z^* \to V^* $ quindi $\forall \psi \in Z^*$
+$${}^t ( h \circ f )(\psi) = \psi \circ h \circ f = \left( {}^t h ( \psi) \right) \circ f ={}^t f \left( \left( {}^t h ( \psi) \right) \right)=\left( {}^t f \circ {}^t h \right) (\psi)  $$
+\item[(iii)]Mostriamo entrambe le inclusioni\\
+$\subseteq \quad \forall \psi \in Ker \left( {}^t f \right)$ vale 
+$$ \left( {}^t f \right) (\psi) = 0 \, \implica \, (\psi \circ f ) = 0 \implica \forall v \in V  \, \psi(f(v))=0 \implica \psi \in Ann (Imm(f)) $$
+$\supseteq \quad \forall \psi \in Ann(Imm(f))$ vale $ \forall v \in V$
+$$ \psi(f(v))=0 \implica ( \psi \circ f ) (v)=0 \implica {}^t f ( \psi)=0 \implica \psi \in Ker \left( {}^t f \right) $$
+\item[(iv)] Dalla $(iii) $ 
+$$ Ker \left( {}^t \left( {}^t f \right) \right)= Ann \left( Imm \left( {}^t f \right) \right) $$
+Applicando l'annullatore
+$$ Im\left( {}^t f \right) = Ann \left( Ann \left( Imm \left( {}^t f \right) \right)\right)=Ker \left( {}^t \left( {}^t f \right) \right)=Ker (f)$$
+\end{itemize}
+\end{prop}
+\begin{cor} Rango della trasposta
+\proof
+$$ rk\left( {}^t A\right) = \dim Im \left( {}^t A \right)=\dim Ann (Ker (f)) = n -\dim Ker(f)=rk(A)$$
+\endproof
+\end{cor}
+%\end{document}
+

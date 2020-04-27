@@ -1,0 +1,749 @@
+%\input{0_Preambolo.tex}
+%\begin{document}
+
+\section{Geometria Affine}
+\subsection{Spazio affine}
+\begin{defn}[Spazio affine astratto]\bianco
+Uno spazio affine su uno spazio vettoriale $V$ \'e una coppia $(E,\phi)$ con queste propiet\'a
+\begin{itemize}
+\item[(i)]$E \neq \emptyset$
+\item[(ii)]$\phi:\, E \times E \to V $ denotiamo $ \phi((P,Q)) $ con $ \vett{PQ}$
+\item[(iii)]$\forall P \in P \quad \vett{PP}=0$
+\item[(iv)]$\forall P \in E \quad \phi_P:\, \{ P \} \times E \to V  \text{ \'e bigettiva } $
+\item[(v)]vale la chiusura dei triangoli $ \vett{PQ} + \vett{QR}+\vett{RP}=0 \quad
+ \forall P,Q,R \in E $
+\end{itemize}
+\end{defn}
+
+\begin{lem}Sia $(E,\phi)$ uno spazio affine astratto allora
+$$ \forall P,Q \in E \qquad \vett{PQ}=-\vett{QP}$$
+\proof Considero la terna di punti di $E$: $P,Q,R$ e applicando la chiusura del triangolo ottengo
+$$ \vett{PQ}+\vett{QQ}+\vett{Q,P}=0 \quad \implica \quad \vett{PQ}+ \vett{QP}= 0 \quad \implica \quad\vett{PQ}=-\vett{QP}$$
+\endproof
+\end{lem}
+\spazio
+\begin{defn}[Somma punto vettore]\bianco
+Sia $P\in E $ e $v \in V $ allora definiamo 
+$$ P+v  \in E $$
+come l'unico punto $ Q \in E $ tale che $ \vett{PQ}=v$
+\begin{oss}La definizione \'e ben definita infatti esiste un solo punto $Q=\phi_P^{-1}(v)$ poich\'e $\phi_P$ \'e biettiva
+\end{oss}
+\end{defn}
+\begin{lem}Sia $P\in E$  e $v,w \in V $ .\\
+Allora
+$$ P+ (v+w)=(P+v)+w$$
+\end{lem}
+\spazio
+\begin{defn}[Spazio affine standard]\bianco
+Sia $V$ uno spazio vettoriale, $(E,\phi)$ \'e uno spazio affine standard su $V$ se 
+\begin{itemize}
+\item $E=V$ come insieme
+\item $\phi(P,Q)=Q-P$ dove usiamo l'ambiguit\'a sul fatto che $P,Q$ sono punti di $E$ ma anche vettori di $V$
+\end{itemize}
+\end{defn}
+\newpage
+\subsection{Combinazione affine di punti}
+Siano $P_0, \cdots P_k \in E$ e $a_0, \cdots , a_k \in \K$
+vogliamo definire 
+$$ \sum_{j=0}^k a_j P_j =P\in E $$
+Fissiamo $P_0$ allora $F_{P_0}:\, E \to V $ \'e biettiva, quindi posso usarla per trasportare i punti di $E$ in vettori di $V$ infatti la somma voluta diventa
+$$ P=P_0 + \sum_{j=0}^k a_j \vett{P_0P_j} $$
+notiamo ora che questa somma \'e definita infatti la sommatoria \'e combinazione lineare di vettori e quindi \'e un vettore, otteniamo dunque una somma punto-vettore.\\
+Questa definizione per\'o prevede una scelta arbitraria infatti se invece di $P_0$ fisso $P_1$ ottengo
+$$ P'=P_1 + \sum_{j=0}^k a_j \vett{ P_1 P_j} $$
+Troviamo una condizione sui coefficienti $a_j$ in modo che $P=P'$
+$\forall j=0, \cdots, k $ consideriamo la terna $P_0,P_1, P_k$ e usando la chiusura del triangolo otteniamo 
+$$ \vett{ P_0P_1} + \vett{P_1P_j} + \vett{P_jP_0} = 0 $$
+$$ \vett{ P_0P_1} + \vett{P_1P_j} =- \vett{P_jP_0} $$
+$$ \vett{ P_0P_1} + \vett{P_1P_j} = \vett{P_0P_j} $$
+quindi 
+$$ P=P_0 + \sum_{j=0}^k \vett{P_0P_j}=P_0 + \sum_{j=0}^k a_j \left( \vett{P_OP_1}+ \vett{P_1P_j} \right)=
+P_0+ \left( \sum_{j=0}^k a_j \right) \vett{P_0P_1} + \sum_{j=0}^k a_j \vett{P_1P_j }$$
+Visto che vale $P=P'$ ne segue che 
+$$ P_1= P_0 + \left(\sum_{j=0}^k a_j \right) \vett { P_0P_1} $$
+dunque ne segue che $\ds \sum_{j=0}^k=1$
+Riassumiamo quanto detto con la seguente proposizione
+\begin{prop} Siano $P_0, \cdots , P_k \in E $ e $a_0, \cdots , a_k  \in \K$.\\
+Se $\ds \sum_{j=0}^k a_j=1 $ allora
+$$ P=\sum_{j=0}^k a_j P_j = P_i + \sum_{j=0}^k \vett{P_iP_j} $$
+\'e ben definita ovvero non dipende dalla scelta di $P_i $ tra $P_0 ,\cdots , P_k $
+\end{prop}
+\begin{defn}Nelle ipotesi della proposizione denotiamo  
+$$ P= \sum_{j=0}^k a_jP_j $$ 
+combinazione affine di punti
+\end{defn}
+
+\spazio
+
+\begin{defn}[Baricentro]\bianco Siano $P_1, \cdots, P_n \in E $, allora definiamo il baricentro come 
+$$ G = \frac{1}{n}P_1 + \cdots + \frac{1}{n}P_n $$
+\end{defn}
+\newpage
+\subsection{Sottospazio affine}
+Consideriamo sempre lo spazio affine $(E,\phi)$ su $V$ spazio vettoriale
+\begin{defn}[Sottospazio affine]\bianco
+$F \subseteq E $ si dice sottospazio affine di $E$ se \'e chiuso per combinazioni affini di punti di $F$
+\begin{oss}Non si esclude che $E$ sia non vuoto
+\end{oss}
+\end{defn}
+\begin{oss}Nel caso in cui $F$ \'e un sottospazio affine allora
+$ ( F, \phi_{\vert F} )$ \'e uno spazio affine
+\end{oss}
+\spazio
+\begin{prop}$$ F=P_0 + W = \{ P_0+w \, \vert w \in W \} $$ \'e un sottospazio affine di $E$ $\forall P_0 \in E $ e $\forall W \subseteq V $ sottospazio vettoriale
+\proof Dobbiamo mostrare che $F$ \'e chiuso per combinazioni affini.\\
+Consideriamo i seguenti punti di $F$ 
+$$ P_1=P_0 + w_1 , \cdots , P_k=P_0 +w_k \quad w_i\in W $$
+e i seguenti coefficienti appartenente al campo di scalari $\K$
+$$ a_i , \cdots , a_k \tc \sum a_i =1 $$
+Dunque devo dimostrare che 
+$$ P=\sum_{i=1}^k a_i P_i \in F$$
+Aggiungo alla lista di punti anche $P_0$ con coefficiente $a_0=0$.\\
+Ora $P_0 = P_0 +0 $ quindi $P_0 \in F$
+$$P= \sum_{i=1}^k a_i P_i =  \sum_{i=0}^k a_i P_i=P_0+\sum_{i=0}^k a_i \vett{P_0 P_i}=P_0 + \sum_{i=1}^k a_i \vett{P_0P_i}=P_0+\sum_{i=1}^k a_i w_i $$
+Ora essendo $W$ un sottospazio vettoriale \'e chiuso per combinazioni lineari dunque
+$$ w= \sum_{i=1}^k a_i w_i \in W \quad \implica\quad  P=P_0+w \quad \implica \quad P\in F$$
+\endproof
+\end{prop}
+\spazio
+\begin{prop} \label{sotto2}Sia $F\neq \emptyset \subseteq E $ un sottospazio affine e   $P_0 \in F $ allora
+$$ W = \phi_{P_0}(F) \text{ \'e uno sottospazio vettoriale di V}$$
+\proof Devo provare che $W$ \'e chiuso per combinazione lineare \\
+Siano $ w_1 , \cdots , w_k \in W $ e siano $a_1, \cdots, a_k \in \K$\\
+Devo provare che 
+$$ w=\sum_{i=1}^k a_i w_i \in W $$
+Considero i seguenti punti
+$$P_0,  P_1 = P_0 + w_1 , \cdots , P_k=P_0+w_k $$ 
+essi appartengono a $F$ per definizione di $W$.\\
+Poich\'e voglio fare una combinazione affine impongo che 
+ $$a_0=1-\sum_{i=1}^k a_i$$
+Sia 
+$$ P=\sum_{i=0}^k a_j P_j = P_0 + \sum_{i=1}^k a_i w_i $$
+Ora per definizione di somma punto-vettore segue che $w=\phi_{P_0}(P)$ ma  essendo $F$ sottospazio affine $P\in F$  dunque $w\in \phi_{P_0} (F)=W$
+\endproof
+\end{prop}
+
+\begin{ese}Prendiamo $K^n$ spazio affine standard su $\K^n$\\
+Siano $A \in M(n,\R)$ e $\B \in \K^n$ con $B \neq 0 $ allora consideriamo 
+$$ F = Sol ( AX=B )$$
+F \'e un sottospazio affine e  pu\'o essere o vuoto oppure
+della forma
+$$ F = z_0 + \ker A $$
+dove $z_0 \in \K^n$ \'e una soluzione particolare 
+\end{ese}
+\begin{oss}
+Nell'esempio  lo spazio vettoriale non dipendeva dalla scelta del punto, dimostriamo che questo fatto \'e vero sempre
+\end{oss}
+\begin{lem} Sia $\emptyset \neq F \subseteq E $ un sottospazio affine e siano $P_0, P_1 \in F $.
+$$ F = P_0 + W_0 = P_1 + W_1 \quad \implica \quad W_0=W_1 $$
+\proof $\forall w_0 \in W_0 $ il punto $P_0 + w_0 \in F $ quindi 
+$$\exists w_1 \in W_1 \tc
+P_0 + w_0 = P_1 + w_1 $$ 
+Ora anche $P_0 = P_0 + 0 \in F $ da cui
+$$ \exists w_1' \in W_1 \tc P_0 = P_1 + w_1'$$ 
+Mettendo insieme le 2 relazioni otteniamo
+$$ P_1 + ( w_1' + w_0 ) = P_1 + w_1$$ 
+e sfruttando il fatto che $\phi_{P_1}$ \'e biettiva
+$$ w_1' + w_0 = w_1 \quad \implica \quad w_0= w_1 - w_1' \in W_1$$
+Quindi abbiamo provato che $ W_0 \subseteq W_1$.\\
+Possiamo rifare l'intera dimostrazione scambiando i ruoli di $W_0$ e $W_1$ ottenendo l'altra inclusione.\\
+\endproof
+\end{lem}
+
+\newpage
+Riassumiamo quanto detto con il seguente teorema
+\begin{thm}I seguenti fatti sono equivalenti
+\begin{itemize}
+\item[(i)]$F$ \'e un sottospazio affine di $E$
+\item[(ii)]$\exists T(F) $ sottospazio vettoriale di V tale che 
+$$ \forall P \in F \quad F = P + T(F) $$
+\end{itemize}
+$T(F)$ viene detto spazio vettoriale tangente al sottospazio affine $F$ o anche giacitura di $F$ 
+\end{thm}
+\spazio
+\begin{defn}Sia $S \in E$ si dice chiuso per rette se 
+$$ \forall P,Q \in S \quad Comb_a(P,Q) \subseteq S $$
+\end{defn}
+\begin{prop}Sia $V$ un $\K$-spazio vettoriale, con $\K$ di caratteristica $0$.
+$$F \subseteq E \text{ sottospazio affine} \quad \ses \quad F \text{ \'e chiuso per rette}$$
+
+\proof $\implica $ Ovvia, se $F$ \'e un sottospazio affine \'e chiuso per combinazione affine e a maggior ragione \'e chiuso per combinazioni affini di $2$ punti (per rette)\\
+
+$\Leftarrow$ Dimostriamo  che la combinazione affine di $k$ punti di $F$ appartiene ancora a $F$, facendo induzione su $k$ 
+Per $k=2$ \'e la definizione di chiuso per rette.\\
+Mostriamo che $k-1\implica k$
+Siano $Q_1, \cdots , Q_k \in S$ e $\lambda_1, \cdots , \lambda_k \in \K $ tali che $\sum \lambda_i = 1 $ 
+$$ \sum_{i=1}^k \lambda_i Q_i = \lambda_1 Q_1 + 
+\left( \sum_{i=2}^k \lambda_i \right)
+ \left( \frac{\lambda_2}{\sum_{i=2}^k \lambda_i} Q_2 \cdots + \frac{\lambda_k}{\sum_{i=2}^k \lambda_i} Q_k\right)$$
+ Ora 
+ $$ Q=\left( \frac{\lambda_2}{\sum_{i=2}^k \lambda_i} Q_2 \cdots + \frac{\lambda_k}{\sum_{i=2}^k \lambda_i} Q_k\right)$$ 
+ \'e una combinazione affine di $k-1$ punti di $F$ dunque $Q\in F $ da cui
+ $$ \sum_{i=1}^k \lambda_i Q_i = \lambda_1 Q_1 + \sum_{i=2}^n\lambda_i Q $$
+ Si conclude poich\'e otteniamo una combinazione affine di $2$ punti, ma $F$ \'e chiuso per retta.\\
+ \begin{oss}Nella dimostrazione ho diviso per  $\sum_{i=2}^k \lambda_i$ senza sapere se tale numero fosse $0$, nel caso che lo fosse posso considerare un altro indice da eliminare (invece di $1$).\\
+ Mostriamo che tale indice esiste
+ $$ \forall h \in [1,k] \quad \sum_{i=1 \atop{i\neq h }}^k \lambda_i=0 \quad \implica \quad \lambda_h=1$$
+ Dunque visto che vale $\forall h $ allora $\lambda_1= \cdots = \lambda_k = 1 $ ma ci\'o \'e assurdo infatti
+ $$ 1= \sum_{i=1}^k \lambda_i = k  \quad \implica k-1= 0 $$
+ ma $k>2$ dunque il campo non ha caratteristica 0 
+ \end{oss}
+ \endproof
+\end{prop}
+\begin{defn}[Somma di sottospazi affini]\bianco
+Siano$ F,G$ due sottospazi affini di $E$ allora
+$$ F+G = Comb_a (F \cup G)$$
+\end{defn}
+\spazio
+
+\newpage
+\subsubsection{Giaciture}
+Sia $F$ un sottospazio  vettoriale di $E$ allora
+$$ T(F)= \{ \vett{PQ} \quad \vert \quad P, Q \in E \}$$
+Da questo segue che  $$F\subseteq G \quad \implica \quad T(F) \subseteq T(G)$$
+\begin{prop}[Giacitura dell'intersezione]\bianco
+Siano $F,G$ due sottospazi affini, allora
+$$ T (F\cap G ) = T(F) \cap T(G)$$
+\proof $\subseteq$ \\
+$F \cap G \subseteq E $ e $F \cap G \subseteq E $ dunque
+$$ T (F\cap G ) \subseteq T(F) \cap T(G)$$
+$\supseteq$.\\
+Sia $P\in F \cap G $ allora
+$$ \forall v \in T(E) \cap T(F) \quad Q= P+v \in E\cap F$$
+infatti $Q\in E $ poich\'e $P\in E $ e $v\in T(E)$ ed in modo analogo per $F$.\\
+Dunque $v=\vett{PQ} \in T(E \cap F)$
+\endproof
+\end{prop}
+
+
+\spazio
+\begin{lem}\label{intersezione}Siano $F,G$ sottospazi affini di $E$
+$$ F \cap G = \emptyset \quad \ses \quad \vett{PQ} \not \in T(F)+T(G)$$
+\proof $\implica$ in modo contro nominale.\\
+Sia $\vett{PQ} \in T(F)+T(G)$ allora
+$$\vett{PQ} = v+w \quad  \text{ con } v\in T(F)  \text{ e } w \in T(G)$$
+$$ P+v = P + ( \vett{PQ}-w ) = ( P+\vett{PQ} )-w = Q-w $$
+Dunque $P+v \in F $ ed inoltre $Q-w \in G $ dunque $F \cap G \neq \emptyset$\\
+$\Leftarrow$  in modo contro nominale.\\Sia $R \in F \cap G $/\\
+Sia $P \in F $ e  $ Q \in G $ allora dalla chiusura del triangolo otteniamo 
+$$ \vett{PQ} + \vett{ QR } + \vett{ RP} = 0 $$
+$$ \vett{PQ} = \vett{PR} + \vett{QR}$$
+Ora $P,R \in F $ quindi $\vett{PR} \in T(F) $, invece $Q,R \in G $ da cui $\vett{QR} \in T(G)$.\\
+Dunque $ \vett{PQ} \in T(F) + T(G)$
+\endproof
+\end{lem}
+\spazio
+\begin{prop}[Giacitura della somma]\bianco
+Siano $F,G$ due sottospazi affini di $E$
+$$T(F+G) = T(F) + T(G) + Span(\vett{PQ} ) \quad \text{ con } P \in F \text{ e } Q \in G $$
+\proof $\supseteq$
+$$F, G \in F+G \quad \implica  \quad T(F),T(F) \subseteq T(F) + T(G) $$
+Inoltre $P,Q \in F+G \quad \implica \quad \vett{PQ} \in T(F+G)$\\
+$\subseteq$ Sia $v \in T(F+G) $ dunque $$\exists R,R' \in F+G \quad  v= \vett{RR'}$$ \\
+Se  $R\in F+G $allora
+$$  \exists F_1, \cdots F_k \in F \quad \exists G_1, \cdots , G_n \in G\quad \exists \lambda_1, \cdots , \lambda_k, \mu_1, \cdots , \mu_n \in \K \quad \text{ con } \sum_{i=1}^k \lambda_1 + \sum_{j=1}^n \mu_i=1$$
+tali che 
+$$ R = \lambda_1 F_1 + \cdots + \lambda_k F_k +\mu_1 G_1 + \cdots + \mu_n G_n $$
+in modo analogo
+$$ R = \lambda_1' F'_1 + \cdots + \lambda_s' F'_s +\mu_1' G_1' + \cdots + \mu_m' G_m' $$
+Dunque se $P\in F $ e $ Q \in G$
+$$ \vett{RR'}=R'-R = $$ $$= \left[ \left( \sum \lambda_i' F_i' + \left( 1 -\sum \lambda_i '  \right) P \right) - \left( \sum \lambda_i F_i + \left( 1 -\sum \lambda_i \right) P \right) \right] +  $$
+$$ +  \left[   \left( \sum \mu_i' G_i'  + \left( 1 - \sum \mu_i' \right)Q \right) -  \left( \sum \mu_i G_i + \left( 1- \sum \mu_i \right) Q \right)\right] +$$
+$$ + \left[ \sum \lambda_i' P - \sum \lambda_i P + \sum \mu_i' Q - \sum \mu_i Q \right]$$
+Ora  posso riscrivere il termine dentro l'ultima parentesi quadra ricordando che 
+$$\sum \lambda_i + \sum \mu_i = \sum\lambda_i' + \sum \mu_i'$$ ottenendo
+$$ \left( \sum \mu_i'- \sum \mu_i \right) ( Q-P) $$
+Il termine dentro la prima quadra appartiene a $T(F)$ il secondo a $T(G)$ ed il terzo allo $Span(\vett{PQ})$\\
+\endproof
+\end{prop}
+\newpage
+\begin{ese}[Intersezione di rette]\bianco
+Consideriamo lo spazio affine standard su $\R^3$.\\
+Dire se le rette sono sghembe o complanari.
+$$ l: \begin{pmatrix} 3\\1\\0  \end{pmatrix} + Span   \begin{pmatrix}  1\\ 1\\0 \end{pmatrix} $$
+$$ r: \begin{pmatrix} 2\\1\\-1  \end{pmatrix} + Span   \begin{pmatrix}  1\\ 1\\-1 \end{pmatrix} $$
+Prendiamo 
+$$ P = \begin{pmatrix}
+3\\1\\0 
+\end{pmatrix} \in l \quad Q=\begin{pmatrix}
+2\\1\\-1
+\end{pmatrix} \in r $$
+Ora
+$$ T(l) = \begin{pmatrix}
+1\\1\\0 
+\end{pmatrix} \qquad T(r) = \begin{pmatrix}
+1 \\ 1\\-1
+\end{pmatrix}$$
+Quindi 
+$$ \vett{PQ} =\begin{pmatrix}
+-1\\0\\1 
+\end{pmatrix} \not \in Span \left( \begin{pmatrix}
+1\\1\\0
+\end{pmatrix} , \begin{pmatrix}
+1\\1\\-1
+\end{pmatrix} \right)$$
+dunque le 2 rette sono sghembe per il lemma~\ref{intersezione}
+\end{ese}
+\newpage
+
+\subsection{Applicazioni affini}
+\begin{defn}[Applicazioni affini]\bianco
+Siano $V_1$, $V_2$ due $\K$-spazi vettoriale ed $E_1$, $E_2$ spazi affini su di loro.\\
+$$f:\, E_1 \to E_2 $$ 
+\'e affine se manda combinazioni affini di punti di $E_1$ in combinazioni affini di punti di $E_2$ ovvero 
+$$ \forall P = \sum_{i=1}^k a_i P_i  \qquad f(P) = \sum_{i=1}^k a_i f(P_i)$$
+\end{defn}
+\spazio
+\begin{prop}Siano $V_1$ e $V_2 $ due spazi vettoriali.\\
+Sia $(E_1, \phi) $ uno spazio affine su $V_1 $ e $(E_2, \psi)$ uno spazio affine su $V_2$.\\
+Sia $g:\, V_1 \to V_2 $  lineare , $P_0 \in E_0 $ e $Q_0 \in E_1$\\
+Allora la $f:\, E_1 \to E_2 $ che fa commutare il seguente diagramma \'e affine 
+$$ \begin{tikzcd} 
+E_1 \arrow[r,dashed,"f"]
+	  \arrow{d}{\phi_{P_0}} &E_2 \arrow{d}{\psi_{Q_0}} \\ V_1 \arrow[r,"g"] & V_2 
+\end{tikzcd}$$
+\proof Visto che $f$ fa commutare il diagramma allora si pu\'o scrivere come 
+$$ f = \psi_{Q_0}^{-1} \circ g \circ \phi_{P_0}$$
+Dunque se $P= P_0 + \vett{P_0P}$ allora
+\begin{equation}\label{1}
+ f(P) = Q_0 + g\left(  \vett{P_0 P }  \right)
+\end{equation}
+Mostriamo che \'e affine\\
+Siano $P_1, \cdots , P_k \in E_1 $ e $a_1, \cdots ,a_k $ i rispettivi coefficienti con $\sum a_i =1 $
+allora devo dimostrare che 
+$$ f\left( \sum_{i=1}^k a_i P_i \right) = \sum_{i=1}^k a_i f(P_i)$$
+Aggiungo all'inizio della lista il punto $P_0$ con coefficiente $a_0=0$ allora
+$$ P = \sum_{i=1}^k a_i P_i = \sum_{i=0}^k a_i P_i = P_0 + \sum_{i=1}^k a_j \vett{P_0 P } $$ dunque da (\ref{1}) segue 
+$$ f(P) = Q_0 + g \left( \sum_{i=1}^k a_i \vett { P_0 P_i }\right) $$ ora dal fatto che $g$ \'e lineare otteniamo 
+$$ f(P) = Q_0 + \sum_{i=1}^k a_i \, g \left( \vett{ P_0 P_i } \right) = \sum_{i=1}^k a_i f ( P_j ) $$
+\endproof
+\end{prop}
+
+\begin{prop}Siano $V_1$ e $V_2 $ due spazi vettoriali.\\
+Sia $(E_1, \phi) $ uno spazio affine su $V_1 $ e $(E_2, \psi)$ uno spazio affine su $V_2$.\\
+Sia  $P_0 \in E_0 $, $Q_0 \in E_1$ e $f:\, E_0 \to E_1 $ affine tale che $f(P_0) = Q_0$\\
+Allora la $g:\, V_1 \to V_2 $ che fa commutare il seguente diagramma \'e lineare 
+$$ \begin{tikzcd} 
+E_1 \arrow[r,"f"]
+	  \arrow{d}{\phi_{P_0}} &E_2 \arrow{d}{\psi_{Q_0}} \\ V_1 \arrow[r,dashed,"g"] & V_2 
+\end{tikzcd}$$
+\proof La dimostrazione \'e analoga a quella fatta in  \ref{sotto2}
+\end{prop}
+Ora iterando la procedura della prima proposizione otteniamo che 
+$f(P)= Q_0+ g \left( \vett{P_0 P }  \right)$\\ 
+Dunque abbiamo dimostrato che ogni applicazione affine si pu\'o scrivere  in questo modo
+$$ f= Q_0 + g  $$
+dove  $Q_0= f(P_0)$ e con la scrittura precedente intendiamo 
+$$ f(P) = Q_0 + g \left( \vett{P_0 P } \right) $$
+\spazio
+
+\begin{prop}Sia $f:\, E_1 \to E_2 $ affine con $f(P_0)=Q_0$.
+$$ f = Q_0 + g_1 = Q_0 + g_2 \quad \implica \quad g_1=g_2$$
+\proof $$\forall v \in V_1 \quad f(P_0 + v ) = Q_0 + g_1(v)  \text{ prima scrittura}$$
+$$ \forall v\in V_1 \quad f(P_0+v)= Q_0 + g_2(v)\text{ seconda scrittura}$$
+Ora usando il fatto che $\psi_{Q_0} $ \'e biettiva otteniamo 
+$$ \forall v \in V_1 \quad g_1(v)=g_2(v)$$
+\endproof
+\end{prop}
+\spazio
+Riassumiamo quanto detto con il seguente teorema
+\begin{thm}[Struttura applicazioni affini]\bianco
+$$ \forall f:\, E_1 \to E_2 \text{ applicazione affine} \quad \exists ! \, \, \mathrm{d}f :\, V_1 \to V_2 \text{ lineare} $$
+tale che
+$$ \forall P_0 \in E_1 \quad Q_0 = f(P_0) \qquad f = Q_0 + \mathrm{d}f$$
+\end{thm}
+\newpage
+\begin{defn}[Isomorfismo affine]\bianco
+$f:\, E_1 \to E_2 $ \'e un isomorfismo affine se 
+\begin{itemize}
+\item[(i)]$f$ \'e affine e biettiva
+\item[(ii)]$f^{-1}$ \'e affine 
+\end{itemize}
+\end{defn}
+\begin{prop}Valgono i seguenti fatti
+\begin{itemize}
+\item[(i)] $f$ \'e biettiva $ \ses$ $ \mathrm{d}f$ \'e biettiva
+\item[(ii)] $f$ biettiva e affine $\ses$ f \'e isomorfismo affine
+\end{itemize}
+\end{prop}
+\spazio
+\begin{defn}
+$$ Aff(V) = \{ f :\, E \to E \, \vert \, \text{ affini e invertibili}  \}$$
+\begin{oss}$Aff(V)$ con la composizione \'e un gruppo di trasformazioni di $E$
+\end{oss}
+\end{defn}
+\newpage
+\subsection{Affinit\'a su uno spazio vettoriale}
+\begin{defn}[Traslazione]
+Sia $V$ uno spazio vettoriale e sia $v\in V $ allora definiamo la traslazione su $V$ secondo il vettore $v$ la funzione
+$$\tau_v: \, V \to V \qquad \tau_v(w)=w+v$$
+\end{defn}
+\begin{oss}$\tau_v $ \'e lineare $\ses$ $v=0$
+\end{oss}
+L'insieme delle traslazioni forma un gruppo $T(V)$ con la composizione in particolare 
+$$ \tau_v \circ \tau_{v'}(w)=(w+v')+v = \tau_{v+w} (v)$$
+$$ \left( \tau_v \right)^{-1}  = \tau_{-v}$$
+\spazio
+Adesso se consideriamo $V$ non pi\'u come spazio vettoriale me come gruppo con $+$ allora
+$$ (V, + ) \to ( T(V), \circ ) \qquad v \to \tau_v $$
+\'e un isomorfismo di gruppi abeliani
+\spazio
+\begin{defn}[Gruppo delle trasformazioni affini]
+$$ Aff(V) = \{ g :\, V \to V \, \vert \, g \text{ \'e composizioni di finite  trasformazioni} f_i \in GL(V) \cup T(V) \} $$
+\end{defn}
+
+Cerchiamo un modo per normalizzare la scrittura di $g \in Aff(V) $\\
+
+\begin{prop}\label{Affinecara}
+$$ Aff(V)= \{ g = \tau_v \circ f \, \vert \, v \in V \, f \in GL(V) \}$$
+\proof $\supseteq $ in maniera ovvia \\
+$\subseteq $ per induzione su $k$ numero di composizioni\\
+se $k=1 $ allora 
+\begin{itemize}
+\item $g\in T(V) \quad \implica \quad g= \tau_v = \tau_v \circ Id $
+\item $g\in GL(V) \quad \implica \quad g=\tau_0 \circ g $
+\end{itemize} 
+se $k=2 $ allora si possono verificare 2 situazioni
+\begin{itemize}
+\item $g= \tau_v \circ f $ in questo caso abbiamo concluso
+\item $g = f \circ \tau_v $ dunque $g(w) = f(w+v)=f(w)+f(v) $ dunque $g=\tau_{f(v)} \circ f $
+\end{itemize}
+Mostriamo ora che $k-1 \implica k $ dunque sia 
+$$ g = f_1 \circ f_2 \circ \cdots \circ f_k $$ 
+per ipotesi induttiva sappiamo che $f_2 \circ \cdots \circ f_k $ si scrive come $\tau_v \circ f $.\\
+Quindi la funzione iniziale si scrive nella forma
+$$ g= f_1 \circ \tau_v \circ f $$
+\begin{itemize}
+\item se $f_1 \in T(V) $ abbiamo finito (somma di traslazioni \'e una traslazione)
+\item se $f_1 \in GL(V) $ allora usando il caso $k=2$ otteniamo 
+$g= \tau_{f_1(v)} \circ f_1 \circ f $ ma $f_1 \circ f \in GL(V)$
+\end{itemize}
+\endproof
+\end{prop}
+\newpage
+\begin{lem}[Inversa dell'affine]\bianco
+Sia $g= \tau_v \circ f \in Aff(V)$ allora
+$$ g^{-1}= \tau_{-f^{-1}(v)}\circ f^{-1} $$
+\proof
+Per la proposizione precedente 
+$$g^{-1}=\tau_u \circ h $$
+Ora poich\'e $\left( g \circ g^{-1}\right) w = w \quad \forall w \in V $ otteniamo
+$$ g \left( g^{-1}(w) \right) = g\left( h(w)+u \right)= ( f \circ )w +f(u)+v=w$$
+Ci\'o \'e vero se 
+$$ \begin{cases} f\circ h = Id \\
+f(u)+v =0
+\end{cases} \quad \implica \quad \begin{cases} h=f^{-1} 
+\\u = -f^{-1}(u) \end{cases}$$
+Ora poich\'e l'inversa \'e unica 
+$$ g^{-1}= \tau_{-f^{-1}(v) }\circ f^{-1}$$
+\endproof
+\end{lem}
+\begin{prop}L'espressione di $g$ in forma normale \'e unica 
+\proof
+Supponiamo che $g$ si scriva in 2 modi differenti ovvero 
+$$ g = \tau_v \circ f $$
+$$  g=\tau_w \circ h $$ 
+Usiamo la seconda scrittura per calcolare $g^{-1}$
+$$ g^{-1}= \tau_{-h^{-1}(w)} \circ h^{-1}$$
+Ora poich\'e $g^{-1}\circ g (u) =u \quad \forall u \in V $ otteniamo 
+$$ g^{-1}\left( g (u) \right) = g^{-1}\left( f(u)+v \right) = h^{-1}\left( f(u)+v\right) -h^{-1}(w)=u$$
+$$ \begin{cases} h^{-1}\circ f = Id \\
+v-w=0
+\end{cases} \quad \implica \quad \begin{cases} h=f \\ v =w
+\end{cases}$$
+\endproof
+\end{prop}
+\newpage
+Supponiamo di avere $g_1 , g_2 \in Aff(V) $ allora 
+$$g_1= \tau_{v_1} \circ f_1$$
+$$ g_2= \tau_{v_2} \circ f_2 $$
+Voglio calcolare $g_1 \circ g_2 $ 
+$$ \forall w \in V \quad g_1\circ g_2(w)=g_1(f_2(w)+v_2)=(f_1 \circ f_2)(w)+ f_1(v_2) + v_1 = \tau_{f_1(v_2)+v_1} \circ (f_1 \circ f_2) (w)$$
+\spazio
+Consideriamo il gruppo prodotto 
+$$ GL(V) \times T(V)  $$
+che \'e isomorfo a 
+$$( GL(V), \circ ) \circ ( V,+)$$
+Definiamo su questo prodotto un'operazione in modo che si adatti a come si comporta la composizione di applicazioni affini
+$$ (f_1, v_1) \star (f_2, v_2) = (f_1 \circ f_2 , f_1(v_2) + v_1 ) $$
+Con questo prodotto possiamo costruire un'isomorfismo di gruppi 
+$$ ( (GL(V), \circ )  \times (V,+), \star ) \to (Aff(V), \circ ) \qquad (f,v) \to \tau_v \circ f $$
+\begin{oss}Si dice che $Aff(V)$ \'e un esempio di prodotto semidiretto di $GL(V) \times (V,+)$
+\end{oss}
+\newpage
+\subsection{Affinit\'a in versione matriciale}
+Specializzando quanto abbiamo visto precedentemente nel caso di $V=\K^n $ otteniamo 
+$$ Aff(\K^n) = \{ f :\, \K^n \to \K^n \quad \vert \quad f(X) = AX+B \text{ con } A \in GL(n) \text{ e } B \in \K^n \} $$
+Dunque possiamo codificare, in modo matriciale le trasformazioni affini con 
+$$ \left( \begin{array}{c|c} A & B 
+
+\end{array} \right) \quad \text{ con } A \in M(n,\K) \text{ e } B \in M(1,n,\K)$$
+e dove la composizione si f\'a seguendo questa regola
+$$ \left( \begin{array}{c|c} A & B 
+
+\end{array} \right) \circ  \left( \begin{array}{c|c} P & C 
+
+\end{array} \right)  = \left( \begin{array}{c|c} AP & AC +B 
+
+\end{array} \right) $$
+\spazio
+Consideriamo una nuova codifica che fa uso di matrici quadrate.\\
+Ogni volta che parleremo di $\K^n $ lo considereremo immerso in $\K^{n+1}$  mediante la seguente inclusione
+$$ \K^n \to K^{n+1 } \qquad \begin{pmatrix}
+x_1  \\ \vdots \\ x_n 
+\end{pmatrix} \to \begin{pmatrix}
+ x_1 \\ \vdots \\x_n \\1 
+\end{pmatrix}$$
+ Dunque 
+$$ \K^n = \left.\left\{ \begin{pmatrix}
+x_1 \\ \vdots \\x_{n+1}
+\end{pmatrix} \in \K^{n+1 } \quad \right\vert \quad x_{n+1}=1 \right\} \text{ \'e uno spazio affine di } \K^{n+1}$$
+Consideriamo il seguente insieme
+$$ G = \{ f \in GL(n+1, \K ) \quad \vert \quad f(\K^n ) = \K^n \}$$
+\begin{oss}$G$ \'e un sottogruppo di $GL(n+1, \K) $
+\end{oss}
+Sia $M\in G $
+Ora $$ e^{n+1} \in \K^n $$ dunque poich\'e $f\left( \K^n \right)=\K^n $ allora 
+$$ M E^{n+1} \in \K^n $$ da cui 
+$$ M = \left(  M^1 \, \left| \, \cdots  \, \left| M^n  \, \left| \, \begin{pmatrix}
+b_1 \\ \vdots \\ b_n \\1 
+\end{pmatrix} \right) \right. \right.\right.$$
+Ora $e_1 + e_{n+1} \in \K^n $ da cui
+$$ M(e_1+e_{n+1}) =\begin{pmatrix}
+a_{1}\\
+\vdots \\
+a_{n} \\ 1 
+\end{pmatrix}$$
+Dunque 
+$$ME_1= M^1 = \begin{pmatrix}
+a_{11} \\ \vdots a_{n1} \\ 0 
+\end{pmatrix}$$
+iterando con gli altri vettori della base canonica ottengo
+$$ M= \left(  \begin{array}{c|c} A & B \\  \hline 0 & 1 
+
+\end{array}\right) \quad \text{ con } A \in M(n, \K) \text{ e }  B\in \K^n $$
+Ora $M \in G \subset GL(n+1, \K) $ dunque 
+$ \det M \neq 0 $ ma $\det M = \det A \neq 0 $ ovvero
+$$ G = \left. \left\{ \left( \begin{array}{c|c} A & B \\ \hline 0&1 
+\end{array} \right) \quad \right| \quad B \in \K^n , \quad A \in GL(n, \K) \right\}$$
+Dunque possiamo considerare l'applicazione 
+$$ \varphi:\, Aff( \K^n ) \to G\subseteq (GL(n+1, \K) $$
+$$ \left( \begin{array}{c|c} A&B 
+
+\end{array} \right) \to \left( \begin{array}{c|c} A& B \\ \hline 0 &1 
+\end{array} \right) $$
+\begin{oss}$\varphi$ \'e un isomorfismo di gruppi, dove l'operazione su $Aff(\K^n) $ \'e il prodotto semidiretto ,  invece su $G$ la consueta moltiplicazione tra matrici:
+$$ \varphi ( ( A \vert B )  \circ ( P\vert C ) ) = \varphi ( AP \vert AC + B )= \left( \begin{array}{c|c} AP & AC+B \\ \hline 0 &1
+
+\end{array} \right)= \left( \begin{array}{c|c}A& B \\  \hline 0 & 1 
+\end{array}  \right) \left( \begin{array}{c|c}P &C \\ \hline 0 &1 
+\end{array} \right)$$
+\end{oss}
+\newpage 
+\subsection{Isometrie}
+Sia $V$ un $\R$-spazio vettoriale e sia $\phi$ definito positivo
+\begin{defn}[Distanza]
+$\forall v,v'\in V $
+$$ d(v,v')=\sqrt{\phi(v-v',v-v')}$$
+\end{defn}
+\begin{defn}
+$$ Isom(V,d) =\{ g:\, V \to V \, \vert\,  d(v,v')=d(g(v),g(v')) \,  \forall v,v' \in V \}$$
+\end{defn}
+\begin{oss}\label{ss} $g\in Isom(V,d) $ \'e chiaramente iniettiva\\
+$O(\phi)\subseteq Isom(V,d)$\\
+$T(V)\subseteq Isom(V,d)$
+\end{oss}
+\begin{thm}
+$$ Isom(V,d)=O(\phi) \cup T(V)$$
+\proof
+$\subseteq $ ovvia segue dall'osservazione \ref{ss}\\
+$\supseteq$ Sia $g\in Isom(V,d)$.\\
+Se $g(0)=v $ allora $( \tau_{-v}\circ g)(0)$\\
+In altre parole, basta restringerci al caso in cui $f \in Isom(V,d) $ tale che $f(0)=0 $ e dimostrare che $f\in O(\phi)$.\\
+\begin{itemize}
+\item Mostriamo che $f$ preserva il prodotto scalare
+$$d^2(0,v)=\phi(v,v)$$
+$$d^2(f(0),f(v))=d^2(0, f(v))=\phi(f(v),f(v))$$
+quindi $f$ preserva la norma e per il lemma di polarizzazione, preserva il prodotto scalare
+
+\item Mostriamo la linearit\'a di $f$\\
+Sia $\B=\{ \nvett \} $ base ortonormale di $(V,\phi)$.\\
+Siccome $f$ preserva $\phi$ anche $g(\B)$ \'e ortonormale mostriamo che sono una base 
+$$ \forall v \in V \quad v = \ncomb $$
+$$ g(v) =b_1 g(v_1) + \cdots + b_n g(v_n) $$
+Ma gli $a_j=\phi(v,v_j)= \phi(g(v), g(v_j))=b_j$
+\end{itemize}
+\endproof
+\end{thm}
+\begin{oss}Questo teorema \'e un esempio di teorema di rigidit\'a, imporre che $g$ preservi la distanza implica che $g$ abbia una  struttura ben definita
+\end{oss}
+\newpage
+\subsection{Dimensione e indipendenza lineare}
+\begin{defn}[Dimensione affine]\bianco
+Sia $F \neq\emptyset$ un sottospazio affine allora definiamo 
+$$ \dim_a F = \dim T(F)$$
+\end{defn}
+\spazio
+\begin{defn}[Indipendenza affine]\bianco
+$P_0, \cdots , P_k$ sono affinemente indipendenti se 
+$$ \dim_a \left( Comb_a (P_0, \cdots , P_k ) \right) =k $$
+equivalentemente se 
+$$ \vett{ P_0 P_1 }, \cdots , \vett{P_0 P_k }  \text{  sono linearmente indipendenti }$$
+\begin{oss}La dimensione \'e $k$ ma i punti sono $k+1$
+\end{oss}
+\end{defn}
+\spazio
+\begin{defn}[Sistema di riferimento affine]\bianco
+Sia $E$ uno spazio affine di dimensione $n$.\\
+Un sistema di riferimento affine su $E$ \'e un insieme ordinato di $n+1$ punti $P_0, \cdots , P_n$ affinemente ordinati
+\begin{oss}
+$$Span_a(P_0, \cdots , P_n)=E$$
+\end{oss}
+\end{defn}
+\spazio
+\begin{prop}Sia $P_0, \cdots , P_n$ un riferimento affine su $E$ 
+$$ f(P_0)=Q_0 , \cdots , f(P_n)=Q_n \quad \text{ con} Q_i \in E'$$
+si estende in modo unico con una $f:\, E\to E'$
+\end{prop}
+\begin{cor}\label{isosurif}Siano $E$ e $E'$ due spazi affini con$\dim_a E = \dim_a E' = n$.\\
+Sia $\{ \nrif \}$ un riferimento affine su $E$
+$$ f:\, E \to E' \text{ \'e isomorfismo affine } \quad \ses \quad \{ f(P_0) , \cdots , f(P_n) \} \text{ \'e un riferimento affine su E' }$$
+\end{cor}
+\spazio
+Estendiamo la nozione di isomorfismo indotto dalle coordinate agli spazi affini
+\begin{defn}[Riferimento canonico affine di $\K^n$]\bianco
+Consideriamo $\K^n $ come spazio affine standard su $\K^n$ .\\
+Definiamo il riferimento affine canonico 
+$$ \Can_a =\{ 0, e_1, \cdots , e_n \} $$
+\end{defn}
+\spazio
+\begin{defn}[Isomorfismo indotto dal sistema di riferimento affine]\bianco
+Sia $E$ uno spazio affine di dimensione $n$ e sia $\Rif$ un sistema di riferimento affine su $E$
+$$ [\, ]_\R :\, E \to \K^n$$
+che manda $\R \to \Can_a$ e per quanto detto in \ref{isosurif} \'e un isomorfismo affine
+\end{defn}
+\spazio
+\subsubsection{Formula di Grassman per sottospazi affini}
+\begin{itemize}
+\item $ F\cap G \neq \emptyset \quad \implica \quad \vett{PQ} \in T(F) + T(G) $ dal lemma~\ref{intersezione} dunque
+$$ \dim_a (F+F) = \dim (T(F+G))= \dim (T(F)+T(G))= \dim T(F)+\dim T(G) - \dim T(F) \cap T(G)$$
+Dunque se l'intersezione non \'e vuota vale la stessa formula per i sottospazi vettoriali ovvero
+$$ \dim_a (F+G) = \dim_a F + \dim_a G - \dim_a F \cap G $$
+\item $F \cap G = \emptyset$
+dobbiamo sommare la dimensione di $Span( \vett{PQ})$ dunque
+$$ \dim_a (F+G) = \dim_a F + \dim_a G - \dim_a F \cap G +1 $$
+\end{itemize}
+\begin{oss}Per vedere se 2 sottospazi affini si intersecano, basta controllare se vale Grassman per le giaciture
+\end{oss}
+\newpage
+\subsection{Rapporto semplice}
+Supponiamo che la dimensione dello spazio affine $E$ sia $1$, in questo caso parleremo di retta affine.\\
+Data una terna ordinata di punti distinti $(P_0,P_1,P_2)$ sappiamo che $(P_0, P_1)$ sono un riferimento affine dunque 
+$$ P_2= P_0 + \lambda \vett{P_0P_1 } \quad \text{ con } \lambda \in \K \text{ e } \lambda \neq 0,1 $$
+Ci\'o \`e
+$$ \vett{P_0P_2} = \lambda \vett{ P_0P_1}$$
+\begin{defn}Il numero $\lambda $ prende il nome di rapporto semplice della terna ordinata di punti e si indica
+$$ \lambda= [P_0,P_1,P_2]$$
+\end{defn}
+\begin{oss}Nel caso in cui $E=\K$ spazio affine standard
+$$ \lambda = \frac{P_2-P_0}{P_1-P_0}$$
+\end{oss}
+\spazio
+Mostriamo come agisce $S_3$ sul rapporto semplice, ovvero detto 
+$$ \lambda_\sigma = [P_{\sigma(0)}, P_{\sigma(1)}, P_{\sigma(2)}] \quad \forall \sigma\in S_3$$
+trovare $\lambda_\sigma $ in funzione di $\lambda$.\\
+Consideriamo il caso standard
+
+$$ \frac{1}{\lambda}= \frac{P_1-P_0}{P_2-P_0}= \lambda_{(1,2)}$$
+$$ \frac{1}{1-\lambda}=\frac{1}{1-\frac{P_2-P_0}{P_1-P_0}}=\frac{P_0-P_1}{P_2-P_1}=\lambda_{(0,1,2)}$$
+Ora componendo in modo adeguato tricicli e trasposizioni otteniamo tutti le permutazioni
+$$ \begin{array}{cccc}
+\lambda & \frac{1}{\lambda} & \frac{1}{1-\frac{1}{\lambda}}& \frac{1}{1-\frac{1}{1-\frac{1}{\lambda}}} \\
+& \frac{1}{1-\lambda} & \frac{1}{1-\frac{1}{1-\lambda}}& 
+\end{array}$$
+\spazio
+
+\subsubsection{Caso complesso}
+Sia $E=\C$ spazio affine standard.\\
+Siano $z_0,z_1, z_2 $ una terna di punti distinti e  a meno di traslazioni posso considerare $z_0=0$ dunque
+$$ \lambda=\frac{z_2}{z_1}$$.\\
+Ora con una rotazione (trasformazione affine) posso mandare $z_i$ sull'asse reale e dividendo per $\vert z_1 \vert \neq 0 $ perch\'e i punti $z_1 $ e $z_0$ sono distinti (ho fatto un omotetia)\\
+Sia $z$ il risultato di $z_3 $ dopo aver applicato queste trasformazioni affini
+$$ z = x+ iy  \quad \implica \quad \lambda= y $$
+Dunque i 3 punti sono allineati se il rapporto semplice \'e reale.\\
+Ora identificando $\C $ con $\R^2$ otteniamo che:\\
+Il rapporto semplice \'e lo spazio dei parametri dei triangoli euclidei orientati a meno di similitudini.\\
+\newpage
+\subsection{Caratterizzazione geometrica delle affinit\'a }
+\begin{defn}[Parallelismo]\bianco
+Siano $F_1$ e $F_2$ due sottospazi affini di $E$.\\
+$$ F_1 \parallel F_2 \quad \ses \quad T(F_1) \subseteq T(F_2)$$
+\begin{oss}La relazione di parallelismo, sopra definita non \'e una relazione di equivalenza (non \'e simmetrica), per renderla tale ci dobbiamo restringere ai sottospazi affini di una data dimensione
+\end{oss}
+\end{defn}
+\spazio
+\begin{prop}Sia $E$ uno spazio affine e $f \in Aff(E)$.\\
+Valgono i seguenti fatti
+\begin{itemize}
+\item[(i)] $f$ \'e biettiva
+\item[(ii)] se $F\subseteq E$ \'e sottospazio affine, allora $f(F)$ \'e un sottospazio affine della stessa dimensione
+\item[(iii)] [caso particolare di (ii)] $f$ manda rette (sottospazi affini di dimensione $1$) in rette
+\item[(iv)] [rafforza (iii)] $\forall F $ retta affine $f(F)$ \'e una retta affine e $f$ ristretta a $F$ preserva il rapporto semplice delle terne ordinate di punti
+\item[(v)] Come (ii) e $f$ preserva il parallelismo
+\end{itemize}
+\end{prop}
+Vogliamo trovare una caratterizzazione geometrica delle affinit\'a ovvero trovare il minimo numero di propiet\'a da imporre a $f$ per renderla un'affinit\'a
+\spazio
+\begin{thm}Sia $E$ uno spazio affine di dimensione $1$.
+$$ f \in Aff(E) \quad \ses \quad \begin{cases} f \text{\'e bigettiva} \\ f \text{ preserva il rapporto semplice} \end{cases}$$
+\end{thm}
+\begin{lem}Sia $f:\, \K^2 \to \K^2 $ biettiva e che manda rette in rette.\\
+Allora $f$ manda rette parallele in rette parallele.
+\proof
+Siano $l$ e $r$ due rette parallele, e $l'$ e $r'$ le  rispettive immagine tramite $g$.\\
+Se $l'$ e $r'$ non sono parallele allora 
+$$ \exists P' \in l'\cap r' \quad \implica \quad \exists P= f^{-1} (P') \in l \cap r $$
+\endproof
+\end{lem}
+\newpage
+\begin{thm}Sia $E$ uno spazio affine di dimensione superiore o uguale a 2
+$$ f \in Aff(E) \quad \ses \quad \begin{cases}
+f \text{ \'e bigettiva} \\
+f \text{ manda rette in rette} \\
+\exists F \text{ retta affine tale che } f_\vert : F \to f(F) \text{ conserva il rapporto semplice}
+\end{cases}$$
+\proof Dimostriamo il teorema per il caso $\dim E = 2 $\\
+Sia $P_0 \in E$ allora possiamo, senza perdit\'a di generalit\'a supporre che $f(P_0)=P_0$ infatti se cos\'i non fosse basta comporre per una traslazione infatti $$\tau_v \circ f \in Aff(E ) \quad \implica \quad\tau_v^{-1} \circ \tau_v \circ f = f \in Aff(E)$$
+Consideriamo adesso il seguente diagramma
+$$ \begin{tikzcd}
+E \arrow[d,"f"]  \arrow{r}{\Phi_{P_0}}
+& \K^2 \arrow[d,dashed,"g"] 
+\\ E \arrow{r}{\Phi_{P_0}} &\K^2
+\end{tikzcd}$$
+Per come \'e definita $g(0)=0$ e verifica le 3 propiet\'a di $f$\\
+Siano $v,w\in \K^2 $ linearmente indipendenti e  $v',w'$ le loro immagini tramite $g$.\\ 
+Ora $v+w$ si ottiene come intersezione tra la retta parallela a $0v$ passante per $w$ e la retta parallela a $0w$ passante per $v$.\\
+Anche $v'+w'$ si costruisce nel medesimo modo e dato che $g$ mantiene il parallelismo per il lemma ne segue che 
+$$ \forall v , w \in \K^2 \text{ linearmente indipendenti } g(v+w) = g(v) + g(w)$$
+Supponiamo adesso che $v$ e $w$ sono linearmente indipendenti allora $w=tv$ con $t \in \K$.\\
+Ora poich\'e $g$ manda rette in rette $g(tv) = \phi_v(t) \cdot g(v) $.\\
+Mostriamo che l'applicazione $\phi_v$ sopra definita non dipende da $v$.\\
+Siano $v,u \in \K^2$ linearmente indipendenti, consideriamo adesso la retta  $vu$ e quella passante per $tv$ e $tu$, esse sono parallele.\\
+Consideriamo le  immagini delle 2 rette e per il lemma devono essere parallele dunque$$\phi_v(t)=\phi_u(t) = \phi(t) \quad \forall v,u \quad \forall t \in \K$$
+Supponiamo adesso che la retta su cui \'e preservato il rapporto semplice passi per $0$ e sia $v\in \K^2$ che appartiene a tale retta
+$$ \phi_v(t) = \phi(t) = id \quad g(tv) = t g(v)$$
+\\
+Se tale retta non passa per $0$ basta una traslazione.\\
+Abbiamo dimostrato che se $f$ ha tali propiet\'a allora 
+$$ f = P_0 + g \quad \text{ dove } g \text{ \'e lineare} \quad \implica \quad f \in Aff(E)$$
+\endproof
+\end{thm}
+\spazio
+\begin{thm}Sia $E$ uno spazio affine su un campo $\K=\R$ di dimensione superiore di $2$.
+$$ f\in Aff(E) \quad \ses \quad \begin{cases} f \text{ \'e bigettiva} \\
+f \text{ manda rette in rette } \end{cases}$$
+\proof
+La dimostrazione ripercorre quella del teorema precedente ma per dimostrare che $\phi$ \'e l'identit\'a basta dimostrare che $\phi$ \'e un isomorfismo di campi e concludendo poich\'e solo l'identit\'a \'e un isomorfismo di campi da $\R$ in $\R$
+\endproof
+\end{thm}
+%\end{document}

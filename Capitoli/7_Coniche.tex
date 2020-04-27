@@ -1,0 +1,337 @@
+%\input{0_Preambolo.tex}
+
+%\begin{document}
+\section{Coniche affini}
+
+\begin{defn}[Conica]\bianco
+ Sia $p\in \K[x_1,x_2]$ di secondo grado.\\
+Allora  $C=Z(p) $ \'e detto una conica nello spazio affine $\K^2 $ e in tal caso  $p$ \'e un equazione della conica 
+\end{defn}
+\begin{ese}Consideriamo $\K=\R$
+\begin{itemize}
+\item $Z\left( x_1^2+2x_2^2 -1 \right)$ ellisse
+\item $Z(x_1^2-x_2^2-1) $ iperbole
+\item $Z(x_2-x_1^2)$ parabola
+\item $Z(x_1^2-x_2^2)$ due rette incidenti
+\item $Z(x_1^2)$ retta "doppia"
+\item $Z(x_1^2+x_2^2)$ un solo punto
+\item $Z(x_1^2+x_2^2+1) = \emptyset$
+\end{itemize}
+\begin{oss}Se $\K=\C$ i casi "punto" e $"\emptyset"$ non sono possibili infatti
+$$ \forall p\in K[x_1, x_2] \quad \forall a \in \C \quad p(a, x_2)=0 \quad \text{ per almeno un valore di } x_2$$
+\end{oss}
+\end{ese}
+Sia $\mathcal{E}$ l'insieme di tutti i polinomi in 2 indeterminate di secondo grado, definiamo 
+$$ \varepsilon :\, \mathcal{E} \to \{ \text{ coniche} \}$$
+Questa funzione per definizione di conica \'e suriettiva ma non iniettiva infatti
+$$ \forall \lambda \in \K \quad \lambda\neq  0 \quad Z(p)= Z(\lambda p ) $$
+Denotiamo  con $P \mathcal{E}$ l'insieme $\mathcal{E}$ modulo la relazione $p \sim \lambda p$ con $\lambda \in \K $ e $\lambda \neq 0 $.\\
+
+Consideriamo allora 
+$$ P \mathcal{E} \to \{ \text{ coniche }\} $$
+
+\begin{prop} $\overline{\varepsilon}$ \'e suriettiva e 
+\begin{itemize}
+\item \'e iniettiva su $\C$
+\item su $\R$ non lo \'e, gli unici esempi sono il caso "punto" e $"\emptyset"$
+\end{itemize}
+\end{prop}
+\spazio
+Un polinomio $p(x_1,x_2) \in \K[x_1, x_2] $ di secondo grado si scrive come
+$$ p(x_1, x_2) = d +2\, b_1 \,x_1 +2\, b_2\,  x_2 + a_{11} \, x_1^2 + 2\,a_{12}\,x_1 x_2 + a_{22}\,x_2^2  \quad  \text{ con } 
+ (a_{11},a_{12},a_{22} ) \neq (0,0,0)$$
+ 
+ \begin{defn}[Omogenizzato]\bianco
+ Sia $p(x_1,x_2) \in K[x_1,x_2]$ un polinomio di secondo grado.\\
+$$ p(x_1, x_2) = d +2\, b_1 \,x_1 +2\, b_2\,  x_2 + a_{11} \, x_1^2 + 2\,a_{12}\,x_1 x_2 + a_{22}\,x_2^2 $$
+ Definiamo l'omogenizzato di $p$ come
+ $$ \overline{p}(x_1,x_2,x_3)=d \, x_3^2 + 2 b_1 \, x_1 \, x_3 + 2 b_1 \, x_2 \, x_3 + a_{11} \, x_1^2 + 2\,a_{12}\,x_1 x_2 + a_{22}\,x_2^2 $$
+ \begin{oss}Il polinomio $\overline{p}$ \'e un polinomio omogeneo di secondo grado ed ogni monomio \'e di secondo grado.\\
+ Osserviamo inoltre che $p(x_1,x_2) = \overline{p}(x_1,x_2,1)$
+ \end{oss}
+ \end{defn}
+ Dunque con l'inclusione $\K^2 \to \K^3$ usuale posso considerare
+ $$Z=(Z(p(x_1,x_2))= 
+ \begin{cases}Z(\overline{p}(x_1,x_2,x_3)) \\x_3=1
+ \end{cases}$$
+ ora essendo l'omogenizzato omogeneo segue che se $x_0 \neq 0 $ appartiene al luogo di zero dell'omogenea anche $\lambda x_0 $ ci appartiene dunque 
+ $Z(\overline{p}(x_1,x_2,x_3)) $ \'e un cono di centro $0$.\\
+ Dunque possiamo considerare le coniche come l'intersezione di un cono con centro l'origine (luogo di zeri del polinomio omogenizzato) con il piano $x_3=1$ oppure fissare un cono e far variare il piano che lo interseca.\\
+
+\newpage
+\subsection{Classificazione affine delle coniche }
+Vogliamo studiare come le  $Aff(\K^2)$ agiscono sulle coniche.\\
+Tornando alla scrittura di polinomio di secondo grado in 2 indeterminate posso considerare
+
+ $$p(X)= d + 2B^t X + X^t A \,X $$
+ dove 
+  $$ X= \begin{pmatrix}
+ x_1 \\x_2 
+ \end{pmatrix} \quad B = \begin{pmatrix}
+ b_1 \\b_2 
+ \end{pmatrix} \quad  A =\begin{pmatrix}
+ a_{11} & a_{12} \\ a_{12} & a_{22} 
+ \end{pmatrix}$$ 
+ Dunque ho questa identificazione 
+ $$ \mathcal{E}= \left\{ M= \left( \begin{array}{c|c} A& B \\ \hline B^t & d 
+
+ \end{array} \right)=M^t\quad A\neq 0  \right\} $$
+Ora considerando l'identificazione 
+ $$ Aff(\K^2) = \left\{ \left(  \left.\begin{array}{c|c } P & D \\ \hline 0 &1 
+ \end{array} \right) \in GL(3,\K) \quad \right|  \quad P\in GL(2,\K) \quad D \in \K^2 \right\} $$
+ Dunque dobbiamo studiare il quoziente $\mathcal{E}$ con la relazione $\sim$.\\
+ $\sim$ \'e generato da
+ \begin{itemize}
+ \item $ M \sim \lambda M \quad \forall\lambda\neq 0 $
+ \item $M \sim Q^t M Q$ dove $ Q$ \'e la codifica matriciale di un'affine 
+ \end{itemize}
+ Ora 
+ $$ M'=Q ^t M Q = \left( \begin{array}{c|c} P^t A P & P^t A + P^t B  \\ \hline D^t A P + B^t P & D^t A D + 2B^t D +d 
+ 
+ \end{array} \right) $$
+dunque 
+\begin{lem}La coppia $(rk(A),rk(M)) $ \'e un invariante per la relazione studiata
+\end{lem}
+\spazio
+Osserviamo cosa succede alla conica se agisco con una traslazione .\\
+La traslazione \'e identificata con la matrice 
+$ \left(\begin{array}{c|c} I & D \\ \hline 0 & 1 
+
+\end{array} \right) $ quindi ottengo
+$$ M'= \left( \begin{array}{c|c} \star & AD + B \\ \hline 
+\star & \star
+
+\end{array}\right)$$
+Ora posso chiedermi se esiste una traslazione (un $D$) tale che $AD+B=0 $ ovvero se il sistema $AD=-B$ ammette soluzione.\\
+Nel caso che ci\'o accada 
+$$ M'= \left( \begin{array}{c|c}A' & 0 \\ \hline 0 & d' 
+
+\end{array} \right)$$
+dunque se $x \in Z(M') $ allora $-x\in Z(M')$ infatti non compaiono termini di primo grado da cui $Z(M')$ \'e invariante per la simmetria centrale di centro $0$, da ci\'o segue che $Z(M)$ \'e invariante per la simmetria di centro $D$.\\
+Riassumiamo quanto detto con questa definizione
+\begin{defn}Sia $M$ un polinomio con la codifica usuale.
+\begin{itemize}
+\item $Z(M)$ \'e una conica a centro se esiste una traslazione $ \left(\begin{array}{c|c} I & D \\ \hline 0 & 1 
+
+\end{array} \right) $  tale che $AD+B = 0$
+\item $Z(M)$ \'e una conica senza centro se tale traslazione non esiste
+\end{itemize}
+\end{defn}
+\begin{oss}Avere o non avere un centro \'e un invariante per la relazione 
+\end{oss}
+\spazio
+\subsubsection{Classificazione complessa}
+Sia $\K=\C$.\\
+Consideriamo il caso che $Z(M)$ sia a centro e assumiamo che $M$ sia gi\'a il traslato ovvero sia della forma
+$$ M =\left( \begin{array}{c|c}A & 0 \\ \hline 0 & d 
+
+\end{array} \right) \quad A \neq 0 $$
+Ora le varie coppie di ranghi possibili sono 
+\begin{center}
+\begin{tabular}{c|c|c}
+
+&$rk(A)$ & $rk(M)$ \\ 
+\hline
+(a)&2 & 3 \\ 
+\hline (b)&
+2 & 2 \\ 
+\hline (c)&
+1 & 2 \\ 
+\hline (d)&
+1 & 1 \\ 
+\hline 
+\end{tabular} 
+\end{center}
+Analizziamo le varie coppie
+\begin{itemize}
+\item $(2,3)$ Essendo $rk(M)> rk(A)$ ne segue che $d\neq 0 $ dunque dividendo per $d$ e agendo con una Q lineare $\left( \begin{array}{c|c} P & 0 \\ \hline 0 & 1 
+\end{array} \right)$ otteniamo 
+$$ \left( \begin{array}{c|c} P^t A P & 0 \\ \hline 0 &1 
+
+\end{array} \right) \text{ per la classificazione dei prodotti sclari in } \C \text{ segue } \left( \begin{array}{c|c} I & 0 \\ \hline 0 & 1 
+\end{array} \right)$$
+Dunque in questo caso la conica  \'e $ x_1^2 + x_2^2+1=0 $ che prende il nome di ellisse complessa
+\item $(2,2)$ Da $rk A = rk M $ segue che $d=0$, facendo agire $Q$ come sopra otteniamo
+$$ \left( \begin{array}{c|c} P^t A P & 0 \\ \hline 0 &0 
+
+\end{array} \right) \text{ per la classificazione dei prodotti sclari in } \C \text{ segue } \left( \begin{array}{c|c} I & 0 \\ \hline 0 & 0 
+\end{array} \right)$$
+La conica  \'e $ \ds x_1^2 + x_2^2 = (x_1+ ix_2 )(x_1 -ix_2)=0$ ovvero  sono $2$ rette incidenti.
+\item $(1,2)$ Facendo considerazioni analoghe al primo caso otteniamo la forma normale
+$$\left(  \begin{array}{c|c} \begin{array}{cc} 1 & 0 \\ 0 & 0 
+\end{array} & 0 \\ \hline 0 & 1 
+
+\end{array}\right)$$
+La conica \'e $\ds x_1^2+1 = (x_1-i)(x_1+i)=0$ovvero  2 rette parallele
+\item $(1,1)$ in modo analogo
+$$\left(  \begin{array}{c|c} \begin{array}{cc} 1 & 0 \\ 0 & 0 
+\end{array} & 0 \\ \hline 0 & 0
+
+\end{array}\right)$$
+La conica \'e $ \ds x_1^2=0$ ovvero una retta doppia
+\end{itemize}
+Analizziamo il  caso in cui la conica \'e non a centro.\\
+Il rango di $A$ non pu\'o essere $2$ altrimenti il sistema 
+$$ AD = -B \text{ ammetterebbe come soluzione } D = - A^{-1}B $$
+di conseguenza $rk(A)=1 $.\\
+Facciamo agire un applicazione $Q$ lineare e usando la classificazione dei prodotti scalari otteniamo
+$$M=\left(  \begin{array}{cc|c }1 & 0 & b_1 \\ 0 & 0 & b_2 \\ \hline b_1 & b_2 & d 
+\end{array}\right)$$
+Ora se $b_2=0 $ per il principio di Rouch\'e-Capelli il sistema $AD=-B$ ammetterebbe soluzione quindi $b_2 \neq 0 $.\\
+Ora $\det M = -b_2^2 \neq 0$ quindi $rk M =3$.\\
+\begin{oss}La coppia di ranghi distingue i casi a centro dai casi senza centro
+\end{oss}
+Partendo dalla matrice $M$ con 2 traslazioni posso assumere che $b_1=0 $ e $d=0$ dunque ottengo
+$$\left(  \begin{array}{cc|c }1 & 0 & 0 \\ 0 & 0 & b \\ \hline 0 & b & 0
+\end{array}\right) \text{ dividendo per } b \left(  \begin{array}{cc|c }\frac{1}{b} & 0 & 0 \\ 0 & 0 & 1 \\ \hline 0 & 1 & 0
+\end{array}\right) \text{ con una lineare } \left(  \begin{array}{cc|c }1 & 0 & 0 \\ 0 & 0 & 1 \\ \hline 0 & 1 & 0
+\end{array}\right)$$
+La conica \'e $ \ds x_1^2+2x_2=0$ \'e che prende il nome di parabola complessa.\\ \\
+Riassumiamo tutto il discorso con il seguente teorema
+\begin{thm}[Classificazione affine delle coniche complesse]\bianco
+Ogni conica su $\C$ \'e equivalente (in modo affine) ad una e una sola delle seguenti coniche  e la coppia $(rk A, rk M)$ \'e un sistema completo di invarianti
+\begin{itemize}
+\item $(1,1) $ identifica $ \displaystyle x_1^2 =0$ (retta doppia)
+\item$(1,2)$ identifica $ \ds x_1^2 +1 =0$ (2 rette parallele)
+\item $(1,3)$ identifica $\ds x_1^2 +2x_2=0$ (parabola complessa)
+\item $(2,2)$ identifica $\ds x_1^2+x_2^2 =0$ (2 rette incidenti)
+\item $(2,3)$ identifica $\ds x_1^2+x_2^2+1=0$ (ellisse complessa)
+\end{itemize}
+\end{thm}
+\newpage
+\subsubsection{Classificazione reale}
+\begin{oss}
+Nel caso in cui $\K=\R$ non possiamo ripetere lo stesso ragionamento applicato nel caso complesso infatti in $\C$ il rango era un invariante completo per la congruenza, mentre in $\R$ no.\\
+Gli invarianti completi per congruenza in $\R$ sono la segnatura e l'indice di Witt.\\
+Ora la segnatura non \'e un invariante per $\sim$ infatti se moltiplico per $\lambda<0$ inverte $i_+ $ con $i_-$, invece l'indice di Witt non  viene modificato dalla moltiplicazione per uno scalare diverso da $0$.\\
+
+\end{oss}
+Andiamo a studiare le diverse forme al variare della quaterna $(rk A, rk M , w (A), w (M) )$ ricalcando quanto fatto per il caso complesso ma specificandolo usando l'indice di Witt
+\begin{itemize}
+\item $(2,3,0,0)$ ora $d\neq 0$ quindi posso dividere per $-d$ ottenendo
+$$ \left( \begin{array}{c|c}A & 0 \\ \hline 0  & -1 
+
+\end{array}\right) \text{ essendo } w(M)=0 \text{ M \'e definito quindi } \left( \begin{array}{c|c}-I & 0 \\ \hline 0 & -1
+
+\end{array} \right)$$
+La conica \'e $\ds -x_1^2 - x_2^2 -1 $ dunque  $\emptyset$
+\item $(2,3,0,1)$ Dalla quaterna segue che $A$ \'e definito mentre $M$ no quindi
+$$ \left( \begin{array}{c|c}I & 0 \\ \hline 0 & -1 
+
+\end{array} \right)$$
+La conica \'e $ \ds x_1^2 + x_2^2 -1 $   che prende il nome di ellisse reale
+\item $(2,3,1,1)$ $A$ e $M$ non sono definiti dunque
+$$ \left(\begin{array}{c|c} \begin{array}{cc}1 & 0 \\ 0 & -1 
+
+\end{array} & 0 \\ \hline 0 & -1 
+
+\end{array} \right)$$
+La conica \'e $ \ds x_1^2 - x_2^2 -1 =0 $ che prende il nome di iperbole reale
+\item $(2,2,0,1)$ da cui $A$ \'e definito dunque 
+$$ \left( \begin{array}{c|c} I & 0 \\ \hline 0 & 0 
+
+\end{array}\right)$$
+La conica \'e $\ds x_1^2 + x_2^2 = 0 $ ovvero un punto
+\item $(2,2,1,2)$ da cui $A$ \'e non \'e definito allora
+$$ \left( \begin{array}{c|c} \begin{array}{cc} 1 & 0 \\ 0& -1 
+\end{array} & 0 \\ \hline 0 & 0 
+
+\end{array} \right)$$
+La conica \'e $\ds x_1^2 - x_2^2 = (x_1 + x_2)(x_1-x_2)=0$ ovvero 2 rette incidenti
+\item $(1,2,1,1)$  
+$$ \left( \begin{array}{c|c} \begin{array}{cc} 1 & 0 \\ 0 & 0 
+\end{array} & 0 \\ \hline 0 & 1 
+
+\end{array} \right)$$
+La conica \'e $\ds x_1^2+1=0$ ovvero $\emptyset$
+\item $(1,2,1,2)$
+$$ \left( \begin{array}{c|c} \begin{array}{cc} 1 & 0 \\ 0 & 0 
+\end{array} & 0 \\ \hline 0 & -1 
+
+\end{array} \right)$$
+La conica \'e $\ds x_1^2-1 = (x_1-1)(x_1+1)=0$ ovvero 2 rette parallele
+\item $(1,1,1,2)$
+$$ \left( \begin{array}{c|c} \begin{array}{cc} 1 & 0 \\ 0 & 0 
+\end{array} & 0 \\ \hline 0 & 0
+
+\end{array} \right)$$
+La conica \'e $\ds x_1^2=0$ ovvero una retta doppia
+
+\end{itemize}
+Andiamo a studiare il caso $(1,3)$ ovvero quelle senza centro, ripercorrendo la dimostrazione fatta nel caso complesso otteniamo 
+
+$$ \left( \begin{array}{cc|c}
+\frac{1}{b} & 0 & 0 \\ 0 & 0 & 1 \\ \hline 0 & 1 &0
+\end{array} \right)$$
+A priori abbiamo 2 forme a seconda del segno di $b$ infatti
+$$ \left( \begin{array}{cc|c}
+1 & 0 & 0 \\ 0 & 0 & 1 \\ \hline 0 & 1 &0
+\end{array} \right) \quad  \left( \begin{array}{cc|c}
+-1 & 0 & 0 \\ 0 & 0 & 1 \\ \hline 0 & 1 &0
+\end{array} \right)$$
+Ma notiamo che le 2 coniche differiscono per la riflessione $ Q = \left( \begin{array}{c|c} \begin{array}{cc}1 & 0 \\ 0 & -1 
+\end{array}& 0 \\ \hline 0 & 1 
+
+\end{array} \right)$ quindi nel caso non centrato abbiamo solo $( 1,3,1,2)$.\\
+La conice \'e $\ds x_1^2 +2x_2=0$ che prende il nome di parabola reale\\
+\\
+\spazio
+Riassumiamo tutto il discorso con il seguente teorema
+\begin{thm}[Classificazione affine delle coniche reali]\bianco
+Ogni conica su $\R$\'e equivalente (in modo affine) ad una sola delle seguenti coniche e la quaterna $(rk A , rk M , w(A), w(M))$ \'e un sistema completo di invarianti
+\begin{itemize}
+\item $(1,1,1,2)$ identifica $\ds x_1^2=0$ (retta doppia)
+\item $(1,2,1,1)$ identifica $\ds x_1^2 +1 =0 $ $ (\emptyset)$
+\item $(1,2,1,2)$ identifica $\ds x_1^2-1=0$ (2 rette parallele)
+\item $(1,3,1,2)$ identifica $\ds x_1^2 + 2 x_2=0$ (parabola reale)
+\item $(2,2,0,1)$ identifica $\ds x_1^2 + x_2^2=0$ (punto)
+\item $(2,2,1,2)$ identifica $\ds x_1^2 - x_2^2 =0$ (2 rette incidenti)
+\item $(2,3,0,0)$ identifica $\ds x_1^2 + x_2^2 +1 =0$ $(\emptyset)$
+\item $(2,3,0,1)$ identifica $\ds x_1^2 +x_2^2 -1=0$ (ellisse reale)
+\item $(2,3,1,1)$ identifica $\ds x_1^2-x_2^2-1=0$ (iperbole reale)
+\end{itemize}
+\end{thm}
+\newpage
+\subsection{Classificazione isometrica delle coniche reali}
+Mostriamo solo il caso in cui la conica in esame \'e un ellisse, per le altre coniche si fanno in modo analogo.\\
+Essendo $Isom (\R^2 )\subseteq Aff(\R^2)$ allora la quaterna $(rk A , rk M , w(A), w(M))$ \'e un invariante.\\
+Partendo da 
+$$ \left( \begin{array}{c|c}A & B \\ \hline B^t & d 
+
+\end{array} \right)$$ 
+sapendo che \'e un ellisse otteniamo
+$$\left( \begin{array}{c|c} A & 0 \\ \hline 0 & -1 
+
+\end{array} \right)\text{ con } rk A =2 \text{ e definita positiva}$$
+Dunque agendo con $ \left(\begin{array}{c|c} P & 0 \\ \hline 0 & 1  \end{array} \right)$ dove $P\in O(2,\R)$, e usando il teorema spettrale otteniamo 
+$$ \left( \begin{array}{cc|c} \lambda_1 & 0 & 0 \\ 0 & \lambda_2 & 0 \\ \hline 0 & 0 & -1 \end{array} \right) \quad \lambda_1 \geq \lambda_2 >0 $$
+Dunque abbiamo trovato una forma normale per le ellissi a meno di isometrie.\\
+\spazio
+Vogliamo trovare un modo per poter calcolare $\lambda_1 $ e $\lambda_2$ direttamente dall'equazione data senza dover ricorrere alla forma normale.\\
+Se considero solo la relazione $ M = Q^t M Q $ allora ottengo che la traccia e il determinante di $A$, cos\`i come il determinante di $M$ sono invarianti.\\
+Invece 
+$$ tr (\lambda A) = \lambda tr (A)$$
+$$ \det (\lambda A )= \lambda^2 \det A  \quad A \in M(2,\R)$$
+$$ \det (\lambda M ) =\lambda^3 \det M \quad M \in M(3,\R)$$
+quindi essi non sono invarianti per $\sim $ ma lo sono 
+$$ \frac{ tr A \cdot \det A }{\det M }\qquad \frac{\left( \det A \right) ^3}{\left( \det M \right)^2}$$ 
+questi invarianti sono detti omogenei (stesso grado di $\lambda$ al numeratore e al denominatore)\\
+Sappiamo che
+$$M= \left( \begin{array}{c|c}A & B \\ \hline B^t & D 
+
+\end{array} \right) \sim  M'=\left( \begin{array}{c|c}A'& 0 \\ \hline 0 &-1 
+
+\end{array}\right) \quad \text{dove } A'=\begin{pmatrix}
+\lambda_1 & \\& \lambda_2
+\end{pmatrix}$$
+dunque 
+$$\det A'=\lambda_1 \lambda_2$$
+$$ tr A'=\lambda_1 + \lambda_2$$
+$$ \det M'=-\lambda_1 \lambda_2 $$
+Da cui
+$$ \frac{\det A' \cdot tr A'}{\det M' }=- \left( \lambda_1 + \lambda_2 \right) = \frac{\det A \cdot tr A}{\det M }$$
+$$ \frac{\left(\det A' \right)^3}{\left( \det M' \right)^2 }=\lambda_1\lambda_2 = \frac{\left(\det A\right)^3}{\left( \det M \right)^2}$$
+Dunque abbiamo finito infatti $\lambda_1 $ e $\lambda_2 $ sono le radici del polinomio di secondo grado 
+$$ t^2-(\lambda_1+\lambda_2)t + \lambda_1\lambda_2$$
+di cui sappiamo calcolare i coefficienti partendo dalla conica (si usa il determinante e traccia) e poich\'e $\lambda_1 \geq \lambda_2 >0 $ ammette sempre 2 radici
+%\end{document}

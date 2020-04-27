@@ -1,0 +1,1073 @@
+%%\input{0_Preambolo.tex}
+%\begin{document}
+\section{Somma diretta multipla}
+\begin{prop} \label{sommamultipla}Sia $V$ uno spazio vettoriale e siano $W_1 ,\cdots, W_k$ sottospazi vettoriali.\\
+I seguenti fatti sono equivalenti
+\begin{enumerate}
+\item $\forall v \in W_1 + \cdots + W_k $
+$$\exists \, ! \,  v_1, \cdots , v_k \text{ con } v_j \in W_j \quad v=v_1+\cdots+v_k$$
+\item 
+$$ v_1+ \cdots + v_k =0 \wedge v_j \in W_j \implica v_1=\cdots=v_k=0 $$
+\item Se $\B_j$ \'e base di $W_j$ allora $$ \B=\B_1\cup \cdots \cup \B_k \text{ \'e base di  } W_1+ \cdots + W_k$$
+\item $$\dim ( W_1 + \cdots + W_k ) =\dim W_1 + \cdots + \dim W_k $$
+\end{enumerate}
+La dimostrazione \'e lasciata come esercizio
+\end{prop}
+\begin{defn}[Somma diretta multipla]\bianco
+Se si verificano questi fatti $W_1, \cdots , W_k $ sono in somma diretta e si scrive 
+$$ W_1 \oplus \cdots \oplus W_k $$
+\end{defn}
+\spazio  
+\newpage
+
+\section{Alcune nozioni sugli endomorfismi }
+Ricordiamo cosa \'e un endomorfismo
+\begin{defn}[Endomorfismo]\bianco
+Sia $V$ uno spazio vettoriale allora definiamo endomorfismo una funzione
+$ f: \, V \to V $ lineare\\
+Denotiamo inoltre con 
+$$ End(V) = \{ f :\, V \to V \, \vert \, \text{ endomorfismo } \} $$  
+\end{defn}
+\begin{prop}Se $\dim V= n $.
+Allora
+$$ \dim (End(V))=n^2 $$
+\proof
+Fissata una base $\B=\{ \nvett \} $ di V, per definire un endomorfismo basta assegnare i vettori su una base.\\
+Ogni vettore della base $\B$ pu\'o essere mandato in un qualsiasi altro vettore della base.\\Per ogni vettore ho $n$ scelte, i vettori sono $n$ da cui $n^2 $
+\endproof
+\end{prop}
+
+\subsection{Alcune definizioni}
+
+\begin{defn}[Autovalore e autovettore]\bianco
+Sia $f \in End(V) $ \\
+$ \lambda \in \K $ si dice autovalore per $f$ se 
+$$ \exists v \in V \quad v\neq 0  \tc f(v)= \lambda v $$
+In tal caso $v$ \'e detto autovettore per $\lambda$
+\end{defn}
+\begin{defn}[Spettro]
+$$Sp(f)=\{ \lambda \in \K \, \vert  \lambda \text{ autovalore per } f \} = \{ \lambda \in \K \, \vert \, \ker(f-\lambda id) \neq 0 \}$$ 
+\end{defn}
+\begin{defn}[Autospazio e molteplicit\'a geometrica] Sia $\lambda $ autovalore per $f$
+$$ V_\lambda =\{ v \in V \, \vert \, f(v)=\lambda v \}  = \ker (f-\lambda id) $$
+L'autospazio $V_\lambda$ \'e formato dagli autovettori per $f$ \\
+La dimensione dell'autospazio $V_\lambda$ \'e detta  molteplicit\'a geometrica di $\lambda$
+$$ m_g (\lambda)=\dim V_\lambda $$
+\end{defn}
+\spazio
+\begin{defn}[Polinomio caratteristico]\bianco
+Sia $A\in M(n , \K) $ 
+$$ P_A(t)= \det (A -tI) \in \K[t]$$
+Possiamo definire il polinomio anche sugli endomorfismi 
+$$ P_f(t)=P_A(t) \quad \text{ dove } A = M_\B(f) $$
+con $\B$ base arbitraria di $V$
+\end{defn}
+\begin{defn}[Molteplicit\'a algebrica]
+$\forall \lambda \in Sp(f)$ $$m_a(\lambda )  \text{ \'e la molteplicit\'a algebrica di }  \lambda  \text{ come radice del polinomio caratteristico} $$
+\end{defn}
+\newpage
+\subsection{Alcune propiet\'a}
+\begin{prop}Gli autospazi sono in somma diretta multipla.
+Sia $$\{ \lambda_1,\cdots, \lambda_s \} \subseteq Sp(f) \text{ con }\lambda_i \neq \lambda_j  \text{ se }  i\neq j$$
+Allora $$ V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_s} $$
+\proof Per induzione su $s\geq 1 $ utilizzando  la definizione 2 della somma diretta multipla (\ref{sommamultipla}) \
+Il passo base \'e banale \\
+Sia 
+\begin{equation} \label{equ1}
+v_1 + \cdots + v_s=0 
+\end{equation} 
+
+applicando $f$  alla (\ref{equ1}) otteniamo 
+\begin{equation}\label{equ2}
+ \lambda_1 v_1 + \cdots + \lambda_s v_s=0
+\end{equation}
+ moltiplicando (\ref{equ1}) per $\lambda_k$ otteniamo 
+ \begin{equation} \label{equ3}
+\lambda_k v_1 + \cdots + \lambda_k v_s=0 
+ \end{equation}
+Sottraendo (\ref{equ2}) - (\ref{equ3})  e raccogliendo otteniamo 
+$$ ( \lambda_1 -\lambda_k) v_1 + \cdots + ( \lambda_{k-1} - \lambda_k) v_{k-1} =0$$
+Quindi poich\'e gli autovettori sono distinti, applicando l'ipotesi induttiva vale
+$v_i=0 \quad \forall i $
+\end{prop}
+
+\spazio
+
+\begin{prop}\label{molt_alg_e_geo}
+$ \forall \lambda \in Sp(f) $
+$$ 1\leq m_g(\lambda) \leq m_a(\lambda) \leq n=dim(V) $$
+\proof  Poniamo $m_g(\lambda) = g$
+$$\D=\{ v_1 , \, \cdots , \, v_{g} \} \text{ una base di } V_\lambda $$
+Estendiamo, tale base a $\B$  base di $V$ 
+$$ A= M_\B (f)= 
+\left (
+\begin{array}{c|c}
+\lambda I_{g}  & M \\
+\hline
+0 & N \\
+\end{array}
+\right )$$
+$$P_f(t)=P_A(t)=\det  \left (
+\begin{array}{c|c}
+(\lambda -t ) I_{d_\lambda}  & M \\
+\hline
+0 & D -t  I  \\
+\end{array}
+\right )=( \lambda -t )^{g} P_D(t) $$
+da cui segue che $m_a(\lambda) \geq  g$
+\endproof
+\end{prop}
+\newpage
+\subsection{Ideali di un endomorfismo}
+\begin{defn}[Valutazione polinomio su endomorfismo]\bianco
+Sia $V $ uno spazio vettoriale su $\K$ e sia $f\in End(V) $
+$$ p(t)=a_0 t^0 + \cdots + a_k t^k \in \K[t]$$
+Allora definiamo $p(f)\in End(V)$ come 
+$$ p(f)=a_0 f^0 + \cdots+ a_k f^k $$
+dove indichiamo $f^0=id_V $ e $f^i= \underbrace{ f \circ \cdots \circ  f}_{\text{ i volte } } $
+\end{defn}
+\spazio
+Fissato $f\in End(V) $ 
+$$ \phi: \, \K[t]\to End(V) \quad \phi(p(t))=p(f)$$ 
+Ovvero valuta ogni polinomio in $f$ 
+\begin{ex} Dimostrare che $\phi $ \'e omomorfismo di anelli 
+\end{ex}
+\begin{oss}\label{commu}Poich\'e $\K[t]$ un anello commutativo e $\phi$ \'e omomorfismo di anelli
+$$ p_1(f)\circ p_2(f)=p_2(f)\circ p_1(f)$$
+\end{oss}
+\spazio
+\begin{defn}[Ideale di un endomorfismo]\bianco
+Sia $f\in End(V) $ e sia $\phi$ come sopra  allora definiamo l'ideale di $f$ come 
+$$ I(f)=\ker \phi =\{  p(t) \in \K[t]\, \vert \, p(f)=0\in End(V)\}$$ 
+\end{defn}
+ \spazio
+ \begin{lem}[Gli ideali sono non banali]
+$$\forall f \in End(V) \, I (f)\neq \{ 0 \} $$
+\proof
+Poich\'e $\dim End(V)= n^2$, fissato $m>n^2 $ ne segue che 
+$$ f^0 , \, f^1, \, \cdots \, , \, f^m $$
+ non sono linearmente indipendenti (sono di pi\'u della dimensione) da cui
+$$ \exists a_0 f^0 +\cdots + a_m f^m = 0 \in End(V) \quad \text{ tali che } \exists a_j \neq 0 $$ 
+Dunque
+$$ p(t)= a_0 +a_1 t + \cdots + a_m t^m \in I(f) $$ 
+inoltre visto che esiste almeno un coefficiente non nullo, $p(t)\neq 0 $ ovvero $I(f) \neq \{ 0 \}$
+\endproof
+\end{lem}
+\spazio
+\subsubsection{Teorema di Hamilton-Cayley}
+
+\begin{lem}
+Sia $f\in End(V)$ con polinomio caratteristico completamente fattorizzabile.\\
+Allora $$p_f(t) \in I (f)$$
+\proof
+Sia 
+$$ p_f(t)=( t-\mu_1) \cdots ( t-\mu_n)$$
+il polinomio caratteristico di $f$.\\
+Per vedere che il polinomio valuto in $f$ sia il polinomio nullo, basta osservare che esso annulla una base.\\
+Prendiamo una base$\B=\{ \nvett \}$ tale che la $M_\B(f) $ sia triangolare superiore (il motivo per cui tale base esiste viene dimostrato successivamente, quando parleremo di endomorfismi triangolabili) quindi
+$$ f(v_1)=\mu_1 v_1 $$
+$$ f(v_2)=\mu_2 v_2 + \star v_1 $$
+Calcoliamo $p_f(f)$ su $v_1$
+$$ p_f(f)(v_1)=( f-\mu_1 Id ) \circ \cdots \circ  ( f-\mu_n Id )(v_1)\bm{= } ( f-\mu_2  Id ) \circ \cdots \circ  ( f-\mu_n Id )\circ (f-\mu_1 Id)(v_1)=0 $$
+Dove il secondo uguale viene giustificato dall'osservazione~\ref{commu}\\
+Calcoliamo su $v_2$
+$$ p_f(f)(v_2)=( f-\mu_1 Id ) \circ \cdots \circ  ( f-\mu_n Id )(v_2)=  ( f-\mu_3  Id ) \circ \cdots \circ  ( f-\mu_n Id )\circ (f-\mu_1 Id)\circ (f-\mu_2 Id) (v_2)= $$$$( f-\mu_3  Id ) \circ \cdots \circ  ( f-\mu_n Id )\circ (f-\mu_1 Id) (\star v_1 )=0  $$
+Per induzione si dimostra che annulla una base e dunque vale la tesi \endproof
+\end{lem}
+
+Mostriamo ora la generalizzazione del lemma precedente
+\begin{thm}[Hamilton-Cayley]\bianco
+$\forall f \in End(V)$
+$$ p_f(t) \in I(f) $$
+\proof Possiamo considerare $\mathbb{F}$ campo di spezzamento del polinomio $p_f(t) $ in questo caso 
+$$
+\begin{tikzcd} 
+V \arrow[r, "f"] \arrow[d,""]
+& V  \arrow[d, ]\\ 
+\K ^ n \arrow[r, "A"]  \arrow[d,hook,"i"] 
+& \K ^ m  \arrow[d,hook,"i"]  \\
+\mathbb{F} \arrow{r}{A_\mathbb{F}} 
+&\mathbb{F}
+\end{tikzcd}
+$$
+Dove con $A_\mathbb{F} = A \in (M,n \mathbb{F }) $.\\
+Ora poich\'e
+ $\F $ \'e campo di spezzamento del polinomio caratteristico vale che $ P_A(A)=0\in M(n,\F) $ per il lemma precedente.\\
+Ora l'uguaglianza precedente vale anche in $\K$ quindi vale la tesi
+\endproof
+\end{thm}
+\newpage
+\begin{lem} Sia $p(t) \in I (f)$
+$$ \lambda \in Sp(f) \implica p(\lambda )=0$$
+\proof Essendo $\lambda$ un autovalore 
+$$ \exists v \in V \, v\neq 0 \tc f(v)=\lambda v $$
+Inoltre sappiamo $p(f)(v)=0 $ infatti $p(t) $ appartiene all'ideale di $f$ \\
+Inoltre $$ p(f)(v)= \left( a_0 I + a_1 f + \cdots + a_k f^k\right) (v)=a_0 v + \lambda a_1 v + \cdots + \lambda^k a_k v =$$ 
+$$ = v( a_0+ a_1 \lambda + \cdots + a_k \lambda ^k )  $$
+Ora l'ultima espressione vale $0$ inoltre essendo $v$ autovettore $v\neq 0 $ da cui il termine nella parentesi deve essere uguale a 0.\\
+Ma il termine nella parentesi non \'e altro che $ p(\lambda ) $
+\endproof
+\end{lem}
+\subsubsection{Polinomio minimo}
+Essendo $\K[t]$ un PID, tutti i suoi ideali sono mono generati
+
+\begin{defn}[Polinomio minimo di $f$ ]\bianco
+Sia $q_t$ il polinomio monico che genera $I(f)$
+\end{defn}
+\spazio
+
+\begin{oss} Possiamo applicare il lemma precedente al polinomio minimo.\\
+Sia  $\lambda \in Sp(f) $ allora  
+$$ P_f(t)=\pm ( t-\lambda)^{m_\lambda} q(t)$$
+dunque 
+$$q_t(f)=\pm ( t-\lambda) ^{r_\lambda } q_1(t) \quad 1 \leq r_\lambda \leq m_\lambda $$
+\end{oss}
+\newpage
+\subsubsection{Polinomio minimo di un vettore}
+Sia $v\in V $ e $f\in End(V) $ allora definiamo la valutazione in $f(v) $ come 
+$$ \K[t] \to End(V) \to V \qquad p \to p(f) \to p(f)(v)$$
+\spazio
+Come per la valutazione su un endomorfismo possiamo considerare $I(f,v) $ e considerare il polinomio minimo $\mu_{f,v} $ come il generatore monico dell'ideale
+\begin{lem}$$\mu_{f,v} \, \vert \, \mu_f$$
+\proof
+La divisibilit\'a deriva dal fatto che $ I(f)  \subseteq I(f,v)$.\\
+Infatti$$\forall p \in \K[t] \quad p(f) \equiv 0 \quad \implica \quad  p(f)(v)=0$$
+\endproof
+\end{lem}
+\begin{prop} \label{A}Sia $ \nvett $ un insieme di generatori di $V$.\\
+Allora
+$$ \mu_f = m.c.m \left( \mu_{f,v_1} , \cdots, \mu_{f,v_n} \right) =m \text{ monico } $$
+\proof Visto che $ \mu_{f,v_i} \, \vert \mu_f $ allora $m \, \vert \, \mu_f$.\\
+Ora $ m \in I(f)$ infatti  
+$$\forall i \quad \exists h_i \in \K[t] 
+\quad m = h_i \mu_{f,v_i} \quad \text{ e}  \quad \forall v =\sum_{i=1}^n a_i v_i $$
+$$m(f)(v)=m(f) \left( \sum_{i=1}^n a_i v_1 \right)= \sum_{i=1}^n a_i \cdot m(f) (v_i) = \sum_{i=1}^n a_1 \left(h_i \cdot \mu_{f,v_1} \right) (f(v_i))= $$
+$$=\sum_{i=1}^n a_1 \cdot ( h_i(f) \, \circ \, \mu_{f,v_i} )(v_1)=\sum_{i=1}^n a_1 \cdot ( h_i(f) ( \, \mu_{f,v_i} (v_1))=0 $$
+quindi $\mu_f \, \vert m $.\\
+Poich\'e valgono  entrambe le divisibilit\'a e poich\'e entrambi sono monici, vale la tesi.
+\endproof
+\end{prop}
+\newpage
+\subsubsection{Calcolare il polinomio minimo}
+\paragraph{ Primo metodo}
+\begin{oss} Se il grado del polinomio minimo di $f$ \'e $d$ allora
+$$ id, f,f^2 ,\cdots , f^{d-1} \text{ sono linearmente indipendenti } $$
+Supponiamo che non siano indipendenti allora
+$$ a_0 \cdot i_d +a_1 f + \cdots  + a_{d-1} f^{d-1} =0 \quad \exists a_i \neq 0$$
+da cui segue che il polinomio $p(t)=a_0 + a_1 t + \cdots a_{d-1}f^{d-1} \in I(f) $ ma ci\'o \'e assurdo perch\'e $p(t) \neq 0 $ poich\'e $a_i \neq 0 $ ed ha grado minore del polinomio minimo
+\end{oss}
+Dunque per trovare il polinomio minimo, analizzo le prime potenze di $f$ finch\'e non trovo la prima lista di potenze non linearmente indipendenti.\\
+Se noto che $ id, f, \cdots, f^{d-1} $ sono linearmente indipendenti ma $ id, f, \cdots, f^{d-1} ,f^d $ non lo \'e allora
+$$ f^d= a_0 id + a_1 f + \cdots + a_{d-1} f^{d-1} $$
+da cui il polinomio minimo di f \'e 
+$$ t^d + a_{d-1} t^{d-1} + \cdots + a_0 $$
+\begin{ex}
+\end{ex}Sia $f \in End(V) $ uno spazio vettoriale reale e sia $\B$ una base di $V$ tale che 
+$$A= M_\B(f) = \begin{pmatrix} 0  & 1 & 1 \\
+											0  & 1 & 0 \\
+											-1 & 1 & 2  \end{pmatrix}$$
+Notiamo che $A $ e $I_3$ sono linearmente indipendenti quindi grado del polinomio minimo $\geq 2 $
+$$ A^2 = \begin{pmatrix} -1 & 2 & 2 \\
+										0 & 1 & 0 \\
+										-2 & 2 & 3  \end{pmatrix} $$
+$I_3,A $ e $A^2 $ sono dipendenti? $\exists \alpha, \beta \in \R $ tale che $A^2 =\alpha I_3 + \beta A $ ? 
+$$ \begin{pmatrix}
+-1=\beta & 2 = \alpha & 2 =\alpha \\
+0=0		& 	 1= \alpha+\beta & 0=0 \\
+-2=-\alpha & 2=\alpha & 3 =2\alpha + \beta 
+\end{pmatrix}$$
+$$ A^2 = 2 A - I \quad \implica \quad A^2 -2A +I $$
+quindi il polinomio minimo di $f$ \'e 
+$$ t^2 -2+1 $$
+\paragraph{Secondo metodo}
+So che il polinomio minimo, divide un qualsiasi elemento dell'ideale, in particolare posso prendere il polinomio caratteristico.\\
+Se uso il polinomio caratteristico, so che hanno gli stessi fattori irriducibili
+\newpage
+In questo capitolo il polinomio minimo verr\'a indicato con la lettera $\mu$ e non $q$
+\paragraph{Terzo metodo}
+Questo metodo sfrutta il polinomio minimo di un vettore
+\begin{ex}
+$$ A = \begin{pmatrix}	1 & 2 & 3 \\
+									0 & 1 & 0 \\
+									0 & 0 & 2 
+\end{pmatrix} \in M(3,\R)$$
+Prendo $\B= \{ e_1, e_2 , e_3\} $ base di $M(3,\R)$ e calcolo i 3 polinomi minimi $\mu_{A,e_i}$
+$$ A e_1 = e_1 \quad \implica \quad \mu_{f,e_1}(t) = t-1 $$
+$$
+\begin{tikzcd} e_2 \arrow[r,"A"] &\begin{pmatrix}
+2 \\ 1 \\0 
+\end{pmatrix} \arrow[r,"A"] &\begin{pmatrix}
+4 \\ 1 \\0
+\end{pmatrix} = 2\begin{pmatrix}
+2 \\ 1 \\ 0
+\end{pmatrix} - \begin{pmatrix}
+0 \\ 1 \\0 
+\end{pmatrix} 
+\end{tikzcd} \quad \implica \quad \mu_{f,e_2} = (t-1)^2$$
+
+$$
+\begin{tikzcd} e_3 \arrow[r,"A"] &\begin{pmatrix}
+3 \\ 0 \\2 
+\end{pmatrix} \arrow[r,"A"] &\begin{pmatrix}
+9 \\ 0 \\4
+\end{pmatrix} = 3\begin{pmatrix}
+3 \\ 0 \\2 
+\end{pmatrix} - 2\begin{pmatrix} 0 \\ 0 \\1
+\end{pmatrix} 
+\end{tikzcd} \quad \implica \quad \mu_{f,e_3} = (t-1)(t-2)$$
+Quindi per la proposizione \ref{A} vale
+$$ \mu_f = (t-1)^2 (t-2)$$
+\end{ex}
+\newpage
+\subsection{Endomorfismi diagonalizzabili}
+Prima della prossima proposizione ricordiamo una definizione data nel primo capitolo
+\begin{defn} Una matrice $A$ si dice diagonale se
+$$ \forall i\neq j \quad [A]_{ij}=0 $$
+\end{defn}
+\spazio
+
+\begin{prop} Sia $f \in End(V)$.\\
+I seguenti fatti sono equivalenti
+\begin{itemize}
+\item[(i)] $\exists \B$ base di $V$ fatta di autovettori  di $f$
+\item[(ii)]$\exists \B$ base di $V$ tale che $M_\B(f)$ \'e diagonale
+\item[(iii)]$$V= \bigoplus_{\lambda \in Sp(f)} V_\lambda$$
+\item[(iv)] Il polinomio caratteristico ha tutte le radici in $\K$ e
+$$ \forall \lambda \in Sp(f) \quad  m_a(\lambda)=m_g(\lambda)$$
+\item[(v)]Il polinomio minimo ha tutte le radici in $\K$ di molteplicit\'a $1$
+
+\end{itemize}
+\proof \bianco
+\begin{itemize}
+\item(i) $\ses $(ii)\\ 
+La dimostrazione dell'equivalenza \'e immediata
+\item (i) $\implica $(iii)\\
+Per ipotesi  $\exists \B$ base di autovettori.\\
+Suddivido $$\B=\B_1 \cup \dots \cup \B_k \text{ con }\B_i \subseteq V_{\lambda_i} $$ da cui
+$$ V= Span(\B_i) \oplus \dots \oplus Span(\B_k) \subseteq V_{\lambda_1} \oplus \dots \oplus V_{\lambda_k}$$
+Poich\'e l'altra inclusione \'e sempre vera, ho la tesi
+ \item(iii) $\implica $(i)\\
+  Se $\B_i$ \'e base di $ V_{\lambda_i} $ allora 
+ $$\B_{\lambda_1} \cup \dots \cup B_{\lambda_k} \text{ \'e base di  } V $$
+infatti, segue dalla definizione di somma diretta multipla, inoltre se $ v \in \B_{\lambda_i}$ allora $v\in V_{\lambda_i}$ dunque \'e un autovettore.\\
+Per quanto detto sopra $\B$ \'e una base di $V$ composta da autovettori per $f$
+\item(ii) $\implica $(iv)\\
+  $\exists \B$ base di autovettori di $f$ tale che 
+$$A= M_\B(f)= \begin{bmatrix}\lambda_1 I_{d_{1}}  & & \\ & \ddots & \\ & &  \lambda_k I_{d_{k}}
+\end{bmatrix}$$ 
+con $d_{1} + \dots + d_{k}=\dim V=n $\\
+Allora 
+$$P_f(t) = \det (A-tI)=(\lambda_1 -t ) ^{d_{1}} \cdots (\lambda_k -t ) ^{d_{k}}$$
+Da questo segue che $P_f(t)$ \'e completamente fattorizzabile.\\
+Poich\'e $\B$ contiene $d_{i} $ vettori relativi a $\lambda_i$ allora $$m_g(\lambda_i) \geq d_{i}$$
+Inoltre, per la proposizione~\ref{molt_alg_e_geo}
+ $$d_i=m_a(\lambda_i) \geq m_g({\lambda_i})$$
+ Poich\'e valgono entrambe le disuguaglianze, otteniamo l'uguaglianza voluta
+ 
+\item(iv) $\implica $(iii)\\
+ So che 
+$$ V_{\lambda_1} \oplus \dots \oplus V_{\lambda_k} \subseteq V $$
+ma 
+$$ \dim \left( V_{\lambda_1} \oplus \dots \oplus V_{\lambda_k}  \right) = \dim V_{\lambda_1} + \dots + V_{\lambda_k}=\sum_{i=1}^k d_{\lambda_1} =\sum_{i=1} ^k m_{\lambda_i} =n $$
+Poich\'e vale una disuguaglianza e hanno la stessa dimensione, vale l' uguaglianza
+\end{itemize}
+Le altre implicazioni sono lasciate come esercizio
+\endproof
+\end{prop}
+\spazio
+\begin{defn}[Diagonalizzabile] \bianco
+$f\in End(V) $ si dice diagonalizzabile se verifica una delle propriet\'a sopra elencate.
+\end{defn}
+
+
+\newpage
+\subsubsection{Simultanea diagonalizzabilit\'a }
+\begin{defn}[Simultaneamente diagonalizzabili]\bianco
+$f,g\in End(V) $ si dicono simultaneamente diagonalizzabili se ammettono una base comune di autovettori
+\end{defn}
+\spazio
+\begin{lem}
+$f,g \in End(V) $ 
+$$ f \circ g = g \circ f \implica \forall \lambda\in Sp(f) \quad V_\lambda(f) \text{ \'e } g\text{-invariante } $$
+\proof
+Sia $\lambda \in Sp(f) $\\
+$$\forall v \in V_\lambda(f)=\ker ( f - \lambda Id) $$
+$$f(g(v))=g(f(v))=g(\lambda v ) = \lambda g(v) \quad \implica \quad g(v) \in V_\lambda(f)$$
+\endproof
+\end{lem}
+\spazio
+\begin{prop} $f,g \in End(V)$  diagonalizzabili
+$$ f,g \text{ simultaneamente diagonalizzabili } \ses g\circ f = f\circ g $$
+\proof $\implica$ 
+La possiamo fare in 2 modi 
+\begin{itemize}
+\item[(i)] $\exists \B=\{ \nvett \} $ base di $V$ con autovettori di $f$ e $g$\\
+$$A=  M_\B(f) = \left( \begin{array}{cc} \begin{array}{cc} \lambda_1 &  \\ & \lambda_2 \end{array} & \star \\  0 &  \begin{array}{cc} \ddots &  \\ & \lambda_n  \end{array} \end{array}\right) \quad 
+B=M_\B(f) = \left( \begin{array}{cc} \begin{array}{cc} \mu_1 &  \\ & \mu_2 \end{array} & \star \\  0 &  \begin{array}{cc} \ddots &  \\ & \mu_n \end{array} \end{array}\right)
+$$
+con  $ \lambda_i \in Sp(f) $ e $\mu_i \in Sp(g) $
+
+$$ M_\B(f\circ g ) =M_\B (g\circ f ) = \left( \begin{array}{cc} \begin{array}{cc} \lambda_1 \mu_1 &  \\ & \lambda_2 \mu_2 \end{array} & \star \\  0 &  \begin{array}{cc} \ddots &  \\ & \lambda_n \mu_n \end{array} \end{array}\right)
+$$
+
+\item[(ii)] Sia $ \B $ come sopra.\\
+$ f\circ g = g \circ f $ se sono uguali su una base quindi se
+$$ \forall v_i \in \B \quad f(g(v_i))=g(f(v_1))$$
+$$ f(g(v_i))=f(\mu_i v_i) =\mu_i f(v_i)=\mu_i \lambda_i v_1 $$
+$$ g(f(v_i))=g(\lambda_i v_i) =\lambda_i g(v_i)=\mu_i \lambda_i v_1 $$
+\end{itemize}
+
+Mostriamo ora la freccia $\Leftarrow$
+$$Sp(g)=\{ \lambda_1, \, \dots , \, \lambda_k \}$$ 
+$$ f \text{ diagonalizzabile } \quad \ses \quad V = V_{\lambda_1 } (f) \oplus \dots \oplus V_{\lambda_k} (f) $$
+Ora possiamo considerare la restrizione di $g$ su questi autospazi che per il lemma precedente sono $g$-invarianti.\\
+$$ g\text{ diagonalizzabile } \implica g_{\vert V_{\lambda_i}} \text{ diagonalizzabile } \implica \exists \B_i {base di } V_{\lambda_i} \text{ di autovettori di } g $$
+Ora la base $\B_i$ contiene sia autovettori di $f$ (gli elementi dell'autospazio sono autovettori) che di g, dunque la base cercata \'e $\{ \B , \dots , \B_k \} $
+\endproof
+\end{prop}
+\spazio
+\newpage
+
+\subsection{Endomorfismi triangolabili }
+
+\begin{defn}[Bandiera indotta da una base] \bianco
+Sia $\B=\{ \nvett \} $ una base di V.\\$\B$ induce una bandiera di sottospazi
+$$ Span(v_1) \subseteq Span(v_1, v_2) \subseteq \dots \subseteq Span \B =V $$
+Indicata con $\mathfrak{F}_\B$.\\
+Per comodit\'a nella trattazione, quando \'e presente una base, indicheremo con
+$$ V_1 = Span(v_1)$$
+$$ V_k=Span(v_1, \dots,  v_k) $$
+\end{defn}
+\spazio
+\begin{defn}[Sottospazio $f$-invariante]
+Sia $f\in End(V)$ e sia $W \subseteq V $ un sottospazio.\\
+$W$ \'e un sottospazio $f$-invariante se 
+$$ f(W)\subseteq W $$
+\end{defn}
+\begin{defn}[Bandiera invariante]\bianco
+Si dice che $\mathfrak{F}_\B$ \'e $f$-invariante se 
+$$ f(V_j) \subseteq V_j \quad \forall j =1, \dots, n$$
+\end{defn}
+\spazio
+\begin{prop} Sia $f \in End(V) $.\\
+I seguenti fatti sono equivalenza
+\begin{itemize}
+\item[(i)]$\exists \B$ base di $V$ tale che $M_\B(f)$ \'e triangolare superiore 
+\item[(ii)]$P_f(t)$ \'e completamente fattorizzabile
+\item[(iii)]$\exists \B $ base di $V$ tale che $ \mathfrak{F}_\B$ \'e $f$-invariante
+\end{itemize}
+\proof \bianco
+\begin{itemize}
+\item (i) $\implica $ (ii)\\
+Dalla forma triangolare superiore della matrice otteniamo:
+$$P_f(t)=( \mu_1 -t ) \cdots (\mu_n -t ) $$
+\item (iii) $\implica $ (ii) \\
+Dimostriamolo per induzione su $\dim V=n \geq 1 $\\
+Per $n=1$ \'e ovvio\\
+Supponiamo che valga per qualsiasi spazio vettoriale di dimensione $n$.\\
+Sia $W$ un sottospazio di dimensione $n+1$ e sia $f\in End(W)$.\\
+Ora poich\'e il polinomio caratteristico di $f$ \'e completamente fattorizzabile,$$\exists \mu \in Sp(f)\quad \implica \quad \exists v \in V , \, v\neq 0 \tc f(v)=\mu v $$
+Sia $V$ tale che 
+$$ W = Span(v) \oplus V $$ e sia $\D=\{ v \} \cup \B$ una base adattala alla decomposizione, ne segue che 
+
+$$ A=M_\D(f) =   
+\left(
+\begin{array}{c|c}
+\mu_1 & \star \\
+\hline
+0 & M_\B(f_{\vert V})
+\end{array}
+\right)
+$$
+Ora poich\'e $\dim V = n $ e il polinomio caratteristico della restrizione \'e fattorizzabile, posso concludere con l'ipotesi induttiva
+\item (i) $\ses $ (iii) \\
+Sia $\B =\{ \nvett \} $ tale che $ \mathfrak{F}_\B$ \'e $f$-invariante allora
+$$f(V_1)\in V_1 \implica f(v_1)=\mu_1 v_1 $$
+$$f(V_2)\in V_2 \implica f(v_2)=\star v_1 + \mu_2 v_2$$
+$$f(V_3)\in V_3 \implica f(v_3)=\star v_1 + \star v_2 \mu_3 v_3 $$
+da cui procedendo per induzione otteniamo 
+$$ M_\B(f) = \left( \begin{array}{cc} \begin{array}{cc} \mu_1 &  \\ & \mu_2 \end{array} & \star \\  0 &  \begin{array}{cc} \ddots &  \\ & \mu_n \end{array} \end{array}\right)
+$$
+Allo stesso modo il viceversa
+
+
+\end{itemize}
+\end{prop}
+\begin{defn} Se $f\in End(V) $ verifica queste condizioni \'e detto triangolabile
+\end{defn}
+
+\begin{cor}Se $\K$ \'e algebricamente chiuso allora tutti gli endomorfismi di $V$ sono triangolabili
+\end{cor}
+\newpage
+\subsubsection{Simultanea triangolazione}
+\begin{defn}$f,g\in End(V)$ si dicono simultaneamente triangolabili se esiste una base di $V$ a bandiera sia per $f$ che per $g$
+\end{defn}
+\spazio 
+\begin{lem}Sia $f\in End(V)$ triangolabile e sia $W\subseteq V $ $f$-invariante.\\
+Allora $f_{\vert W } $ \'e triangolabile
+\proof Sia $\D$ una base di $W$ estendiamola a $\B$ base di $V$.\\
+Allora chiamando $A=M_\D(f_{\vert W } $ otteniamo
+$$ B = \left( \begin{array}{c|c} 
+A & C \\
+\hline 
+0 & D 
+\end{array} \right)$$
+Ora $$p_f(t) = \det ( B - TI)= \det (A-tI) \det ( D-tI) = p_A(t) \cdot q(t) $$
+ed essendo $f$ triangolabile, $p_f$ completamente fattorizzabile e dunque anche $p_A$ lo \'e, consegue che $f_{\vert W } $ \'e triangolabile
+\end{lem}
+\begin{prop}Siano $f,g \in End(V) $ triangolabili tali che $f\circ g = g \circ f $.\\
+Allora
+\begin{itemize}
+\item[(i)] $f$ e $g$ ammettono un autovalore comune
+\item[(ii)]$f$ e $g$ sono simultaneamente triangolabili
+
+\end{itemize}
+\proof \bianco
+\begin{itemize}
+\item[(i)] $f$ \'e triangolabile dunque $\exists V_\lambda \neq \{ 0 \} $\\
+Ora $\forall v \in V_\lambda $ 
+$$ f( g(v)) = g(f(v))= \lambda (g(v)) \quad \implica \quad g(v) \in V_\lambda $$
+e visto che vale $\forall v \in V_\lambda $ allora $V_\lambda $ \'e $g$-invariante.\\
+Per il lemma precedente, allora, $ g_{\vert V_\lambda } $ \'e triangolabile dunque 
+$$ \exists v \in V_\lambda \text{ autovettore per } g_{\vert V_\lambda} \quad \implica \quad v \text{ autovettore per } g $$
+Ora $v\in V_\lambda$ quindi \'e autovettore sia per $f$ che per $g$ 
+\end{itemize}
+\end{prop}
+\newpage
+\section{Endomorfismi coniugati}
+
+\begin{defn}[Coniugati]\bianco
+Siano $f,g \in End(V) $, $f$ e $ g$ si dicono coniugati $ f\sim g $ se 
+$$ \exists h \in GL(V) \quad g = h^{-1} \circ f \circ h $$ 
+\end{defn} \spazio
+Visto in versione matriciale
+\begin{defn}[Simili]\bianco
+Siano $A,B \in M(n,\K) $, $A$ e $B$ si dicono simili $ A \sim B $ se 
+$$ \exists M \in GL(n,\K) \quad B=M^{-1} \cdot A \cdot M $$
+\end{defn} \spazio
+\begin{oss} Per alleggerire la notazione poniamo 
+$$M_\B=M_\B^\B$$
+\end{oss}
+\begin{prop} I seguenti fatti sono equivalenti
+\begin{itemize}
+\item[(i)] $ f\sim g$ 
+\item[(ii)] $\forall \B $ base di $V$, $M_\B(f) \sim M_\B(g)$
+\item[(iii)] $\exists \B, \D $ basi di V tale che $ M_\B(f)=M_\D(g)$
+\end{itemize}
+Questi fatti si possono dimostrare in modo analogo alle dimostrazioni fatte per  SD-equivalenza
+\end{prop}
+\spazio
+Mostriamo quali sono gli invarianti per la relazione studiata
+\begin{prop}[Invarianti] \bianco
+La lista degli invarianti per coniugio e similitudine sono
+\begin{itemize}
+\item[(i)] Polinomio caratteristico 
+\begin{itemize}
+\item[(ii)] Spettro di $f$   
+\item[(iii)] Determinante di $f$
+\end{itemize}
+\item[(iv)] Molteplicit\'a geometrica
+\begin{itemize}
+\item[(v)] Rango di $f$
+\end{itemize}
+
+\end{itemize}
+\proof Mostriamo che valgono le seguenti implicazioni
+\begin{itemize}
+\item (i) $ \implica $ (ii) \\
+Se $P_f(t)=P_g(t)$ allora in particolare i 2 polinomi avranno in comune le radici che altro non sono che gli elementi dello spettro
+\item (i) $\implica $ (iii)\\
+Dalla definizione di polinomio caratteristico segue che 
+$$P_A(t) = \det ( A -tI) $$ quindi
+$$ \det A = P_A(0) $$
+\item (iv) $\implica$ (v) \\
+Infatti da 
+$$V_{\lambda}= \ker (f - \lambda id ) $$ 
+segue che
+$$ \ker f = V_0$$ 
+quindi posso ricavarmi il rango di $f$ dalla dimensione degli autospazi usando la formula per nucleo e immagine
+$$ \dim Im(f)=n-\dim \ker f= n-\dim V_0 = n -d_0 $$
+\end{itemize}
+Da quanto detto sopra basta dimostrare solamente (i) e (iv)
+\begin{itemize}
+\item[(i)]Se $B\sim A $ allora $B= PAP^{-1} $ dunque
+$$ B-\lambda I = PAP^{-1} - \lambda I = PAP^{-1} - \lambda PIP^{-1} = P ( A - \lambda I ) P^{-1} $$
+Ora calcolando il determinante e usando la formula di Binet
+$$ P_B(t) = \det P \cdot P_A(t) \det P ^{-1} $$ 
+Ma essendo $\K$ un campo, vale la propiet\'a commutativa dunque
+$$ P_B(t)=P_A(t) $$
+\item[(iv)] Se $h \sim h' $\\
+
+Essendo i 2 endomorfismi simili vale che $\exists \beta \in GL(W) $ tale che
+$$ h' = \beta \circ h \circ \beta^{-1} $$
+$\forall v \in \ker h $ 
+$$ h'(\beta (v)) = ( \beta \circ h\circ \beta^{-1})(\beta (v))= ( \beta \circ h\circ \beta^{-1} \circ \beta )(v) = \beta(h(v)=\beta(0)=0$$
+Quindi $\beta (\ker h \subseteq \ker h')$, in modo analogo si mostra che vale l'altra inclusione.\\
+Essendo i 2 nuclei isomorfi, hanno la stessa dimensione
+
+\end{itemize}
+\endproof
+\end{prop}
+\begin{oss} Il set di invarianti a nostra disposizione non \'e completo , infatti prendiamo come esempio
+$$ A= \begin{pmatrix}
+0 & 1 & 0 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0
+\end{pmatrix}   \quad B= \begin{pmatrix}
+0 & 1 & 0 & 0 \\ 
+0 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 0 & 0 & 0
+\end{pmatrix} $$ 
+in 	questo caso il polinomio minimo \'e $t^4$.\\
+Inoltre $V_0(A) =V_0(B)=2$ ma essendo $A^2 \neq 0 $ e $B^2 =0 $ non possono essere simili
+\end{oss}
+\spazio
+
+\newpage
+\subsection{Decomposizione primaria}
+\begin{thm}[Decomposizione primaria]\bianco
+Sia $ f \in End(V) $ e $ p(t) \in I(f) $\\
+Se $$ p(t)=a(t) b(t) \text{ con } MCD(a(t), b(t))=1 $$
+Allora $$V =\ker (a(f)) \oplus \ker (b(f))$$\\
+inoltre entrambi gli addendi sono $f$-invarianti 
+\proof Dall'identit\'a di Bezout segue che 
+$$ 1=a(t) m(t) + b(t)n(t) $$ 
+Ora valutando in $f$ ottengo
+$$ id_V=a(f)\circ m(f)+ b(f) \circ n(f)$$
+$\forall v \in V $ 
+$$ v=(a(f)\circ m(f))(v)+ (b(f)\circ n(f))(v)$$ 
+Osserviamo che $(a(f)\circ m(f)) \in \ker b(f) $ infatti
+$$ (b(f) \circ a(f) \circ m(f)) (v)= m(f) \circ (p(f) (v)) =0 \in End(V) $$
+dove il primo uguale, viene giustificato dall'osservazione~\ref{commu}.\\
+In modo analogo si prova che $(b(f)\circ n(f)) \in  \ker a(f) $\\
+Da ci\'o concludiamo che $$V =\ker (a(f)) + \ker (b(f))$$
+Mostriamo che l'intersezione tra i 2 sottospazi \'e ridotta al solo $0$ \\
+Sia $ w \in \ker (a(f)) \cap \ker (b(f))$ allora dalla formula precedente 
+$$  w=(a(f)\circ m(f))(w)+ (b(f)\circ n(f))(w)=0$$ 
+La $f$-invarianza \'e lasciata per esercizio
+\endproof
+\end{thm}
+
+\newpage
+
+\subsection{Caso triangolabile}
+Restringiamoci al caso triangolabile  \\ \\
+Essendo $f$ triangolabile 
+$$ p_f(t) =\pm ( t-\lambda_1) ^{m_1} \cdots ( t-\lambda_k)^{m_k} $$
+Iterando la decomposizione primaria otteniamo 
+$$ V=\bigoplus_{j=1}^k \ker ( (t-\lambda_j \cdot Id)^{m_j} ) = \bigoplus_{j=1}^kW_j$$
+con i $W_i$ $f$-invarianti\\
+Chiamiamo $g_j$ la riduzione di $f$ a $W_j$ \\ \\
+Sia $\{ \B_1 ,\, \cdots , \, \B_k \} $ una base di $V$ adattata alla decomposizione ovvero $\B_i $ \'e base di $W_j$
+$$ M_\B(f) =\begin{pmatrix}
+A_1 \\
+ & A_2 \\
+ & & \ddots \\
+ & & & A_k 
+\end{pmatrix}$$
+dove ogni blocco ha come autovalore $\lambda_j$ infatti
+$$ P_f(t)=P_{A_1}(t) \cdots  P_{A_k} (t) $$
+quindi $\forall j $ vale
+$$ P_{g_j} = \pm ( t-\lambda_j) ^{ m_j} $$
+da cui $\dim W_j=m_j $
+
+Ora come sappiamo il polinomio minimo ha le stesse radici del polinomio caratteristico dunque
+$$ q_f(t) =\pm ( t-\lambda_1) ^{r_1} \cdots ( t-\lambda_k)^{r_k}  \quad \text{  con }  1\leq r_j \leq m_j $$
+E considerando la restrizione
+$$ q_{g_j}(t) =\pm ( t-\lambda_j) ^{\overline{r}_j} \quad \text{ con } 1 \leq \overline{r}_j \leq m_j$$
+A priori  sappiamo che $r_j\geq \overline{r}_j $ invece 
+\begin{prop} $\forall j \, r_j=\overline{r}_j $
+\proof
+Supponiamo che $ \overline{r}_1 < r_1 $ invece i restanti sono uguali da cui
+$$ (t-\lambda_1 )^{\overline{r}_1 } (t -\lambda_2)^{r_2} \cdots ( t- \lambda_k ) ^{r_k} $$ tale polinomio appartiene all'ideale ma ha grado minore del polinomio minimo.\\
+Assurdo dunque era assurda l'ipotesi $ \overline{r}_1 < r_1 $ , dunque vale l'uguaglianza
+\endproof
+\end{prop}
+\newpage
+Per quanto detto nella pagina precedente lo studio della relazione di similitudine nel caso di endomorfismi triangolabili, si riduce allo studio di endomorfismi "pi\'u semplici" con questa propriet\'a 
+$$ g:\, W \to W  \quad con \dim W=m $$
+$$ P_g(t)=\pm ( t-\lambda)^m $$
+$$ q_g(t)=\pm (t-\lambda)^r$$
+dove resta da studiare i vari casi al variare di  $r$ tra $1 \leq r \leq m $ \\ \\
+
+Per comodit\'a di esposizione, restringiamoci al caso di endomorfismi nilpotenti ovvero
+
+ \begin{defn}[Endomorfismo nilpotente]\bianco
+ $g :\, W \to W $ si dice nilpotente se l'unico autovalore \'e 0 .\\
+\end{defn}
+\begin{oss}Una definizione equivalente di nilpotente.\\
+$g $ \'e nilpotente se esiste $k\in \N $ tale che $g^k \equiv 0 $
+\end{oss}
+Dunque dopo aver applicato questa restrizione otteniamo
+$$ P_g(t) = t^m $$ $$q_g(t) = t^r \quad 1\leq r \leq m  $$
+\\
+ Mostriamo che la riduzione \'e fittizia \\
+Sia $g \in End(W) $ tale che $sp(g)=\{ \lambda \} $
+$$ g= \lambda Id + (g -\lambda id) = \lambda id + h$$
+dove $h=g-\lambda id_v$ viene chiamata \textbf{parte nilpotente }di $g$.\\
+Mostriamo che appunto $h$ \'e nilpotente.\\
+Essendo $g$ triangolabile allora esiste una base $\B$ di $W$ tale che
+$$ M_\B = \begin{pmatrix}
+\lambda & & \star \\ 
+& \ddots & \\ 
+0& & \lambda
+\end{pmatrix} = \lambda I_m +  \begin{pmatrix}0 & & \star \\ 
+& \ddots & \\ 
+0& & 0
+\end{pmatrix}  = M_\B(\lambda id_v) + M_\B(h)$$
+La matrice che rappresenta $h$ \'e triangolare superiore e lungo la diagonale ha solo $0$ quindi $h$ \'e nilpotente 
+
+\begin{prop} 2 endomorfismi sono simili se lo sono le loro classi nilpotenti
+\proof
+Supponiamo che $$ g=\lambda id + h $$
+$$ g'=\lambda id + h' $$
+Se $g \sim g' $ allora 
+$$\exists \beta \in GL(W) \quad g'=\beta \circ g \circ \beta^{-1}$$
+Quindi
+$$ g' = \beta \circ ( \lambda id + h ) \circ \beta^{-1} = \lambda id + \beta \circ h \circ h^{-1}$$
+Dunque $$h'= \beta \circ h \circ \beta^{-1} \quad \implica \quad h \sim h^{-1} $$
+\end{prop} 
+\newpage
+Dopo queste restrizioni, non resta che studiare cosa succede al variare di $r$
+\paragraph*{$r=1$}
+$$q_h (t) =t $$ dunque $$q_h(f)= h =0 \in End(W) \quad \implica  \quad h \text{ diagonalizzabile}$$
+\paragraph*{$r=m$}
+$$P_h(t)=q_h(t) $$
+Essendo il polinomio minimo di grado $m$  $$t^{m-1} \not in I(h) $$ 
+quindi 
+ $$h^{m-1} \neq 0  \quad \implica \quad \exists v \in W \tc h^{m-1} (v) \neq 0 $$
+Consideriamo i seguenti vettori
+ $$ v ,\, h(v) , \, \cdots , \, h^{m-1} (v) $$
+ 
+\begin{lem}$\{ v ,\, h(v) , \, \cdots , \, h^{m-1} (v)  \} $ \'e una base di $W$ 
+\proof Per quanto detto sopra i vettori sono tutti diversi da $0$, poich\'e sono $\dim W =m$ basta mostrare che sono linearmente indipendenti.\\
+Sia 
+$$ a_0 v+ a_1 h(v) +  \cdots + a_{m-1} h^{m-1} (v)=0$$
+Ora se applichiamo $h$ alla combinazione lineare otteniamo 
+$$ a_0 h(v)+ a_1 h^2(v) +  \cdots + a_{m-1} h^{m} (v)=0$$
+Notiamo che l 'ultimo addendo \'e 0 infatti $h^m$ \'e l'endomorfismo nullo.\\
+Iterando l'applicazione di $h$ alla combinazione  otteniamo 
+$$a_0 h^{m-1} (v)=0 $$
+e poich\'e $h^{m-1}(v) \neq 0 $ allora $a_0=0$ \\
+Risalendo si dimostra per induzione che 
+$$a_j =0 \quad \forall j=0, \cdots , m-1 $$ dunque i vettori sono linearmente indipendenti e formano una base di $W$ 
+\endproof
+\end{lem}
+Tale base viene chiamata base ciclica di $h$ rispetto a $v$ 
+ $$\B = \{ h^{m-1} (v) , h^{m-2}(v) , \cdots , \, v \} $$
+tale che$$ M_\B(h) =
+\begin{pmatrix}
+
+\boldsymbol{0} & 1 & 0 & \cdots & 0 & 0 \\ 
+0 & \boldsymbol{0} & 1 & \cdots & 0 & 0 \\ 
+0 & 0 & \boldsymbol{0} & \cdots & 0 & 0 \\ 
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\ 
+0 & 0 & 0 & \cdots & \boldsymbol{0} & 1 \\ 
+0 & 0 & 0 & \cdots & 0 & \boldsymbol{0}
+\end{pmatrix} $$
+Tale matrice che ha tutti $0$ sulla diagonale e 1 sulla sovra diagonale \'e detto \textbf{ blocco di Jordan } di autovalore 0 e taglia m e si indica con $J(0,m)$  \newpage
+Possiamo riassumere quanto detto sopra con 
+\begin{prop} Nel caso in cui $r=m$.\\
+Siano $f,g$ due endomorfismi di $W$ nilpotenti allora
+$$ f \sim g \quad \ses \quad \exists\B,\D \text{ basi di W } \tc M_\B(f) =M_\D(g)=J(0,m) $$
+\end{prop}
+\begin{oss} Nel caso in cui gli  endomorfismi non siano nilpotenti ovvero
+$$ P_g(t)=q_g(t)=(t- \lambda)^m $$ 
+Allora la forma matriciale normale \'e $J(\lambda,m) $ come nel caso nilpotente ma sulla diagonale invece di esserci $0$ ci sar\'a $\lambda $
+\end{oss} \newpage
+
+Il set di invarianti a nostra disposizione non \'e sufficiente per studiare il caso generale ovvero quando $0 < r < m $
+\begin{lem}[Nuclei successivi]\bianco 
+Sia $f\in End(V) $ allora
+$$ \ker f^i = \ker f^{i+1} \quad \implica \quad \ker f^{i+1} = \ker f^{i+2}$$
+Ovvero le dimensioni dei nuclei continuano a crescere finch\'e non se ne trovano 2 successivi con la stessa dimensione
+\proof $\ker f^{i+1} \subseteq \ker f^{i+2} $ in modo evidente\\ \\
+Mostriamo, dunque l'altra inclusione
+$$ \forall v \in \ker f^{i+2}  \quad f^{i+2}(v) =0 \quad \implica \quad f^{i+1 } (f(v))=0 \quad \implica \quad f(v) \in \ker f^{i+1} $$ 
+Ore per ipotesi $\ker f^{i+1} = \ker f^i$ quindi 
+$$ f(v) \in \ker f^i \quad \implica f^i ( f(v))=0 \quad \implica \quad f^{i+1}(v)=0 \quad \implica \quad v\in \ker f^{i+1}$$
+\endproof
+\end{lem}
+
+\spazio 
+Consideriamo sempre 
+$$ h:\, W \to W \quad Sp(h)=\{ 0\} $$ 
+Allora possiamo considerare la stringa
+$$d_1<\cdots < d_r=m \qquad \forall j \quad d_j=\dim \ker h^i $$ 
+
+\begin{lem}[Stringa di dimensioni invariante]
+Siano $h \sim h' $.\\
+Allora $h$ e $h'$ hanno la stessa stringa di dimensioni
+\proof
+Essendo i 2 endomorfismi simili vale che $\exists \beta \in GL(W) $ tale che
+$$ h' = \beta \circ h \circ \beta^{-1} $$
+$\forall v \in \ker h $ 
+$$ h'(\beta (v)) = ( \beta \circ h\circ \beta^{-1})(\beta (v))= ( \beta \circ h\circ \beta^{-1} \circ \beta )(v) = \beta(h(v)=\beta(0)=0$$
+Quindi $\beta (\ker h )\subseteq \ker h'$, in modo analogo si mostra che vale l'altra inclusione.\\
+Essendo i 2 nuclei isomorfi, hanno la stessa dimensione \endproof
+\end{lem}
+\begin{oss} Nel caso in cui $r=1$ la stringa era $(d_1=m)$ \\invece nel caso $r=m$ era $(1,2,\cdots, m ) $\end{oss} 
+\newpage
+\paragraph*{$1<r<m$}
+
+
+\begin{defn}[Base di Jordan bene ordinata] \bianco
+Una base di Jordan bene ordinate per h \'e una base $\B$ tale che $M_\B(h)$ 
+\begin{itemize}
+\item[(i)]\'e diagonale a blocchi
+\item[(ii)] Ogni blocco lungo la diagonale \'e di Jordan $J(0,m_i) $
+\item[(iii)] $m_i \leq m_{i-1} $ scendendo lungo la diagonale si trovano via via blocchi di taglia minore o uguale del blocco precedente
+\end{itemize}
+\end{defn}
+\spazio
+\begin{thm}[Forma normale di Jordan - caso nilpotente]\bianco
+Per ogni $h$ endomorfismo nilpotente con stringa ($0<d_1< \cdots< d_r<m$) esiste una base $\B$ di Jordan bene ordinata per $h$ tale che la matrice in forma normale $M_\B(h)$ \'e completamente determinata dalla stringa
+\proof
+Consideriamo le inclusioni
+$$\ker h \subset \ker h^2 \subset \cdots \subset \underbrace{ \ker h^{r-2}  \subset  \ker h^{r-1} \subset \ker h^r=W}_{\text{ soffermandoci su questo }} $$
+
+Facciamo ora una costruzione che andr\'a reiterata.\\ \\ 
+Essendo $\ker h^{r-1} $ un sottospazio di $W $ considero $U$ un complementare di $\ker h^{r-1}$ da cui
+$$ W= \ker h^{r-1} \oplus U $$
+Notiamo che la scelta di $U$ \'e arbitraria invece la sua dimensione \'e $t=d_r-d_{r-1}$.\\
+Fissiamo una base  di U 
+$$ u_1 , \cdots , u_r $$
+a applichiamo a questi vettori $h$ ottenendo
+$$ h(u_1),\cdots , h(u_t)$$
+Mostriamo che 
+\begin{itemize} \item questi vettori appartengono al $\ker h^{r-1} $ : 
+$$ h^{r-1}(h(u_i))= h^r (u) =0 \text{ esendo il polinomio minimo di h di grado } r $$ \item
+e sono linearmente indipendenti:\\
+supponiamo che 
+$$ a_1 h(u_1) + \cdots + a_t h(u_t)=0 $$
+allora applicando $h^{r-2}$ e usando la inearit\'a di $h$ ottengo
+$$h^{r-1} (  a_1 u_1  + \cdots+ a_t u_t)=0  $$
+Ma $ a_1 u_1 + \cdots + a_t u_t \in \ker h^{-1} \cap U $ quindi essendo i 2 spazi in somma diretta  deve succedere che 
+$$  a_1 u_1 + \cdots + a_t u_t =0 \quad \implica \quad a_1=\cdots=a_t=0 \quad\text{ i vettori } u_i \text{ formano una base } $$ 
+\end{itemize}
+\spazio
+Ora mi sposto e considero 
+$$ \ker h^{r-3} \subset \ker h^{r-2} \subset \ker ^{r-1} $$
+e riapplicando la costruzione ottengo
+$$ \ker h^{r-1} = \ker h^{r-2} \oplus U'$$
+ma questa volta impongo che la base di $U'$ sia
+$$ h(u_1) , \cdots , h(u_t) , u_{t+1}, \cdots , u_{t'} $$
+il numero dei vettori da aggiungere \'e univocamente determinato dalla stringa.\\
+Applico $h$ alla base di $U'$ ottenendo
+$$ h^2(u_1) , \cdots , h^2(u_t) , h(u_{t+1}), \cdots ,h( u_{t'}) $$
+Reitero finch\'e possibile \\
+\\
+Ho costruito una base di $W$ arrangiata in questa tabella, dove le altezze e le lunghezze dei gradini dipendono solamente dalla stringa\\
+\begin{center}
+\begin{tabular}{cccccc}
+
+$u_1$ & $\cdots $ & $u_t$ &  &  &  \\ 
+
+$h(u_1) $& $\cdots $&$ h(u_t) $& $u_{t+1}$ & $\cdots$ & $u_{t'} $\\ 
+
+$ h^2(u_1)$ & $\cdots$ & $h^2(u_t)$ & $h(u_{t+1})$ & $\cdots$ & $h(u_{t'})$ \\ 
+\end{tabular} 
+\end{center}
+Considerando le colonne$C_1, \cdots C_s$ della tabella ottengo che
+$$ W = \bigoplus_{i=1}^n Span(C_i) $$
+inoltre ogni $Span(C_i)$ \'e h-invariante ed i vettori di ogni colonna formano una base ciclica per h ristretta a questi $Span$ .\\
+Ora se riordino le colonne al contrario(basso verso alto) ottengo da ogni colonna una base di Jordan , inoltre l'altezza di ogni colonna diminuisce andando verso destra quindi sono ben ordinate.
+\endproof
+\end{thm}
+\begin{cor} La stringa \'e un invariante completo per la relazione di coniugio ristretta agli endomorfismi triangolarizzabili
+\end{cor}
+
+\spazio
+\begin{thm}[Unicit\'a] \bianco
+Siano $B$ e $B'$ due basi di Jordan bene ordinate per $h$ \\
+Allora
+$$M_\B (h) = M_{\B'}(h)$$ \\
+Data una matrice di Jordan, posso calcolare la stringa invariante.
+\end{thm} 
+\spazio
+\newpage
+
+
+\subsection{Studio della coniugazione in $\R$}
+Nel caso di endomorfismi triangolabili, abbiamo studiato la relazione in modo esauriente, avendo trovato per ogni endomorfismo un suo rappresentante in forma normale per la relazione di coniugazione.\\
+In un campo non algebricamente chiuso le cose sono pi\'u difficili perch\'e non si conosce quali sono i polinomi irriducibili, fatta eccezione per $\R$
+
+\subsubsection*{Complessificazione}
+Mostriamo un esempio di complessificazione che ci permetter\'a di trovare gli elementi irriducibile dell'anno dei polinomi a coefficienti reali.
+\paragraph{Irriducibili in $\R[t]$}
+Su $\C$ \'e definita la seguente funzione chiamata coniugio
+$$ \C \to \C \quad a+ib \to a+i(-b) = a-ib $$
+con le seguenti propiet\'a
+\begin{itemize}
+\item[(i)] $ \overline{z+w}=\overline{z}+ \overline{w}$
+\item[(ii)]$ \overline{z\cdot w}=\overline{z} \cdot  \overline{w}$
+\item[(iii)]  $\frac{ z +  \overline{z}}{2}=  Re z $
+\item[(iv)] $ \frac{z - z }{2 i }=Im z $
+\item[(v)] $ z \cdot \overline{z} = \vert z \vert ^2 =Re z ^2 + Im z ^2$
+\end{itemize}
+Inoltre possiamo definire l'insieme dei numeri reali come
+\begin{itemize}
+ \item[(vi)] $\R=\{ z \in \C \, \vert z = \overline{z } \} $
+
+\end{itemize}
+
+Ora siccome $\R \subset \C $ allora in particolare vale $\R[t] \subset \C[t]$\\
+Sia $p[t] \in \R[t] $ che abbia una radice non reale $\alpha $ quindi
+ $$p(\alpha)=0 \quad \implica \quad \overline{p(\alpha)}= \overline{0}$$ 
+Ora utilizzando le propiet\'a (i) (ii) e (vi) otteniamo 
+$$ P(\overline{\alpha})=0 $$
+Da questo fatto segue che 
+$$ p(t) = (t- \lambda_1)^{m_1} \cdots (t-\lambda_s)^{m_s} (t-\alpha_1)^{l_1} (t - \overline{\alpha_1})^{l_1} \cdots \quad \text{ in } \C $$
+dove $\lambda_i \in \R $ 
+invece $\alpha_i \neq \overline{\alpha_1}$
+Ora consideriamo  con $\alpha_1 =a_1 + i b_1$
+$$ Q_{\alpha_1}(t) = ( t- \alpha_1 ) (t- \overline{\alpha_1} ) = t^2 + ( \alpha_1+ \overline{ \alpha_1}) t  + \alpha_1 \overline{\alpha_1}$$
+Ora $( \alpha_1+ \overline{ \alpha_1})  = 2 a_1  \in \R $ e $  \alpha_1 \overline{\alpha_1} = a_1^2 + b_1^2 \in R$\\ 
+Da quanto detto sopra  gli irriducibili in $\R[t]$ sono i polinomi di primo grado e quelli di secondo grado che non hanno radici reali 
+\newpage
+
+\subsubsection*{Complessificazione di uno spazio vettoriale}
+Sia $V$ uno spazio vettoriale su $\R$.\\
+Definiamo $V_\C $ (complessificato di $V$) come la coppia ordinata $ (v , w) \in V \times V $.\\
+Per assonanza con i numeri complessi denotiamo la coppia $(v,w) = v +i w $\\
+\\
+Muniamo $V_\C $ di 2 operazioni $+ , \cdot $ che lo rendano uno spazio vettoriale su  $\C$ 
+$$ + : \, V_\C \to V_\C \qquad  ( v, w) + (v',w') \to (v+v, w+w') $$
+$$ \cdot: \, \C \times V_\C \qquad (\alpha ,(v,w)) \to ( av -bw, aw + bv) \quad \text{ supponendo } \alpha=a+ ib $$
+\begin{prop} $V_\C$ con le 2 operazioni definite \'e uno spazio vettoriale su $\C$.\end{prop}
+Definiamo anche su $V_\C$ un applicazione coniugio
+$$ V_\C \to V_\C \qquad (v,w) \to (v,-w) $$
+inoltre $V \subset V_\C $ infatti $V=\{z \in V_\C \, \vert \, z =\overline{z}\}$
+\spazio
+\begin{lem}[Base reale]\bianco
+Se $\B=\{ \nvett \} $ \'e una base di $V$.\\
+Allora $\B$ \'e anche base di $V_\C$ detta base rea;e di $V_\C$ 
+\proof $ \forall z =(v,w) \in V_\C $ 
+$$ z  =(a_1 v_1 + \cdots + a_n v_n ) + i ( b_1 v_1 + \cdots + b_n v_n) $$ 
+infatti $v,w \in V$.\\
+Per quanto detto sopra $\B$ genera $V_\C$ \\ \\ 
+Mostriamo che i vettori sono linearmente indipendenti su $\C$ 
+$$ \alpha_1 v_1 + \cdots + \alpha_n v_n =0+i0 \qquad \text{ con } \alpha_i=a_i + i b_i  \in \C$$
+Ora applicando la definizione di somma e prodotto in $V_\C$ otteniamo
+$$ a_1 v_1 + \cdots + a_n v_n + i( b_1 v_1 + \cdots + b_n v_n )=0+0i$$
+Dunque abbiamo 2 combinazioni reali nulle di vettori di una base dunque
+$$ a_1= \cdots = a_n = b_1= \cdots = b_n =0 $$
+I vettori di $\B$ sono linearmente indipendenti su $\C$ 
+\endproof
+\paragraph*{Applicazione lineare complessificata}
+$$\begin{tikzcd} 
+V \arrow{r}{f} \arrow[d,hook] 
+&W \arrow[d,hook]\\ 
+V_\C \arrow[dashed]{r}{f_\C}&W_\C
+\end{tikzcd} $$
+\end{lem}
+Dove $f_\C$ \'e definita in modo che sia $\C$-lineare e renda commutativo il diagramma quindi
+$$ f_\C ((v,w))=(f(v),f(w))$$
+Se fissiamo una base $\B$ di $V$ ed una base $\D$ di $W$ allora
+$$ \AB (f) =\AB (f_\C) \quad \implica \quad
+P_f(t) = P_{f_\C} (t) \in \R[t]$$ 
+\newpage
+\paragraph{Relazione di coniugazione su $\R$}
+Possiamo ora studiare la relazione di coniugio su $End(V) $ e su $End(V_\C) $\\
+$$\R[t] \ni P_f(t) = \cdots (t-\lambda)^{m} \cdots Q_\alpha (t)^{l}(t) \cdots $$
+Ora se guardiamo il polinomio in $\C[t] $ allora
+$$ \C[t] \ni P_{f_\C}(t) = \cdots (t-\lambda)^{m} \cdots (t-\alpha)^l
+( t-\overline{\alpha})^l \cdots$$
+Possiamo applicare ad entrambi le fattorizzazioni la decomposizioni primaria
+$$\text{ su } \R \qquad  V = \cdots \oplus \ker (f-\lambda id )^m  \oplus \cdots \oplus \ker Q_{\alpha} ^l(f) \oplus \cdots $$
+$$\text{ su } \C \qquad  V_\C = \cdots \oplus \ker (f_\C -\lambda id )^m  \oplus \cdots \oplus \ker (f_\C - \alpha id)  ^l \oplus (f_\C - \overline{\alpha} id )^l \oplus \cdots $$
+ \begin{prop} Valgono i seguenti fatti
+ \begin{itemize}
+ \item[(i)] $\ker (f_\C - \lambda id ) $ \'e il complessificato di $\ker (f - \lambda id ) $
+ \item[(ii)] $\ker  (f_\C - \alpha id )\oplus \ker (f_\C - \overline{\alpha} id ) $  \'e il complessificato di $\ker Q_\alpha(f) $ 
+ \end{itemize}
+ \end{prop}
+ Dal fatto (i) riesco a trovare una base di Jordan reale che sar\'a anche una base di Jordan complesso.\\
+ \\
+Dal fatto (ii) posso prendere una base $\B$ di Jordan per $\ker \ker (f_\C - \alpha id )$ e poi prendere $\overline{\B}$ come base dell'altro sottospazio e poi considerare il cambiamento di base
+$$ \B , \overline{\B} \Longleftrightarrow Re \B , Im B $$
+La seconda base \'e chiamata base di Jordan reale.\\
+I
+L'applicazione $f$ ristretta a $\ker Q_\alpha(f) $ rappresentata tramite la base $ \B , \overline{\B} $ \'e della forma
+$$ \begin{pmatrix}
+J(\alpha,s) & 0 \\
+0 & J(\overline{\alpha},s) & 0 
+\end{pmatrix} \in M(2s ,\C) 
+$$
+Invece tramite la base $\Re \B, \Im \B$ 
+$$ \left( \begin{array}{c| c | c |c }
+A & I_2 & 0 &0 \\
+\hline
+0 & \ddots & \ddots & 0 \\ 
+\hline
+0 & 0 & \ddots & I_2 \\
+\hline
+0 & 0 & 0 & A 
+
+\end{array} \right)  $$
+dove  
+$$ A = \begin{pmatrix}
+\Re ( \alpha ) & \Im(\alpha)\\
+-\Im (\alpha ) & \Re (\alpha ) 
+\end{pmatrix}$$
+
+\newpage
+\subsection{Calcolo della forma di Jordan}
+Un modo per calcolare facilmente la forma di Jordan \'e conoscere la dimensione dei nuclei successivi, questa proposizione \'e molto utile
+\begin{prop} 
+$$ \dim \ker f^k- \dim \ker f^{k-1} \quad \text{ \'e decrescente} $$
+\proof
+$$ f^ k = f \circ f^{k-1}$$ da questo segue che 
+$$ \dim \ker f^k = \dim \ker f^{k-1} + \dim ( \Im f^{k-1} \cup \ker f ) $$
+Questa successione \'e decrescente perch\'e la dimensione delle immagine \'e decrescente 
+\endproof
+\end{prop}
+Inoltre valgono le seguenti considerazioni 
+\begin{itemize}
+
+\item $m_a(\lambda_i) $ 
+\begin{itemize}
+\item nel polinomio caratteristico indica la somma delle taglie dei blocchi relativi a $\lambda_i$
+\item nel polinomio minimo indica la taglia massima dei blocchi relativi a $\lambda_i$
+\end{itemize}
+\item $m_g(\lambda_i)$ indica il numero di blocchi relativi a $\lambda_i$
+\item $\ker (f -\lambda_i id )^\beta $ \'e generato dai primi $\beta $ vettori di ogni blocco relativo a $\lambda_i$
+\item numero di blocchi relativi a $\lambda_i $ di taglia $\alpha$
+$$ 2 \dim \ker (( f-\lambda_i Id) ^\alpha) - \dim \ker (( f-\lambda_i Id) ^{\alpha+1}) - \dim \ker (( f-\lambda_i Id) ^{\alpha-1})$$  
+\end{itemize}
+\newpage
+\section{Complementi}
+
+\subsubsection{Centro degli endomorfismi}
+\begin{lem} $f\in End(V) $ $$ \forall v \in V \, v \neq 0 \quad v \text{ \'e autovettore per } f \ses f \in Span(id_v) $$
+\proof $\implica$ Sia $\B = \{ \nvett \} $ \'e una base di $V$ , quindi \'e fatto di autovettori
+$$ M_\B(f) = \left( \begin{array}{cc} \begin{array}{cc} \lambda_1 &  \\ & \lambda_2 \end{array} & \star \\  0 &  \begin{array}{cc} \ddots &  \\ & \lambda_n \end{array} \end{array}\right)
+$$
+Dobbiamo mostrare che tutti i $\lambda_i$ siano uguali a $\lambda_1$\\
+$$\forall i=2,\cdots, n  \quad v_1+v_i  \text{ \'e un autovettori quindi }\exists \lambda \in \K \tc f(v_1+v_i)=\lambda(v_1+v_i)$$
+
+$$  f(v_1+v_i) = \lambda_1 v_1 + \lambda_i v_i = \lambda v_1 + \lambda v_i$$
+$$ v_1 ( \lambda_1 - \lambda ) + v_i ( \lambda_i -\lambda ) =0  $$
+Ora $v_1$ e $v_1$ appartengono ad una base quindi sono linearmente indipendenti da cui $\lambda=\lambda_1=\lambda_i $\\
+L'altra freccia \'e ovvia
+\endproof
+\end{lem}
+\spazio
+\begin{prop}[Centro delle matrici]
+Sia $ A \in M(n,\K) $ 
+$$ \forall B \in M(n,\K) \quad AB=BA \implica A \in Span(I_nI$$
+\proof
+Basta vedere che tutti gli elementi di $\K^n $ sono autovettori per $A$ poi applicare il lemma\\
+Sia $v \in \K^n $ $ v\neq 0 $ e completiamo a $\B =\{ v, \, v_2, \, \cdots , \, v_n \} $ base di $\K^n $ \\
+Costruiamo l'applicazione relativa a B , in modo che $v$ sia l'unico autovettore relativo ad $1$
+$$ v \to v $$
+$$ v_i \to 0 \quad \forall i=2,\cdots , n $$
+Per come abbiamo costruito B \'e diagonalizzabile con spettro $\{ 1, 0 \} $\\
+Ora $AB=BA$ quindi per il lemma iniziale $V_1(B) $ \'e $A$-invariante 
+$$ Av \in Span(v) \quad Av=\lambda v $$ 
+dunque v \'e autovettore per $A$
+\endproof
+\end{prop}
+%\end{document}
